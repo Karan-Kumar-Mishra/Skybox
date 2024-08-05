@@ -1,11 +1,7 @@
 export default function Example() {
     return (
      
-
-
-      <div className="bg-white">
-        <div className="mx-auto max-w-7xl h-screen py-24 sm:px-6 sm:py-32 lg:px-8 ">
-          <div className=" relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+          <div className="relative isolate overflow-hidden  bg-gray-900 px-6 pt-16 shadow-2xl  sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0 h-screen w-full">
             <svg
               viewBox="0 0 1024 1024"
               aria-hidden="true"
@@ -23,7 +19,7 @@ export default function Example() {
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Boost your productivity.
                 <br />
-                Start using our app today.
+                Start using our  Skybox app today.
               </h2>
               <p className="mt-6 text-lg leading-8 text-gray-300">
                 Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.
@@ -35,9 +31,7 @@ export default function Example() {
                   >
                   Get started
                 </a>
-                <a href="#" className="text-sm font-semibold leading-6 text-white">
-                  Learn more <span aria-hidden="true">→</span>
-                </a>
+              
               </div>
             </div>
             <div className="relative mt-16 h-80 lg:mt-8">
@@ -50,8 +44,8 @@ export default function Example() {
               />
             </div>
           </div>
-        </div>
-      </div>
+        
+  
                 
     )
   }

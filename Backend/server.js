@@ -17,9 +17,12 @@ app.use(express.json());
 
 app.use('/', route.home);  
 app.use('/singup', route.singup);  
-app.use('/login', route.login);  //pending
+app.use('/login', route.login);  
+app.use('/deleteuser', route.deleteuser);  
+app.use('/addnote', route.addnote);  //pending
+
 app.use('/auth', route.authentication);  
-app.use('/addnote',route.addnote)
+
 
 
 app.listen(80, () => {

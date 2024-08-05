@@ -4,15 +4,16 @@ const db = require('../database/main')
 
 
 singup.post('/', (req, res) => {
-  console.log(req.body)
     if(req.body.name && req.body.email && req.body.password)
     {
-       db.getid(req.body).then((ans)=>{
-        console.log("save the user =>",ans)
-      })
-      res.send({
-        status:"ok"
-      });
+       db.adduser(req.body).then((ans)=>{
+        if(ans)
+        {
+          res.send({
+            status:"ok"
+          });
+        }
+       })
     }
     else
     {

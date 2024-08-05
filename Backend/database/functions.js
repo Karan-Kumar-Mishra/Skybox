@@ -41,9 +41,9 @@ async function getuser(key) {
     return error;
   }
 }
-async function deleteuser(key, value) {
+async function deleteuser(key) {
   try {
-    return await usermodel.deleteOne({ [key]: value });
+    return await usermodel.deleteOne({ id: key });
   } catch (error) {
     return error;
   }

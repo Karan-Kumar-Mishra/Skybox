@@ -35,4 +35,23 @@ async function login()
   let res= await a.json()
   console.log(res)
 }
-login();
+//login();
+
+async function deleteuser()
+{
+
+  let option={
+    method :"DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com",
+        password:"1234"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/deleteuser',option);
+  let res= await a.json()
+  console.log(res)
+}
+//deleteuser();
