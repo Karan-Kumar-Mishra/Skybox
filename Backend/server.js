@@ -19,9 +19,15 @@ app.use('/', route.home);
 app.use('/singup', route.singup);  
 app.use('/login', route.login);  
 app.use('/deleteuser', route.deleteuser);  
-app.use('/addnote', route.addnote);  //pending
+app.use('/addnote', route.addnote);  
+app.use('/updatanote', route.updatanote);  
+app.use('/editnote', route.editnote);  
+app.use('/deletenote', route.deletenote);  //pending 
 
-app.use('/auth', route.authentication);  
+
+
+
+
 
 
 

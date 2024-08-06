@@ -55,3 +55,77 @@ async function deleteuser()
   console.log(res)
 }
 //deleteuser();
+async function addnote()
+{
+
+  let option={
+    method :"PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com",
+        notedata:" This the note data"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/addnote',option);
+  let res= await a.json()
+  console.log(res)
+}
+//addnote();
+async function updatanote()
+{
+
+  let option={
+    method :"PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com",
+        index: 3,
+        newnote:" karan"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/updatanote',option);
+  let res= await a.json()
+  console.log(res)
+}
+//updatanote()
+
+async function editnote()
+{
+
+  let option={
+    method :"PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com",
+        index: 2,
+        newnote:"1"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/editnote',option);
+  let res= await a.json()
+  console.log(res)
+}
+//editnote()
+async function deletenote()
+{
+
+  let option={
+    method :"PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/deletenote',option);
+  let res= await a.json()
+  console.log(res)
+}
+deletenote()

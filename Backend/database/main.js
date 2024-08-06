@@ -9,5 +9,7 @@ const mainobj={
  addnote: functions.addnote,
  updatanote: functions.updatanote,
  disconnect: functions.disconnectdb,
+ editnote: functions.editnote,
+
 }
 module.exports= mainobj

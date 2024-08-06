@@ -51,20 +51,40 @@ async function deleteuser(key) {
 async function updatanote(key, noteindex, note) {
   try {
     getnotes(key).then((res) => {
-      console.log(res[noteindex]);
       let updatenotes = res[noteindex] + ` ${note}`;
-      collection.updateOne(
+      usermodel.updateOne(
         { id: key },
         { $set: { [`notes.${noteindex}`]: updatenotes } }
-      );
+      ).then((result)=>{
+        return result;
+      })
     });
+  } catch (error) {
+    return error;
+  }
+}
+
+async function editnote(key, noteindex, note) {
+  try {
+
+    if(noteindex> (await usermodel.findOne({ id: key })).notes.length)
+    {
+      return 0;
+    } 
+   return await usermodel.updateOne(
+        { id: key },
+        { $set: { [`notes.${noteindex}`]: note } }
+      ).then((result)=>{
+        return result;
+      })
+  
   } catch (error) {
     return error;
   }
 }
 async function addnote(key, note) {
   try {
-    return await collection.updateOne({ id: key }, { $push: { notes: note } });
+    return await usermodel.updateOne({ id: key }, { $push: { notes: note } });
   } catch (error) {
     return error;
   }
@@ -99,6 +119,7 @@ module.exports = {
   adduser,
   deleteuser,
   addnote,
+  editnote,
   updatanote,
   disconnectdb,
 };
