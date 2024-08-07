@@ -10,6 +10,6 @@ const mainobj={
  updatanote: functions.updatanote,
  disconnect: functions.disconnectdb,
  editnote: functions.editnote,
-
+ deletenotes :functions.deleteallnotes
 }
-module.exports= mainobj
+module.exports= mainobj;

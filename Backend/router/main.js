@@ -7,6 +7,7 @@ const deleteuser =require('./deleteuser')
 const updatanote =require('./updatenote')
 const editnote =require('./editnote')
 const deletenote =require('./deletenote')
+const deleteallnote =require('./deleteallnote')
 const mainobj={
     authentication,
     home,
@@ -16,7 +17,7 @@ const mainobj={
     deleteuser,
     updatanote,
     editnote,
-    deletenote
-    
+    deletenote,
+    deleteallnote
 }
 module.exports= mainobj;

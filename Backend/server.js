@@ -22,7 +22,9 @@ app.use('/deleteuser', route.deleteuser);
 app.use('/addnote', route.addnote);  
 app.use('/updatanote', route.updatanote);  
 app.use('/editnote', route.editnote);  
-app.use('/deletenote', route.deletenote);  //pending 
+app.use('/deletenote', route.deletenote);  
+app.use('/deleteallnote', route.deleteallnote);  //pending
+
 
 
 

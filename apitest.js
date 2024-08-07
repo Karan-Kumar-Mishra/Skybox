@@ -103,7 +103,7 @@ async function editnote()
     },
     body: JSON.stringify({
         email:"abc@gmail.com",
-        index: 2,
+        index: 3,
         newnote:"1"
     })
   }
@@ -114,7 +114,23 @@ async function editnote()
 //editnote()
 async function deletenote()
 {
-
+  let option={
+    method :"PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com",
+        index:0
+    })
+  }
+  let a= await fetch('http://127.0.0.1/deletenote',option);
+  let res= await a.json()
+  console.log(res)
+}
+//deletenote()
+async function deleteallnote()
+{
   let option={
     method :"PUT",
     headers: {
@@ -124,8 +140,8 @@ async function deletenote()
         email:"abc@gmail.com"
     })
   }
-  let a= await fetch('http://127.0.0.1/deletenote',option);
+  let a= await fetch('http://127.0.0.1/deleteallnote',option);
   let res= await a.json()
   console.log(res)
 }
-deletenote()
+deleteallnote()

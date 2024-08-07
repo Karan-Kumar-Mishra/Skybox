@@ -1,13 +1,13 @@
-const { mongoose, crypto} = require("./package.js");
+const { mongoose, crypto } = require("./package.js");
 const { usermodel } = require("./model.js");
 const { URL, client, collection } = require("./variable.js");
-const pwd= require('../passoword-service/main')
+const pwd = require("../passoword-service/main");
 
 function generateRandomId(length) {
   try {
     return crypto.randomBytes(length).toString("hex").slice(0, length);
   } catch (error) {
-    return error
+    return error;
   }
 }
 async function connectdb() {
@@ -20,19 +20,18 @@ async function connectdb() {
   }
 }
 async function adduser(user) {
-  const encryped_password= await pwd.mainobj.encryped(user.password) 
+  const encryped_password = await pwd.mainobj.encryped(user.password);
   try {
     const newUser = new usermodel({
       id: generateRandomId(20),
       name: user.name,
       email: user.email,
-      password:  encryped_password
+      password: encryped_password,
     });
     return await newUser.save();
   } catch (error) {
     return error;
   }
-
 }
 async function getuser(key) {
   try {
@@ -52,12 +51,14 @@ async function updatanote(key, noteindex, note) {
   try {
     getnotes(key).then((res) => {
       let updatenotes = res[noteindex] + ` ${note}`;
-      usermodel.updateOne(
-        { id: key },
-        { $set: { [`notes.${noteindex}`]: updatenotes } }
-      ).then((result)=>{
-        return result;
-      })
+      usermodel
+        .updateOne(
+          { id: key },
+          { $set: { [`notes.${noteindex}`]: updatenotes } }
+        )
+        .then((result) => {
+          return result;
+        });
     });
   } catch (error) {
     return error;
@@ -66,18 +67,14 @@ async function updatanote(key, noteindex, note) {
 
 async function editnote(key, noteindex, note) {
   try {
-
-    if(noteindex> (await usermodel.findOne({ id: key })).notes.length)
-    {
+    if (noteindex > (await usermodel.findOne({ id: key })).notes.length) {
       return 0;
-    } 
-   return await usermodel.updateOne(
-        { id: key },
-        { $set: { [`notes.${noteindex}`]: note } }
-      ).then((result)=>{
+    }
+    return await usermodel
+      .updateOne({ id: key }, { $set: { [`notes.${noteindex}`]: note } })
+      .then((result) => {
         return result;
-      })
-  
+      });
   } catch (error) {
     return error;
   }
@@ -88,6 +85,25 @@ async function addnote(key, note) {
   } catch (error) {
     return error;
   }
+}
+async function deletenote(key, index) {
+  let arr = await getnotes(key);
+  let update1 = arr.slice(0, index);
+  let update2 = arr.slice(index + 1, arr.length);
+
+  for (let i = 0; i < update2.length; i++) {
+    update1.push(update2[i]);
+  }
+  return await usermodel.updateOne(
+      {id:key},
+      {$set:{notes:update1}}
+  )
+}
+async function deleteallnotes(key) {
+  return await usermodel.updateOne(
+    {id:key},
+    {$set:{notes:[]}}
+  )
 }
 async function getnotes(key) {
   try {
@@ -105,10 +121,10 @@ async function getID(key, value) {
 }
 async function disconnectdb() {
   try {
-    await  mongoose.disconnect()
-    await  client.close();
+    await mongoose.disconnect();
+    await client.close();
   } catch (error) {
-    return error
+    return error;
   }
 }
 module.exports = {
@@ -122,4 +138,6 @@ module.exports = {
   editnote,
   updatanote,
   disconnectdb,
+  deletenote,
+  deleteallnotes
 };
