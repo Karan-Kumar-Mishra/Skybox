@@ -9,7 +9,6 @@ export default function Example() {
             <h2 className="text-base font-semibold leading-7 text-white">
               Profile
             </h2>
-       
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-4">
@@ -52,10 +51,7 @@ export default function Example() {
                     />
                   </div>
                 </div>
-
               </div>
-
-         
 
               <div className="col-span-full">
                 <label
@@ -65,12 +61,14 @@ export default function Example() {
                   Photo
                 </label>
                 <div className="mt-2 flex items-center gap-x-3 text-white">
-                 <img src="https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg" 
-                 alt="User image" 
-                 className="rounded-full h-20" />
+                  <img
+                    src="https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
+                    alt="User image"
+                    className="rounded-full h-20"
+                  />
                   <button
                     type="button"
-                    className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    className="border-solid p-3 rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
                   >
                     Change
                   </button>
@@ -118,13 +116,13 @@ export default function Example() {
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <button
             type="button"
-            className="text-sm font-semibold leading-6 text-white"
+            className="border-solid p-3 w-40 text-white rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="border-solid p-3 w-40 text-white rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
           >
             Save
           </button>

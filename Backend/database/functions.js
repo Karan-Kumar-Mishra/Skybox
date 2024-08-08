@@ -112,6 +112,13 @@ async function getnotes(key) {
     return error;
   }
 }
+async function getnote(key,index) {
+  try {
+    return (await usermodel.findOne({ id: key })).notes[index];
+  } catch (error) {
+    return error;
+  }
+}
 async function getID(key, value) {
   try {
     return (await usermodel.findOne({ [key]: value })).id;
@@ -119,6 +126,7 @@ async function getID(key, value) {
     return error;
   }
 }
+
 async function disconnectdb() {
   try {
     await mongoose.disconnect();
@@ -131,6 +139,7 @@ module.exports = {
   connectdb,
   getID,
   getnotes,
+  getnote,
   getuser,
   adduser,
   deleteuser,
@@ -139,5 +148,5 @@ module.exports = {
   updatanote,
   disconnectdb,
   deletenote,
-  deleteallnotes
+  deleteallnotes,
 };

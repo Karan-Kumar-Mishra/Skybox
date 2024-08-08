@@ -26,9 +26,9 @@ export default function Example() {
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                 <a
-                  href="#"
-                  className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                  >
+                  href="/home"
+                   className="border-solid p-4 rounded-3xl text-white  bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
+                 >
                   Get started
                 </a>
               
@@ -44,8 +44,6 @@ export default function Example() {
               />
             </div>
           </div>
-        
-  
                 
     )
   }

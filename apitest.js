@@ -144,4 +144,53 @@ async function deleteallnote()
   let res= await a.json()
   console.log(res)
 }
-deleteallnote()
+//deleteallnote()
+async function getnotes()
+{
+  let option={
+    method :"POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/getnotes',option);
+  let res= await a.json()
+  console.log(res)
+}
+//getnotes()
+async function getnote()
+{
+  let option={
+    method :"POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com",
+        index:56
+    })
+  }
+  let a= await fetch('http://127.0.0.1/getnote',option);
+  let res= await a.json()
+  console.log(res)
+}
+//getnote()
+async function getuser()
+{
+  let option={
+    method :"POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email:"abc@gmail.com"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/getuser',option);
+  let res= await a.json()
+  console.log(res)
+}
+getuser()

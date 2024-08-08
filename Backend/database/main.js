@@ -2,7 +2,8 @@ const functions = require('./functions.js')
 const mainobj={
  connect:  functions.connectdb,
  getid:  functions.getID,
- getnote:  functions.getnotes,
+ getnotes:  functions.getnotes,
+ getnote: functions.getnote,
  getuser : functions.getuser,
  adduser: functions.adduser,
  deleteuser: functions.deleteuser,
@@ -10,6 +11,6 @@ const mainobj={
  updatanote: functions.updatanote,
  disconnect: functions.disconnectdb,
  editnote: functions.editnote,
- deletenotes :functions.deleteallnotes
+ deleteallnotes: functions.deleteallnotes,
 }
 module.exports= mainobj;

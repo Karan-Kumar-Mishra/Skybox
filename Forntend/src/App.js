@@ -8,6 +8,7 @@ import Setting from './compenent/Setting'
 import Start from './compenent/Start'
 import NotFound from './compenent/NotFound';
 import Profile from './compenent/Profile';
+import Test from './compenent/Test';
 
 export default class App extends Component {
 
@@ -25,6 +26,8 @@ export default class App extends Component {
         <Route path="/home" element={<Listnote/>} />
         <Route path="/settings" element={<Setting/>} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/test" element={<Test/>} />
+
         <Route path="*" element={<NotFound />} /> 
         </Routes>
           </Router>

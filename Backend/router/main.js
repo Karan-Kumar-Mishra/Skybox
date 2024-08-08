@@ -8,6 +8,9 @@ const updatanote =require('./updatenote')
 const editnote =require('./editnote')
 const deletenote =require('./deletenote')
 const deleteallnote =require('./deleteallnote')
+const getnotes= require('./getnotes')
+const getnote= require('./getnote')
+const getuser= require('./getuser')
 const mainobj={
     authentication,
     home,
@@ -18,6 +21,9 @@ const mainobj={
     updatanote,
     editnote,
     deletenote,
-    deleteallnote
+    deleteallnote,
+    getnotes,
+    getnote,
+    getuser
 }
 module.exports= mainobj;
