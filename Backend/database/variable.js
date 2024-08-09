@@ -1,6 +1,6 @@
 const { MongoClient} =require("./package.js")
 require('dotenv').config();
-const dbName = "test";
+const dbName = process.env.DB;
 const collectionName= "cloud";
 const URL=`mongodb://127.0.0.1:27017/test`;
 const client = new MongoClient(URL);

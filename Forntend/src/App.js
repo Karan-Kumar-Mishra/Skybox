@@ -9,6 +9,7 @@ import Start from './compenent/Start'
 import NotFound from './compenent/NotFound';
 import Profile from './compenent/Profile';
 import Test from './compenent/Test';
+import Dashbord from './compenent/Dashboard';
 
 export default class App extends Component {
 
@@ -27,6 +28,8 @@ export default class App extends Component {
         <Route path="/settings" element={<Setting/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/test" element={<Test/>} />
+        <Route path="/dashboard" element={<Dashbord/>} />
+
 
         <Route path="*" element={<NotFound />} /> 
         </Routes>
