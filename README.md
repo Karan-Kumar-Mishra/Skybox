@@ -6,6 +6,8 @@
 
 </head>
 <body>
-    <h1>hii</h1>
+  <center>
+  <h1>hii</h1>    
+  </center>
 </body>
 </html>
