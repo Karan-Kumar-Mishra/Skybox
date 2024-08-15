@@ -1,13 +1,15 @@
 import { Disclosure, Menu } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const navigation = [
   { name: 'Home', href: './home', current: true },
   { name: 'Dashboard', href: '/dashboard', current: false },
   { name: 'API', href: '#', current: false },
+  { name: 'Contact', href: './contact', current: false },
   { name: 'About', href: './about', current: false },
+
 ]
 
 function classNames(...classes) {
@@ -15,6 +17,7 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const { logout } = useAuth0();
   return (
     
 
@@ -108,7 +111,7 @@ export default function Example() {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href="#"
+                          onClick={ ()=>logout()}
                           className={`block px-4 py-2 text-sm ${active ? 'bg-gray-100 text-gray-900' : 'text-white'}`}
                           >
                           Sign out

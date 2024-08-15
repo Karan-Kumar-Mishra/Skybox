@@ -1,41 +1,16 @@
-import React, { Component,props } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './compenent/Navbar'
-import Notification from './compenent/Notification'
-import About from './compenent/About';
-import Listnote from './compenent/Listnotes'
-import Setting from './compenent/Setting'
-import Start from './compenent/Start'
-import NotFound from './compenent/NotFound';
-import Profile from './compenent/Profile';
-import Test from './compenent/Test';
-import Dashbord from './compenent/Dashboard';
+import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from "react";
+import Mainapp from "./compenent/Mainapp";
+import Start from "./compenent/Start";
 
-export default class App extends Component {
+export default function App() {
+  const { loginWithRedirect,isAuthenticated } = useAuth0();
+  const [a,seta]=useState(1)
 
-  render() {
     return (
-      <div>
-          <Router>
-
-
-
-
-          <Routes>
-        <Route path="/" element={<Start/>} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/home" element={<Listnote/>} />
-        <Route path="/settings" element={<Setting/>} />
-        <Route path="/profile" element={<Profile/>} />
-        <Route path="/test" element={<Test/>} />
-        <Route path="/dashboard" element={<Dashbord/>} />
-
-
-        <Route path="*" element={<NotFound />} /> 
-        </Routes>
-          </Router>
-     
-      </div>
+          <>
+          { isAuthenticated ?  <Mainapp/> : <Start/>}
+          </>     
     )
   }
-}
+  

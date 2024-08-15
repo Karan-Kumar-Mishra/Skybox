@@ -4,7 +4,10 @@ const route= require('./router/main');
 const middleware= require('./middleware/main')
 const status=require('express-status-monitor')
 const service=require('./services/main')
+const dotenv =require('dotenv')
+require('dotenv').config();
 
+//console.log(process.env)
 
 app.use(middleware.authentication)
 app.use(middleware.bodyParserJson);

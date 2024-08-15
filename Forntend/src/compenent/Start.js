@@ -1,7 +1,10 @@
-export default function Example() {
-    return (
-     
-          <div className="relative isolate overflow-hidden  bg-gray-900 px-6 pt-16 shadow-2xl  sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0 h-screen w-full">
+import React from 'react'
+import { useAuth0 } from "@auth0/auth0-react";
+export default function Start() {
+    const { loginWithRedirect,isAuthenticated } = useAuth0();
+  return (
+    <div>
+      <div className="relative isolate overflow-hidden  bg-gray-900 px-6 pt-16 shadow-2xl  sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0 h-screen w-full">
             <svg
               viewBox="0 0 1024 1024"
               aria-hidden="true"
@@ -25,12 +28,13 @@ export default function Example() {
                 Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-                <a
+                <button
                   href="/home"
                    className="border-solid p-4 rounded-3xl text-white  bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
+                   onClick={() => loginWithRedirect()}
                  >
                   Get started
-                </a>
+                </button>
               
               </div>
             </div>
@@ -43,8 +47,7 @@ export default function Example() {
                 className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
               />
             </div>
-          </div>
-                
-    )
-  }
-  
+            </div>
+    </div>
+  )
+}
