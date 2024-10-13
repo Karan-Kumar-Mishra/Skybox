@@ -9,8 +9,8 @@ export default function App() {
 
     return (
           <>
-          { isAuthenticated ?  <Mainapp/> : <Start/>}
-          {/* <Mainapp/> */}
+          {/* { isAuthenticated ?  <Mainapp/> : <Start/>} */}
+          <Mainapp/>
           </>     
     )
   }

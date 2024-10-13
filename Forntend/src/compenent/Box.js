@@ -4,7 +4,7 @@ export default function Box() {
   return (
     <div>
       
-      <div className="cube">
+      <div className="cube z-40">
         <div className="face front"></div>
         <div className="face back"></div>
         <div className="face right"></div>

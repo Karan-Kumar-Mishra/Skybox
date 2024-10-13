@@ -21,6 +21,7 @@ export default function Mainapp() {
             <Route path="/about" element={<About />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/settings" element={<Setting/>} />
             <Route path="*" element={<Notfound/>}/>
           </Routes>
         </Suspense>
