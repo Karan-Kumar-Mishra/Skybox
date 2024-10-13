@@ -5,6 +5,7 @@ const middleware= require('./middleware/main')
 const status=require('express-status-monitor')
 const service=require('./services/main')
 const dotenv =require('dotenv')
+const cors = require('cors')
 require('dotenv').config();
 
 //console.log(process.env)
@@ -14,6 +15,7 @@ app.use(middleware.bodyParserJson);
 app.use(middleware.bodyParserUrlencoded);
 app.use(express.json());
 app.use(status())
+app.use(cors())
 
 service.AllServices(app);
 
