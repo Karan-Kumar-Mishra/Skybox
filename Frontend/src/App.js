@@ -2,25 +2,21 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Mainapp from "./compenent/Mainapp";
 import Start from "./compenent/Start";
 import { useEffect } from "react";
-
+// import Cookies from "./compenent/Cookies";
 export default function App() {
-  const { loginWithRedirect,isAuthenticated,user } = useAuth0();
- 
-  useEffect(()=>{
-    if(isAuthenticated)
-    {
-      console.log(user)
+  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log(user);
+    } else {
+      console.log("user is not authenticated");
     }
-    else
-    {
-      console.log("user is not authenticated")
-    }
-  },[user])
-    return (
-          <>
-          { isAuthenticated ?  <Mainapp/> : <Start/>}
-          {/* <Mainapp/> */}
-          </>     
-    )
-  }
-  
+  }, [user]);
+  return (
+    <>
+      {/* { isAuthenticated ?  <Mainapp/> : <Start/>} */}
+      <Mainapp/>
+      {/* <Cookies /> */}
+    </>
+  );
+}

@@ -8,7 +8,7 @@ export default function Profile() {
       DefaultUser = user.picture;
       console.log("is authenticated", user.picture, DefaultUser);
     }
-  }, [user]);
+  }, [user, isAuthenticated]);
   return (
     <div className="h-screen bg-gradient-to-r from-black to-indigo-900 flex items-center justify-center flex-col  ">
       <div className="images  ">
