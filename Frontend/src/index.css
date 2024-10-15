@@ -396,4 +396,36 @@
   transition-duration: .2s;
 }
 
+/* From Uiverse.io by SteveBloX */ 
+.card {
+  box-sizing: border-box;
+  width: 90vw;
+  height: 90vh;
+  background: rgb(40, 40, 41);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  color: white;
+  overflow-y: scroll;
+ 
+}
+.card::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+
+.card:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
 
