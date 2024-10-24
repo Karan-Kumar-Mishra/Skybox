@@ -1,8 +1,10 @@
 import { Disclosure, Menu } from "@headlessui/react";
-import React from "react";
+import React, { useState } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
+import { useSelector} from 'react-redux'
+import Logo from '../compenent/Images/Logo.png'
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -18,8 +20,9 @@ function classNames(...classes) {
 
 export default function Example() {
   const { logout } = useAuth0();
-
-  return (
+ const[userPicture,setuserPicture]= useState(useSelector((state)=> state.data.picture));
+  //  console.log("pic=>",useSelector((state)=> state.data.picture))
+ return (
 
       <Disclosure as="nav" className="bg-gray-800 w-full">
         {({ open }) => (
@@ -41,7 +44,7 @@ export default function Example() {
                   <div className="flex flex-shrink-0 items-center">
                     <img
                       alt="Skybox"
-                      src="https://raw.githubusercontent.com/Karan-Kumar-Mishra/ICONS/main/Logo.png"
+                      src={Logo}
                       className="h-10 w-auto rounded-full"
                     />
                   </div>
@@ -81,7 +84,8 @@ export default function Example() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           alt=""
-                          src="https://karan-kumar-mishra.github.io/Portfolio/karan2.png"
+                          src={userPicture}
+
                           className="h-8 w-8 rounded-full"
                         />
                       </Menu.Button>

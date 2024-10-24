@@ -19,23 +19,27 @@ async function connectdb() {
     return "Failed to connect to MongoDB:" + error;
   }
 }
+
 async function adduser(user) {
-  const encryped_password = await pwd.mainobj.encryped(user.password);
+  let res = await getuser("name", user.name);
+  if (res != null) {
+    return;
+  }
   try {
     const newUser = new usermodel({
       id: generateRandomId(20),
       name: user.name,
       email: user.email,
-      password: encryped_password,
+      more_info: user.more_info
     });
     return await newUser.save();
   } catch (error) {
     return error;
   }
 }
-async function getuser(key) {
+async function getuser(key, value) {
   try {
-    return await usermodel.findOne({ id: key });
+    return await usermodel.findOne({ [key]: value });
   } catch (error) {
     return error;
   }
@@ -94,16 +98,10 @@ async function deletenote(key, index) {
   for (let i = 0; i < update2.length; i++) {
     update1.push(update2[i]);
   }
-  return await usermodel.updateOne(
-      {id:key},
-      {$set:{notes:update1}}
-  )
+  return await usermodel.updateOne({ id: key }, { $set: { notes: update1 } });
 }
 async function deleteallnotes(key) {
-  return await usermodel.updateOne(
-    {id:key},
-    {$set:{notes:[]}}
-  )
+  return await usermodel.updateOne({ id: key }, { $set: { notes: [] } });
 }
 async function getnotes(key) {
   try {
@@ -112,7 +110,7 @@ async function getnotes(key) {
     return error;
   }
 }
-async function getnote(key,index) {
+async function getnote(key, index) {
   try {
     return (await usermodel.findOne({ id: key })).notes[index];
   } catch (error) {

@@ -3,8 +3,8 @@ usrschema= mongoose.Schema({
     id:String,
     name:String,
     email:String,
-    password:String,
-    notes :[]
+    notes :[],
+    more_info :{}
 });
 module.exports={
     usrschema

@@ -1,10 +1,11 @@
 const mongoose=require('mongoose')
-const { MongoClient } = require('mongodb');
+const { MongoClient,ServerApiVersion } = require('mongodb');
 const crypto = require('crypto');
 const dotenv =require('dotenv')
 module.exports={
     mongoose,
     MongoClient,
     crypto,
-    dotenv
+    dotenv,
+    ServerApiVersion
 }

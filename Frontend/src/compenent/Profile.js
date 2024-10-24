@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
-import DefaultUser from "./Images/DefaultUser.png";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import { useAuth0 } from "@auth0/auth0-react";
+
 export default function Profile() {
   const { isAuthenticated, user } = useAuth0();
   useEffect(() => {
     if (isAuthenticated) {
-      DefaultUser = user.picture;
-      console.log("is authenticated", user.picture, DefaultUser);
+    //  DefaultUser = user.picture;
+    //  console.log("is authenticated", user.picture, DefaultUser);
     }
+    
+    
   }, [user, isAuthenticated]);
   return (
     <div className="h-screen bg-gradient-to-r from-black to-indigo-900 flex items-center justify-center flex-col  ">
       <div className="images  ">
         <img
-          src={DefaultUser}
+          src={useSelector((state)=> state.data.picture)}
           alt="User image"
           className="rounded-full h-36 "
         />

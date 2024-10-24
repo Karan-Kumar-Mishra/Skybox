@@ -4,11 +4,10 @@ const route= require('./router/main');
 const middleware= require('./middleware/main')
 const status=require('express-status-monitor')
 const service=require('./services/main')
-const dotenv =require('dotenv')
 const cors = require('cors')
-require('dotenv').config();
 
-//console.log(process.env)
+require('dotenv').config();
+// console.log(process.env.API_KEY)
 
 app.use(middleware.authentication)
 app.use(middleware.bodyParserJson);
@@ -20,7 +19,7 @@ app.use(cors())
 service.AllServices(app);
 
 app.use('/', route.home);  
-app.use('/singup', route.singup);  
+app.use('/signup', route.signup);  
 app.use('/login', route.login);  
 app.use('/getuser', route.getuser);  
 app.use('/deleteuser', route.deleteuser);
