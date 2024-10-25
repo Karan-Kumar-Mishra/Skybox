@@ -1,6 +1,5 @@
-import toast  from 'react-hot-toast';
-export default function singup(state, action) {
-   console.log("sig=> ",action.payload)
+import toast from "react-hot-toast";
+export default function signup(state, action) {
   let option = {
     method: "POST",
     headers: {
@@ -9,11 +8,11 @@ export default function singup(state, action) {
     body: JSON.stringify({
       name: action.payload.nickname,
       email: action.payload.email,
-      more_info:action.payload
+      more_info: action.payload,
     }),
   };
 
-  fetch("http://127.0.0.1/signup", option)
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/signup`, option)
     .then((res) => {
       return res.json();
     })
@@ -22,6 +21,6 @@ export default function singup(state, action) {
     })
     .catch((err) => {
       console.log(err);
-      toast.error("something went worng"+err)
+      toast.error("something went worng" + err);
     });
 }

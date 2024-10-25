@@ -9,7 +9,7 @@ const cors = require('cors')
 require('dotenv').config();
 // console.log(process.env.API_KEY)
 
-app.use(middleware.authentication)
+// app.use(middleware.authentication)
 app.use(middleware.bodyParserJson);
 app.use(middleware.bodyParserUrlencoded);
 app.use(express.json());

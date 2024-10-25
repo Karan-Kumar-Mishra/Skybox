@@ -25,4 +25,4 @@ signup.post('/', (req, res) => {
  
 });
 
-module.exports = singup;
+module.exports = signup;

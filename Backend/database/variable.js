@@ -1,7 +1,7 @@
 const { MongoClient,ServerApiVersion} =require("./package.js")
 const dbName = process.env.DB;
 const collectionName= "cloud";
-const URL="mongodb+srv://mishrazack69:67G9vrJao14DHejH@cluster0.hbws8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const URL= "mongodb://localhost:27017/test";
 const client = new MongoClient(URL, {
     serverApi: {
       version: ServerApiVersion.v1,

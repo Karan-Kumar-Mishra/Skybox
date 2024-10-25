@@ -1,7 +1,7 @@
 const authentication =require('./authentication')
 const home =require('./home')
 const addnote = require('./addnote')
-const singup = require('./singup')
+const signup = require('./singup')
 const login = require('./login')
 const deleteuser =require('./deleteuser')
 const updatanote =require('./updatenote')
@@ -15,7 +15,7 @@ const mainobj={
     authentication,
     home,
     addnote,
-    singup,
+    signup,
     login,
     deleteuser,
     updatanote,

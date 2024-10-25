@@ -3,16 +3,19 @@ import Mainapp from "./compenent/Mainapp";
 import Start from "./compenent/Start";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { SingUp } from "./Redux/dataSlice";
+import { SignUp } from "./Redux/dataSlice";
+import { Setinfo } from "./Redux/dataSlice";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function App() {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+  const store_data = useSelector((state) => state.data);
   const dispatch = useDispatch();
   useEffect(() => {
     if (isAuthenticated) {
-      console.log(user);
-      dispatch(SingUp(user));
+      dispatch(Setinfo(user));
+      dispatch(SignUp(user));
+      console.log("from the store=> ", store_data);
       toast.success("login successfully");
     } else {
       console.log("user is not authenticated");

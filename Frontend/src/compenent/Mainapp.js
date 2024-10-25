@@ -11,7 +11,7 @@ import Notfound from "./NotFound";
 import Loading from "./Loading";
 import toast, { Toaster } from 'react-hot-toast';
 export default function Mainapp() {
-  useEffect(() => {}, []);
+ 
   return (
     <>
        <Toaster toastOptions={{
