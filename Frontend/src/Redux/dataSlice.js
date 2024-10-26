@@ -1,32 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit'
-import DefaultUser from '../compenent/Images/DefaultUser.png'
-import signup from './functions/Signup'
-import setinfo from './functions/Setinfo'
+import { createSlice } from "@reduxjs/toolkit";
+import signup from "./functions/Signup";
+import setinfo from "./functions/Setinfo";
+import deleteuser from "./functions/DeleteUser";
 const initialState = {
   data: {
-    isAuth:false,
+    isAuth: false,
     name: "Name",
     emial: "xyz@email.com",
     userNote: [],
-    more_info:{ 
-      
-    }
+    more_info: {},
   },
-}
+};
 
 export const dataSlice = createSlice({
-  name: 'data',
+  name: "data",
   initialState,
   reducers: {
-    Setinfo:setinfo,
-    SignUp:signup
+    Setinfo: setinfo,
+    SignUp: signup,
+    DeleteUser: deleteuser
   },
-})
+});
 
+export const { Setinfo, SignUp, DeleteUser } = dataSlice.actions;
 
-export const { 
-  Setinfo,
-  SignUp
-} = dataSlice.actions
-
-export default dataSlice.reducer
+export default dataSlice.reducer;
