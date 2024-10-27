@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import signup from "./functions/Signup";
 import setinfo from "./functions/Setinfo";
-import deleteuser from "./functions/DeleteUser";
+import  deleteuser  from "./functions/DeleteUser";
 const initialState = {
   data: {
     isAuth: false,
@@ -18,7 +18,8 @@ export const dataSlice = createSlice({
   reducers: {
     Setinfo: setinfo,
     SignUp: signup,
-    DeleteUser: deleteuser
+    DeleteUser : deleteuser 
+
   },
 });
 

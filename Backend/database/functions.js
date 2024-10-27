@@ -46,7 +46,7 @@ async function getuser(key, value) {
 }
 async function deleteuser(key) {
   try {
-    return await usermodel.deleteOne({ id: key });
+    return await usermodel.deleteOne({ email: key });
   } catch (error) {
     return error;
   }

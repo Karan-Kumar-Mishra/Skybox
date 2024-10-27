@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { DeleteUser } from "../Redux/dataSlice";
+import { DeleteUser} from "../Redux/dataSlice"
+import toast from "react-hot-toast";
 export default function Profile() {
   const { isAuthenticated, user } = useAuth0();
+  const dispatch=useDispatch();
   const store_data = useSelector((state) => state.data);
+  const { logout } = useAuth0();
+
+  function removeUser()
+  {
+    toast.success("Your account is delete successfully !")
+    dispatch(DeleteUser(store_data.email));
+    logout()
+  }
   return (
     <>
       <div className="flex min-h-screen relative items-center justify-center w-full bg-slate-700">
@@ -24,7 +34,8 @@ export default function Profile() {
             <div className="flex gap-3 text-2xl bg-gray-700 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
               <a className="hover:scale-110 transition-all duration-500 delay-200">
                 <button className="p-2"
-                onClick={DeleteUser}>Delete</button>
+                onClick={removeUser}
+                >Delete</button>
               </a>
             </div>
           </div>

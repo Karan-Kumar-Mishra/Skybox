@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 export default function signup(state, action) {
+
   let option = {
     method: "POST",
     headers: {
