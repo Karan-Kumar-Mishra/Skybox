@@ -1,6 +1,7 @@
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { nanoid } from "nanoid";
+import { useNavigate } from "react-router-dom";
+
 const people = [
   {
     name: "Leslie Alexander",
@@ -29,13 +30,17 @@ const people = [
 ];
 
 export default function Example() {
+  const navigate = useNavigate();
   return (
     <>
-
-
       <div className="main">
         <div className="addbtn flex justify-center bg-gradient-to-r from-black to-indigo-900">
-          <button className="border-solid text-white p-3 m-2 w-40 font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black">
+          <button
+            onClick={() => {
+              navigate("/Editor");
+            }}
+            className="border-solid text-white p-3 m-2 w-40 font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
+          >
             <i className="m-2  fas fa-plus"></i>
             Add new note
           </button>

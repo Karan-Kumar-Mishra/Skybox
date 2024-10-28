@@ -9,6 +9,7 @@ import Profile from "./Profile";
 import Setting from "./Setting";
 import Notfound from "./NotFound";
 import Loading from "./Loading";
+import TextEditor from "./TextEditor";
 import toast, { Toaster } from 'react-hot-toast';
 export default function Mainapp() {
  
@@ -31,6 +32,7 @@ export default function Mainapp() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/settings" element={<Setting />} />
+            <Route path="/Editor" element={<TextEditor />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </Suspense>

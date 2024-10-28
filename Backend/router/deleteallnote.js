@@ -5,7 +5,6 @@ deleteallnote.put("/", (req, res) => {
   if (req.body.email) {
     db.getid("email", req.body.email).then((id) => {
       db.deleteallnote(id).then((ans) => {
-      
         if (ans.modifiedCount) {
           res.send({
             status: "ok",
