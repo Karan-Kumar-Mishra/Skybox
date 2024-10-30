@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-     <React.StrictMode>
+
         <Provider store={store}>
             <Auth0Provider
                 domain="dev-n2m63z88js31dex4.us.auth0.com"
@@ -22,7 +22,7 @@ root.render(
                 <App />
             </Auth0Provider>
         </Provider>
-    </React.StrictMode> 
+
 );
 
 reportWebVitals();

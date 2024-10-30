@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import signup from "./functions/Signup";
 import setinfo from "./functions/Setinfo";
 import deleteuser from "./functions/DeleteUser";
-import addnote from "./functions/AddNote";
+import  addnote from "./functions/Addnote";
 const initialState = {
   data: {
     isAuth: false,
@@ -14,7 +14,7 @@ const initialState = {
         note:"Test"
       }
     ],
-    more_info: {},
+    more_info: { }
   },
 };
 
@@ -25,10 +25,14 @@ export const dataSlice = createSlice({
     Setinfo: setinfo,
     SignUp: signup,
     DeleteUser: deleteuser,
-    Addnote: addnote,
+    AddNewNote: addnote
   },
 });
 
-export const { Setinfo, SignUp, DeleteUser, Addnote } = dataSlice.actions;
+export const { Setinfo,
+  SignUp,
+  DeleteUser,
+  AddNewNote
+  } = dataSlice.actions;
 
 export default dataSlice.reducer;

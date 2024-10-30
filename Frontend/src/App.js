@@ -15,7 +15,6 @@ export default function App() {
     if (isAuthenticated) {
       dispatch(Setinfo(user));
       dispatch(SignUp(user));
-      console.log("from the store=> ", store_data);
       toast.success("login successfully");
     } else {
       console.log("user is not authenticated");

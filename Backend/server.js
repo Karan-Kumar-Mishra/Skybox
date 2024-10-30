@@ -27,6 +27,7 @@ app.use('/getnotes', route.getnotes);
 app.use('/getnote', route.getnote);  
 app.use('/updatanote', route.updatanote);  
 app.use('/editnote', route.editnote);  
+app.use('/addnote',route.addnote);
 app.use('/deletenote', route.deletenote);  
 app.use('/deleteallnote', route.deleteallnote);  
 

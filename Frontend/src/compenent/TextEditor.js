@@ -1,38 +1,35 @@
 import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { useSelector, useDispatch } from "react-redux";
-import { Addnote } from "../Redux/dataSlice";
+import { useDispatch } from "react-redux";
+import {AddNewNote} from "../Redux/dataSlice"
 import { Dialog, DialogBackdrop } from "@headlessui/react";
 import { useEffect } from "react";
 export default function TextEditor() {
   const editorRef = useRef(null);
   const titleRef = useRef(null);
   const dispatch = useDispatch();
-  const store_data = useSelector((state) => state.data);
   const [isDologboxOpen, setisDologboxOpen] = useState(true);
+  const [firstrender, setfirstrender] = useState(true);
   const [noteObj, setnoteObj] = useState({
     title: "empty",
     note: "empty",
   });
-  useEffect(() => {
-    console.log(noteObj); // Log updated noteObj
-  }, [noteObj]);
 
-  const log = () => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent());
+  useEffect(() => {
+    if (firstrender) {
+      setfirstrender(false);
+      return;
     }
-  };
+    console.log("update happening => ", noteObj);
+     dispatch(AddNewNote(noteObj));
+  }, [noteObj.note]);
+
   function SaveNote() {
-    log();
-  setnoteObj((prevObj) => ({
+    const content = editorRef.current ? editorRef.current.getContent() : "content not found";
+    setnoteObj((prevObj) => ({
       ...prevObj,
-      note: editorRef.current.getContent(),
+      note: content,
     }));
-    setTimeout(() => {
-      dispatch(Addnote(noteObj));
-      console.log("=>  ",editorRef.current.getContent())
-    }, 3000);
   }
   function OnCloseTitleBox() {
     const newTitle = titleRef.current.value;
@@ -42,7 +39,7 @@ export default function TextEditor() {
       title: newTitle,
     }));
   }
-  function CloseTheTitleBox() {}
+  function CloseTheTitleBox() { }
 
   return (
     <div>

@@ -3,6 +3,7 @@ const addnote = express.Router();
 const db = require('../database/main')
 
 addnote.put('/', (req, res) => {
+  console.log("we get request for adding the note")
   if(req.body.email && req.body.notedata)
   {
     db.getid("email",req.body.email).then((id)=>{
