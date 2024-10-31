@@ -8,7 +8,7 @@ import { Setinfo } from "./Redux/dataSlice";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function App() {
-  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const store_data = useSelector((state) => state.data);
   const dispatch = useDispatch();
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { useDispatch } from "react-redux";
-import {AddNewNote} from "../Redux/dataSlice"
+import { AddNewNote } from "../Redux/dataSlice";
 import { Dialog, DialogBackdrop } from "@headlessui/react";
 import { useEffect } from "react";
 export default function TextEditor() {
@@ -21,11 +21,13 @@ export default function TextEditor() {
       return;
     }
     console.log("update happening => ", noteObj);
-     dispatch(AddNewNote(noteObj));
+    dispatch(AddNewNote(noteObj));
   }, [noteObj.note]);
 
   function SaveNote() {
-    const content = editorRef.current ? editorRef.current.getContent() : "content not found";
+    const content = editorRef.current
+      ? editorRef.current.getContent()
+      : "content not found";
     setnoteObj((prevObj) => ({
       ...prevObj,
       note: content,
@@ -39,7 +41,7 @@ export default function TextEditor() {
       title: newTitle,
     }));
   }
-  function CloseTheTitleBox() { }
+  function CloseTheTitleBox() {}
 
   return (
     <div>

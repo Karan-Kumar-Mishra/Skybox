@@ -1,5 +1,5 @@
-export default  function addnote(state, actions) {
-  console.log("update function is running ", actions.payload);
+import toast from "react-hot-toast";
+export default function addnote(state, actions) {
   let option = {
     method: "PUT",
     headers: {
@@ -10,11 +10,14 @@ export default  function addnote(state, actions) {
       notedata: actions.payload,
     }),
   };
- fetch(`${process.env.REACT_APP_BACKEND_URL}/addnote`, option)
- .then((res)=>{
-  console.log("res=>",res)
- }).catch((err)=>{
-  console.log("error =>",err)
- })
- 
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/addnote`, option)
+    .then((res) => {
+      console.log("res=>", res.status);
+      if (res.status === 200) {
+        toast.success("New note is save successfully !");
+      }
+    })
+    .catch((err) => {
+      toast.error(`something went work =>${err}`);
+    });
 }
