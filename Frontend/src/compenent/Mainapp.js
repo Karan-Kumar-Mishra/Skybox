@@ -10,17 +10,19 @@ import Setting from "./Setting";
 import Notfound from "./NotFound";
 import Loading from "./Loading";
 import TextEditor from "./TextEditor";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
+import Feedback from "./Feedback";
 export default function Mainapp() {
- 
   return (
     <>
-       <Toaster toastOptions={{
-         style: {
-          background: 'black',
-          color : 'white'
-        },
-       }} />
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "black",
+            color: "white",
+          },
+        }}
+      />
       <Router>
         <Suspense fallback={<Loading />}>
           <Navbar />
@@ -33,6 +35,7 @@ export default function Mainapp() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/settings" element={<Setting />} />
             <Route path="/Editor" element={<TextEditor />} />
+            <Route path="/feedback" element={<Feedback />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </Suspense>

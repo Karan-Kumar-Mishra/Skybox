@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
 export default function Cookies() {
+  const[isCookiesAllow,setisCookiesAllow]=useState(false)
   return (
-    <div className="card">
+    <div className="card bg-gradient-to-r from-black to-indigo-900">
       <svg
         xmlSpace="preserve"
         viewBox="0 0 122.88 122.25"

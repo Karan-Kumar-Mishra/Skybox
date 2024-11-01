@@ -1,7 +1,5 @@
 import { PhotoIcon } from "@heroicons/react/24/solid";
-import { useSelector, useDispatch } from 'react-redux'
 export default function Example() {
-  const store_data = useSelector((state) => state.data);
   return (
     <div className="main bg-gradient-to-r from-black to-indigo-900  min-h-screen p-8">
       <form className="m-5">
@@ -63,7 +61,7 @@ export default function Example() {
                 </label>
                 <div className="mt-2 flex items-center gap-x-3 text-white">
                   <img
-                     src={store_data.more_info.picture}
+                     src={""}
                     alt="User image"
                     className="rounded-full h-20"
                   />

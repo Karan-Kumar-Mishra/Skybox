@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Dashboard", href: "/dashboard", current: false },
-  { name: "API", href: "/api", current: false },
+  { name: "Feedback", href: "/feedback", current: false },
   { name: "Contact", href: "/contact", current: false },
   { name: "About", href: "/about", current: false },
 ];
@@ -20,7 +20,6 @@ function classNames(...classes) {
 
 export default function Example() {
   const { logout } = useAuth0();
-  const store_data = useSelector((state) => state.data);
   return (
     <Disclosure as="nav" className="bg-gray-800 w-full">
       {({ open }) => (
@@ -82,7 +81,7 @@ export default function Example() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         alt=""
-                        src={store_data.more_info.picture}
+                        src=""
                         className="h-8 w-8 rounded-full"
                       />
                     </Menu.Button>

@@ -2,20 +2,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Mainapp from "./compenent/Mainapp";
 import Start from "./compenent/Start";
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { SignUp } from "./Redux/dataSlice";
-import { Setinfo } from "./Redux/dataSlice";
 import toast, { Toaster } from "react-hot-toast";
+import Cookies from "./compenent/Cookies";
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function App() {
   const { isAuthenticated, user } = useAuth0();
-  const store_data = useSelector((state) => state.data);
-  const dispatch = useDispatch();
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(Setinfo(user));
-      dispatch(SignUp(user));
-      toast.success("login successfully");
+      console.log("user=>", user);
     } else {
       console.log("user is not authenticated");
     }
