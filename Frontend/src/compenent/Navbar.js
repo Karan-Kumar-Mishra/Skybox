@@ -20,6 +20,7 @@ function classNames(...classes) {
 
 export default function Example() {
   const { logout } = useAuth0();
+  const store_data = useSelector((state)=>state.Data);
   return (
     <Disclosure as="nav" className="bg-gray-800 w-full">
       {({ open }) => (
@@ -81,7 +82,7 @@ export default function Example() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         alt=""
-                        src=""
+                        src={store_data.UserData.more_info.picture}
                         className="h-8 w-8 rounded-full"
                       />
                     </Menu.Button>
