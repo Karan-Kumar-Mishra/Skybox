@@ -34,7 +34,7 @@ export default function Example() {
           role="list"
           className="divide-y divide-gray-100  h-screen  overflow-x-hidden hide-scrollbar bg-slate-900"
         >
-          {store_data.UserData.notes.map((note) => (
+          {store_data.UserData.notes.length && store_data.UserData.notes.map((note) => (
             <li
               key={nanoid()}
               className="border-solid p-3 m-2 rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"

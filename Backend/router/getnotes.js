@@ -2,7 +2,7 @@ const express = require("express");
 const getnotes = express.Router();
 const db = require("../database/main");
 getnotes.post("/", (req, res) => {
-  console.log(req.body.email);
+  
   if (req.body.email) {
     db.getid("email", req.body.email)
       .then((result) => {

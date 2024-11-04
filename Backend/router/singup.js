@@ -3,6 +3,7 @@ const signup = express.Router();
 const db = require("../database/main");
 
 signup.post("/", (req, res) => {
+  console.log("we get request for signup sir...")
   if (req.body.name && req.body.email) {
     db.adduser(req.body).then((ans) => {
       if (ans) {

@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import toast from "react-hot-toast";
+import toast,{Toaster} from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
-
+import { deleteUser } from "../Redux/actions/DeleteUser";
 export default function Profile() {
   const { isAuthenticated, user } = useAuth0();
-  const store_data = useSelector((state)=>state.Data);
   const { logout } = useAuth0();
+  const dispatch=useDispatch();
+  const store_data = useSelector((state)=>state.Data);
   function removeUser()
   {
-    toast.success("Your account is delete successfully !")
+    dispatch(deleteUser());
+    toast.success("Your account is delete successfully !");
     logout()
   }
   return (
     <>
+    <Toaster
+        toastOptions={{
+          style: {
+            background: "black",
+            color: "white",
+          },
+        }}
+      />
       <div className="flex min-h-screen relative items-center justify-center w-full bg-slate-700">
         <div className="bg-slate-900 rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
           <div className="text-gray-500 group-hover:scale-105 transition-all">
