@@ -6,6 +6,13 @@ usrschema= mongoose.Schema({
     notes :[],
     more_info :{}
 });
+
+Feedback=mongoose.Schema({
+    Date:String,
+    feedbacks: []
+})
+
 module.exports={
-    usrschema
+    usrschema,
+    Feedback
 }

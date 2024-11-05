@@ -23,12 +23,10 @@ export default function TextEditor() {
   function CloseTheTitleBox() {}
 
   function saveNoteTitle() {
-    console.log("title =>",TitleRef.current.value.length)
-   if(!TitleRef.current.value.length)
-   {
-    toast.error("Please give the title for the note !")
-    return ;
-   }
+    if (!TitleRef.current.value.length) {
+      toast.error("Please give the title for the note !");
+      return;
+    }
     setdilogButton(false);
     setnewNote((prev) => ({
       ...prev,

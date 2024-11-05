@@ -30,7 +30,7 @@ app.use('/editnote', route.editnote);
 app.use('/addnote',route.addnote);
 app.use('/deletenote', route.deletenote);  
 app.use('/deleteallnote', route.deleteallnote);  
-
+app.use('/feedback',route.feedback);
 
 // app.listen(80, () => {
 //   console.log('Server is running on port 3000');

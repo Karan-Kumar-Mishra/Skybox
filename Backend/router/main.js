@@ -11,6 +11,8 @@ const deleteallnote =require('./deleteallnote')
 const getnotes= require('./getnotes')
 const getnote= require('./getnote')
 const getuser= require('./getuser')
+const feedback = require('./feedback')
+
 const mainobj={
     authentication,
     home,
@@ -24,6 +26,7 @@ const mainobj={
     deleteallnote,
     getnotes,
     getnote,
-    getuser
+    getuser,
+    feedback
 }
 module.exports= mainobj;

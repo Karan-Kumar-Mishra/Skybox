@@ -1,26 +1,17 @@
-
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://mishrazack69:67G9vrJao14DHejH@cluster0.hbws8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
+async function feedback()
+{
+  let option={
+    method :"POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        Date:Date(),
+        feedback:"This is the amezing application"
+    })
   }
-});
-
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
+  let a= await fetch('http://127.0.0.1/feedback',option);
+  let res= await a.json()
+  console.log(res)
 }
-run().catch(console.dir);
+feedback()
