@@ -1,6 +1,18 @@
-import React from "react";
-
+import React, { useRef } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { feedback } from "../Redux/actions/Feedback";
 export default function Feedback() {
+  const dispatch=useDispatch();
+  const store_data = useSelector((state)=>state.Data);
+  const FeedbackTextRef=useRef(null);
+  function SendFeedback()
+  {
+   dispatch(feedback(FeedbackTextRef.current.value))
+  }
+  function addEmoji(emoji)
+  {
+    FeedbackTextRef.current.value=FeedbackTextRef.current.value+emoji;
+  }
   return (
     <div className="h-screen z-50 flex items-center justify-center bg-gradient-to-r from-black to-indigo-900">
       <div className="bg-slate-800 border border-slate-700 grid grid-cols-6 gap-2 rounded-xl p-2 text-sm">
@@ -8,10 +20,15 @@ export default function Feedback() {
           Send Feedback
         </h1>
         <textarea
+          ref={FeedbackTextRef}
           className="bg-slate-700 text-slate-300 h-60 w-[40rem] placeholder:text-slate-300 placeholder:opacity-50 border border-slate-600 col-span-6 resize-none outline-none rounded-lg p-2 duration-300 focus:border-slate-300"
           placeholder="Your feedback..."
         ></textarea>
-        <button className="fill-slate-300 col-span-1 flex justify-center items-center rounded-lg p-2 duration-300 bg-slate-700 hover:border-slate-300 focus:fill-blue-200 focus:bg-blue-600 border border-slate-600">
+        <button 
+        onClick={()=>{
+          addEmoji('😀');
+        }}
+        className="fill-slate-300 col-span-1 flex justify-center items-center rounded-lg p-2 duration-300 bg-slate-700 hover:border-slate-300 focus:fill-blue-200 focus:bg-blue-600 border border-slate-600">
           <svg
             viewBox="0 0 512 512"
             height="40px"
@@ -22,6 +39,9 @@ export default function Feedback() {
         </button>
         <button className="fill-slate-300 col-span-1 flex justify-center items-center rounded-lg p-2 duration-300 bg-slate-700 hover:border-slate-300 focus:fill-blue-200 focus:bg-blue-600 border border-slate-600">
           <svg
+          onClick={()=>{
+            addEmoji('🙁');
+          }}
             viewBox="0 0 512 512"
             height="40px"
             xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +50,8 @@ export default function Feedback() {
           </svg>
         </button>
         <span className="col-span-2"></span>
-        <button className="col-span-2 stroke-slate-300 bg-slate-700 focus:stroke-blue-200 focus:bg-blue-600 border border-slate-600 hover:border-slate-300 rounded-lg p-2 duration-300 flex justify-center items-center">
+        <button onClick={SendFeedback}
+         className="col-span-2 stroke-slate-300 bg-slate-700 focus:stroke-blue-200 focus:bg-blue-600 border border-slate-600 hover:border-slate-300 rounded-lg p-2 duration-300 flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40px"
@@ -39,6 +60,7 @@ export default function Feedback() {
             fill="none"
           >
             <path
+             
               d="M7.39999 6.32003L15.89 3.49003C19.7 2.22003 21.77 4.30003 20.51 8.11003L17.68 16.6C15.78 22.31 12.66 22.31 10.76 16.6L9.91999 14.08L7.39999 13.24C1.68999 11.34 1.68999 8.23003 7.39999 6.32003Z"
               strokeWidth="1.5"
               strokeLinecap="round"

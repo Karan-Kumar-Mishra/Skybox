@@ -1,7 +1,6 @@
 const { mongoose, crypto } = require("./package.js");
-const { usermodel } = require("./model.js");
+const { usermodel, feedbackModel } = require("./model.js");
 const { URL, client, collection } = require("./variable.js");
-const pwd = require("../passoword-service/main");
 
 function generateRandomId(length) {
   try {
@@ -30,7 +29,7 @@ async function adduser(user) {
       id: generateRandomId(20),
       name: user.name,
       email: user.email,
-      more_info: user.more_info
+      more_info: user.more_info,
     });
     return await newUser.save();
   } catch (error) {
@@ -134,7 +133,7 @@ async function disconnectdb() {
   }
 }
 async function saveFeedback(feedbackObj) {
-  
+ return (await feedbackModel.updateOne({},{  $push: { feedbacks: feedbackObj }, })).modifiedCount;
 }
 module.exports = {
   connectdb,
@@ -150,4 +149,5 @@ module.exports = {
   disconnectdb,
   deletenote,
   deleteallnotes,
+  saveFeedback,
 };

@@ -23,6 +23,9 @@ const dataReducer = (state = initialState, action) => {
     case "DELETE_USER":
       console.log(action.payload);
       return state;
+    case "FEEDBACK":
+     console.log(action.payload)
+      return state
     default:
       return state;
   }
