@@ -24,8 +24,8 @@ export default function Profile() {
           },
         }}
       />
-      <div className="flex min-h-screen relative items-center justify-center w-full bg-slate-700">
-        <div className="bg-slate-900 rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
+      <div className="flex min-h-screen relative items-center justify-center w-full  bg-gradient-to-r from-black to-indigo-900">
+        <div className=" bg-gradient-to-r from-black to-indigo-900 rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
           <div className="text-gray-500 group-hover:scale-105 transition-all">
             <img
               src={store_data.UserData.more_info.picture}
@@ -38,7 +38,7 @@ export default function Profile() {
             <p className="text-gray-400 text-sm">{store_data.UserData.email}</p>
           </div>
           <div className="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
-            <div className="flex gap-3 text-2xl bg-gray-700 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
+            <div className="flex gap-3 text-2xl  bg-gradient-to-r from-black to-indigo-900 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
               <a className="hover:scale-110 transition-all duration-500 delay-200">
                 <button className="p-2"
                 onClick={removeUser}

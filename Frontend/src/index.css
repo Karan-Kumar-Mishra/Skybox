@@ -304,7 +304,7 @@
 }
 /* From Uiverse.io by 00Kubi */ 
 .card {
-  width: 300px;
+  width:  50rem;
   height: 220px;
   background-color: black;
   border-radius: 8px;
@@ -315,8 +315,11 @@
   padding: 20px 30px;
   gap: 13px;
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
+}
+.card::-webkit-scrollbar {
+  display: none;
 }
 
 #cookieSvg {
@@ -394,5 +397,50 @@
   background-color: #9173ff;
   box-shadow: 0 10px 15px -3px #977ef3, 0 4px 6px -2px #977ef3;
   transition-duration: .2s;
+}
+/* From Uiverse.io by ZAKARIAE48CHELLE */ 
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(30, 31, 31);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px black;
+  transition-duration: 0.3s;
+}
+
+.svg {
+  width: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: 0.3s;
+}
+
+.Btn:hover {
+  color: transparent;
+}
+
+.Btn:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: 0.3s;
+}
+
+.Btn:active {
+  transform: translate(3px, 3px);
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 0px white;
 }
 

@@ -1,7 +1,6 @@
 const { mongoose, crypto } = require("./package.js");
 const { usermodel, feedbackModel } = require("./model.js");
 const { URL, client, collection } = require("./variable.js");
-
 function generateRandomId(length) {
   try {
     return crypto.randomBytes(length).toString("hex").slice(0, length);
@@ -133,7 +132,16 @@ async function disconnectdb() {
   }
 }
 async function saveFeedback(feedbackObj) {
- return (await feedbackModel.updateOne({},{  $push: { feedbacks: feedbackObj }, })).modifiedCount;
+ const res= (await feedbackModel.updateOne({},{  $push: { feedbacks: feedbackObj }, })).modifiedCount;
+ if(res==0)
+ {
+  const newfeedback=feedbackModel({
+    feedbacks: []
+  });
+  newfeedback.save();
+  return (await feedbackModel.updateOne({},{  $push: { feedbacks: feedbackObj }, })).modifiedCount;
+ }
+ return res;
 }
 module.exports = {
   connectdb,
