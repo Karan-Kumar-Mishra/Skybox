@@ -12,6 +12,7 @@ import Loading from "./Loading";
 import TextEditor from "./TextEditor";
 import toast, { Toaster } from "react-hot-toast";
 import Feedback from "./Feedback";
+import Viewnotes from "./Viewnotes";
 export default function Mainapp() {
   return (
     <>
@@ -36,6 +37,7 @@ export default function Mainapp() {
             <Route path="/settings" element={<Setting />} />
             <Route path="/Editor" element={<TextEditor />} />
             <Route path="/feedback" element={<Feedback />} />
+            <Route path="/viewnote" element={<Viewnotes />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </Suspense>

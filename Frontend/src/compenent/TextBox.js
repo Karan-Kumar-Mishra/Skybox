@@ -14,11 +14,11 @@ export default function TextBox(props) {
     >
       <DialogBackdrop
         transition
-        className="fixed inset-0 bg-slate-400 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+        className=" fixed inset-0 bg-slate-400 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
       />
-      <div className="fixed inset-0 z-10 w-screen overflow-y-auto ">
-        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <div className="text-white card">{props.noteText}</div>
+      <div className="fixed inset-0 z-10 w-screen overflow-y-auto p-10">
+        <div className="flex  min-h-full items-end justify-center  text-center sm:items-center sm:p-0">
+          <div className="text-white card m-10">{props.noteText}</div>
         </div>
       </div>
     </Dialog>

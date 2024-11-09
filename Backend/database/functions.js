@@ -49,7 +49,7 @@ async function deleteuser(key) {
     return error;
   }
 }
-async function updatanote(key, noteindex, note) {
+async function updatenote(key, noteindex, note) {
   try {
     getnotes(key).then((res) => {
       let updatenotes = res[noteindex] + ` ${note}`;
@@ -153,7 +153,7 @@ module.exports = {
   deleteuser,
   addnote,
   editnote,
-  updatanote,
+  updatenote,
   disconnectdb,
   deletenote,
   deleteallnotes,
