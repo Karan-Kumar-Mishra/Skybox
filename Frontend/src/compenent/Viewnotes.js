@@ -1,34 +1,26 @@
 import { Editor } from "@tinymce/tinymce-react";
-import { Dialog, DialogBackdrop } from "@headlessui/react";
 import { useState, useRef, useEffect } from "react";
 import { addNote } from "../Redux/actions/AddNote";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
-export default function Viewnotes(props) {
+export default function Viewnotes() {
   const [newNote, setnewNote] = useState({ title: "", note: "" });
-  const [dilogButton, setdilogButton] = useState(true);
-  const dispatch = useDispatch();
-  const TitleRef = useRef(null);
+  const [currtxt,setcurrtxt]=useState();
   const editorRef = useRef(null);
   const firstRender = useRef(true);
+  const dispatch=useDispatch();
+  const store_data = useSelector((state)=>state.Data);
 
   useEffect(() => {
+    setcurrtxt(store_data.ComponentData.currentNote);
     if (firstRender.current) {
       firstRender.current = false;
       return;
     }
-   // dispatch(addNote(newNote));
-  }, [newNote.note]);
+  }, [newNote.note,store_data.ComponentData.currentNote]);
 
 
-//   function saveTheNote() {
-//     if (editorRef.current) {
-//       setnewNote((prev) => ({
-//         ...prev,
-//         note: editorRef.current.getContent(),
-//       }));
-//     }
-//   }
+
 
   return (
     <div>
@@ -42,7 +34,7 @@ export default function Viewnotes(props) {
       />
 
       <button
-        // onClick={saveTheNote}
+       
         className="border-solid text-white p-2 m-2 w-40 font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
       >
         save{" "}
@@ -103,7 +95,7 @@ export default function Viewnotes(props) {
               Promise.reject("See docs to implement AI Assistant")
             ),
         }}
-        initialValue={props.noteText}
+        initialValue={currtxt}
       />
     </div>
   );

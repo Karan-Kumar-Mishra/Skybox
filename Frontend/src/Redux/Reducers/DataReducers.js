@@ -1,7 +1,7 @@
 const initialState = {
   ComponentData: {
-    showNotes: false,
-    SingleNoteText: "",
+    currentNote:"",
+    currentTitle:""
   },
   UserData: {
     name: "Username",
@@ -30,6 +30,9 @@ const dataReducer = (state = initialState, action) => {
       console.log(action.payload);
       return state;
     case "GET_ONE_NOTE":
+      console.log(action.payload);
+      return state;
+    case "SET_CURRENT_NOTE":
       console.log(action.payload);
       return state;
     default:

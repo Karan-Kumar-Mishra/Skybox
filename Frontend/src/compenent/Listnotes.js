@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllnotes } from "../Redux/actions/GetAllnotes";
+import { SetcurrentNote } from "../Redux/actions/SetcurrentNote";
 import EditButton from "./EditButton";
 
 export default function Example() {
@@ -19,7 +20,11 @@ export default function Example() {
       seta(true);
     }, 1000);
   }, [dispatch, a]);
-
+  function setcurrentNote(txt)
+  {
+    dispatch(SetcurrentNote(txt));
+    navigate("/viewnote");
+  }
   return (
     <>
 
@@ -44,7 +49,7 @@ export default function Example() {
             store_data.UserData.notes.map((note) => (
               <li
                 onClick={() => {
-                  navigate("/viewnote");
+                  setcurrentNote(note)
                 }}
                 key={nanoid()}
                 className="border-solid p-3 m-2 rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
