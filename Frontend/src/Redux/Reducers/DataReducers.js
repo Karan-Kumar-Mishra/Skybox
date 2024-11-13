@@ -35,6 +35,9 @@ const dataReducer = (state = initialState, action) => {
     case "SET_CURRENT_NOTE":
       console.log(action.payload);
       return state;
+    case "UPDATE_NOTE":
+      console.log(action.payload);
+      return state
     default:
       return state;
   }

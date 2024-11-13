@@ -13,6 +13,7 @@ import TextEditor from "./TextEditor";
 import toast, { Toaster } from "react-hot-toast";
 import Feedback from "./Feedback";
 import Viewnotes from "./Viewnotes";
+import EditeNote from "./EditeNote";
 export default function Mainapp() {
   return (
     <>
@@ -28,16 +29,18 @@ export default function Mainapp() {
         <Suspense fallback={<Loading />}>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Listnotes />} />
-            <Route path="/setting" element={<Setting />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/settings" element={<Setting />} />
-            <Route path="/Editor" element={<TextEditor />} />
-            <Route path="/feedback" element={<Feedback />} />
-            <Route path="/viewnote" element={<Viewnotes />} />
+            <Route path="/" element={<Listnotes/>} />
+            <Route path="/setting" element={<Setting/>} />
+            <Route path="/profile" element={<Profile/>} />
+            <Route path="/about" element={<About/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/settings" element={<Setting/>} />
+            <Route path="/Editor" element={<TextEditor/>} />
+            <Route path="/feedback" element={<Feedback/>} />
+            <Route path="/viewnote" element={<Viewnotes/>} />
+            <Route path="/Editenote" element={<EditeNote/>} />
+
             <Route path="*" element={<Notfound />} />
           </Routes>
         </Suspense>

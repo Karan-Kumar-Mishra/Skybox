@@ -20,14 +20,12 @@ export default function Example() {
       seta(true);
     }, 1000);
   }, [dispatch, a]);
-  function setcurrentNote(txt)
-  {
+  function setcurrentNote(txt) {
     dispatch(SetcurrentNote(txt));
     navigate("/viewnote");
   }
   return (
     <>
-
       <div className="main">
         <div className="addbtn flex justify-center bg-gradient-to-r from-black to-indigo-900">
           <button
@@ -48,9 +46,6 @@ export default function Example() {
           {store_data.UserData.notes.length &&
             store_data.UserData.notes.map((note) => (
               <li
-                onClick={() => {
-                  setcurrentNote(note)
-                }}
                 key={nanoid()}
                 className="border-solid p-3 m-2 rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
               >
@@ -59,13 +54,14 @@ export default function Example() {
                     <p
                       onClick={() => {
                         setshowNote(true);
+                        setcurrentNote(note);
                       }}
                       className="text-sm font-semibold  leading-6 text-white"
                     >
                       {note.title}
                     </p>
                   </div>
-                  <EditButton />
+                  <EditButton note={note} />
                 </div>
               </li>
             ))}

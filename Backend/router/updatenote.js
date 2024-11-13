@@ -6,17 +6,12 @@ updatanote.put("/", (req, res) => {
   console.log(req.body);
   if (req.body.email && req.body.index && req.body.newnote) {
     db.getid("email", req.body.email).then((id) => {
-      db.updatanote(id, req.body.index, req.body.newnote)
-        .then((result) => {
-          res.send({
-            status: "update notes",
-          });
-        })
-        .catch((err) => {
-          res.send({
-            error: "note is not found !",
-          });
-        });
+       console.log("id=>",id);
+       db.updatanote().then((result)=>{
+        console.log("result",result)
+       }).error((err)=>{
+        console.log("error",err)
+       })
     });
   } else {
     res.send({

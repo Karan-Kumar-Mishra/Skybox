@@ -3,20 +3,31 @@ import { useState, useRef, useEffect } from "react";
 import { addNote } from "../Redux/actions/AddNote";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { UpdateNote } from "../Redux/actions/UpdateNote";
+
 export default function Viewnotes() {
   const [newNote, setnewNote] = useState({ title: "", note: "" });
   const [currtxt, setcurrtxt] = useState();
   const editorRef = useRef(null);
   const firstRender = useRef(true);
   const store_data = useSelector((state) => state.Data);
+  const navigate = useNavigate();
+  const dispatch=useDispatch();
   useEffect(() => {
     setcurrtxt(store_data.ComponentData.currentNote);
+    if (store_data.ComponentData.currentNote === "") {
+      toast.error("Please select a note !");
+      navigate("/");
+    }
     if (firstRender.current) {
       firstRender.current = false;
       return;
     }
   }, [newNote.note, store_data.ComponentData.currentNote]);
-
+  function saveTheUpdateNote() {
+    dispatch(UpdateNote());
+  }
   return (
     <div>
       <Toaster
@@ -27,7 +38,12 @@ export default function Viewnotes() {
           },
         }}
       />
-
+      <button
+        onClick={saveTheUpdateNote}
+        className="border-solid text-white p-2 m-2 w-40 mt-4 font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
+      >
+        save
+      </button>
       <Editor
         onInit={(_evt, editor) => (editorRef.current = editor)}
         apiKey={process.env.REACT_APP_EDITOR_API}
