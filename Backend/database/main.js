@@ -8,7 +8,7 @@ const mainobj={
  adduser: functions.adduser,
  deleteuser: functions.deleteuser,
  addnote: functions.addnote,
- updatanote: functions.updatanote,
+ updatanote: functions.updatenote,
  disconnect: functions.disconnectdb,
  editnote: functions.editnote,
  deleteallnotes: functions.deleteallnotes,

@@ -3,15 +3,11 @@ const updatanote = express.Router();
 const db = require("../database/main");
 
 updatanote.put("/", (req, res) => {
-  console.log(req.body);
-  if (req.body.email && req.body.index && req.body.newnote) {
+  console.log(req.body)
+  
+  if (req.body.email) {
     db.getid("email", req.body.email).then((id) => {
-       console.log("id=>",id);
-       db.updatanote().then((result)=>{
-        console.log("result",result)
-       }).error((err)=>{
-        console.log("error",err)
-       })
+      // db.updatanote(id,req.body.title,req.body.newnote)
     });
   } else {
     res.send({

@@ -49,15 +49,15 @@ async function deleteuser(key) {
     return error;
   }
 }
-async function updatenote(key, noteindex, note) {
+async function updatenote(key, notetitle, note) {
   try {
     getnotes(key).then((res) => {
-      let updatenotes = res[noteindex] + ` ${note}`;
+      let updatenotes = res[notetitle] + ` ${note}`;
       console.log(updatenote)
       usermodel
         .updateOne(
           { id: key },
-          { $set: { [`notes.${noteindex}`]: updatenotes } }
+          { $set: { [`notes.${notetitle}`]: updatenotes } }
         )
         .then((result) => {
           return result;

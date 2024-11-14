@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { UpdateNote } from "../Redux/actions/UpdateNote";
-
+import { SetcurrentNote } from "../Redux/actions/SetcurrentNote";
 export default function Viewnotes() {
   const [newNote, setnewNote] = useState({ title: "", note: "" });
   const [currtxt, setcurrtxt] = useState();
@@ -26,6 +26,8 @@ export default function Viewnotes() {
     }
   }, [newNote.note, store_data.ComponentData.currentNote]);
   function saveTheUpdateNote() {
+     //console.log(editorRef.current.getContent())
+    dispatch(SetcurrentNote({title:store_data.ComponentData.currentTitle,note:editorRef.current.getContent()}))
     dispatch(UpdateNote());
   }
   return (
@@ -45,6 +47,7 @@ export default function Viewnotes() {
         save
       </button>
       <Editor
+        
         onInit={(_evt, editor) => (editorRef.current = editor)}
         apiKey={process.env.REACT_APP_EDITOR_API}
         init={{
