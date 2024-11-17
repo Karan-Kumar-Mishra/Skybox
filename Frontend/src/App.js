@@ -22,7 +22,9 @@ export default function App() {
       console.log("user is not authenticated");
     }
   }, [user]);
-
+  useEffect(()=>{
+  console.log("update in state => ",store_data)
+  },[store_data])
   return (
     <>
       <Toaster

@@ -1,6 +1,6 @@
 import { Editor } from "@tinymce/tinymce-react";
 import { useState, useRef, useEffect } from "react";
-import { addNote } from "../Redux/actions/AddNote";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -13,9 +13,9 @@ export default function Viewnotes() {
   const firstRender = useRef(true);
   const store_data = useSelector((state) => state.Data);
   const navigate = useNavigate();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
-    setcurrtxt(store_data.ComponentData.currentNote);
+    setcurrtxt(store_data.ComponentData.currentNote.note);
     if (store_data.ComponentData.currentNote === "") {
       toast.error("Please select a note !");
       navigate("/");
@@ -26,8 +26,14 @@ export default function Viewnotes() {
     }
   }, [newNote.note, store_data.ComponentData.currentNote]);
   function saveTheUpdateNote() {
-     //console.log(editorRef.current.getContent())
-    dispatch(SetcurrentNote({title:store_data.ComponentData.currentTitle,note:editorRef.current.getContent()}))
+    let noteObj={
+      index:store_data.ComponentData.currentIndex,
+      title:store_data.ComponentData.currentTitle,
+      note :editorRef.current.getContent()
+    }
+    dispatch(
+      SetcurrentNote(noteObj)
+    );
     dispatch(UpdateNote());
   }
   return (
@@ -47,7 +53,6 @@ export default function Viewnotes() {
         save
       </button>
       <Editor
-        
         onInit={(_evt, editor) => (editorRef.current = editor)}
         apiKey={process.env.REACT_APP_EDITOR_API}
         init={{

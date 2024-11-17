@@ -7,7 +7,9 @@ updatanote.put("/", (req, res) => {
   
   if (req.body.email) {
     db.getid("email", req.body.email).then((id) => {
-      // db.updatanote(id,req.body.title,req.body.newnote)
+       db.updatanote(id,req.body.index,req.body.newnote).then((ans)=>{
+        console.log(ans)
+       })
     });
   } else {
     res.send({

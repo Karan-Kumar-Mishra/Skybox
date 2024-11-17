@@ -1,6 +1,5 @@
 import { Editor } from "@tinymce/tinymce-react";
 import { useState, useRef, useEffect } from "react";
-import { addNote } from "../Redux/actions/AddNote";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
 export default function Viewnotes() {
@@ -10,7 +9,7 @@ export default function Viewnotes() {
   const firstRender = useRef(true);
   const store_data = useSelector((state) => state.Data);
   useEffect(() => {
-    setcurrtxt(store_data.ComponentData.currentNote);
+   setcurrtxt(store_data.ComponentData.currentNote);
     if (firstRender.current) {
       firstRender.current = false;
       return;
