@@ -2,13 +2,19 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 export default function Viewnotes() {
   const [newNote, setnewNote] = useState({ title: "", note: "" });
   const [currtxt, setcurrtxt] = useState();
   const editorRef = useRef(null);
   const firstRender = useRef(true);
+  const navigate = useNavigate();
   const store_data = useSelector((state) => state.Data);
   useEffect(() => {
+    // if(store_data.ComponentData.currentNote === "") {
+    //   toast.error("Please select a note !");
+    //   navigate("/");
+    // }       have a bug fix in pending ..
    setcurrtxt(store_data.ComponentData.currentNote);
     if (firstRender.current) {
       firstRender.current = false;

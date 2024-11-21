@@ -52,13 +52,10 @@ async function deleteuser(key) {
 async function updatenote(key, noteindex, note) {
   try {
     getnotes(key).then((res) => {
-      let updatenotes  =  res[noteindex] + ` ${note}`;
-      console.log("update note=>", updatenotes)
-      usermodel
-        .updateOne(
-          { id: key },
-          { $set: { [`notes.${noteindex}.note`]: note } }
-        )
+      let updatenotes = res[noteindex] + ` ${note}`;
+      console.log("update note=>", updatenotes);
+      return usermodel
+        .updateOne({ id: key }, { $set: { [`notes.${noteindex}.note`]: note } })
         .then((result) => {
           return result;
         });
@@ -133,16 +130,19 @@ async function disconnectdb() {
   }
 }
 async function saveFeedback(feedbackObj) {
- const res= (await feedbackModel.updateOne({},{  $push: { feedbacks: feedbackObj }, })).modifiedCount;
- if(res==0)
- {
-  const newfeedback=feedbackModel({
-    feedbacks: []
-  });
-  newfeedback.save();
-  return (await feedbackModel.updateOne({},{  $push: { feedbacks: feedbackObj }, })).modifiedCount;
- }
- return res;
+  const res = (
+    await feedbackModel.updateOne({}, { $push: { feedbacks: feedbackObj } })
+  ).modifiedCount;
+  if (res == 0) {
+    const newfeedback = feedbackModel({
+      feedbacks: [],
+    });
+    newfeedback.save();
+    return (
+      await feedbackModel.updateOne({}, { $push: { feedbacks: feedbackObj } })
+    ).modifiedCount;
+  }
+  return res;
 }
 module.exports = {
   connectdb,

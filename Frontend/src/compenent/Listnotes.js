@@ -20,8 +20,8 @@ export default function Example() {
       seta(true);
     }, 1000);
   }, [dispatch, a]);
-  function setcurrentNote(txt,index) {
-    dispatch(SetcurrentNote(txt,index));
+  function setcurrentNote(txt, index) {
+    dispatch(SetcurrentNote(txt, index));
     navigate("/viewnote");
   }
   return (
@@ -44,17 +44,17 @@ export default function Example() {
           className="divide-y divide-gray-100  h-screen  overflow-x-hidden hide-scrollbar bg-slate-900"
         >
           {store_data.UserData.notes.length &&
-            store_data.UserData.notes.map((note,index) => (
+            store_data.UserData.notes.map((note, index) => (
               <li
-              key={nanoid()}
-              className="border-solid p-3 m-2 rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
+                key={nanoid()}
+                className="border-solid p-3 m-2 rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
               >
                 <div className="flex min-w-0 gap-x-4">
                   <div className="min-w-0 flex-auto m-2  ">
                     <p
                       onClick={() => {
                         setshowNote(true);
-                        setcurrentNote(note,index);
+                        setcurrentNote(note, index);
                       }}
                       className="text-sm font-semibold  leading-6 text-white"
                     >

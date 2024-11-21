@@ -26,14 +26,12 @@ export default function Viewnotes() {
     }
   }, [newNote.note, store_data.ComponentData.currentNote]);
   function saveTheUpdateNote() {
-    let noteObj={
-      index:store_data.ComponentData.currentIndex,
-      title:store_data.ComponentData.currentTitle,
-      note :editorRef.current.getContent()
-    }
-    dispatch(
-      SetcurrentNote(noteObj)
-    );
+    let noteObj = {
+      index: store_data.ComponentData.currentIndex,
+      title: store_data.ComponentData.currentTitle,
+      note: editorRef.current.getContent(),
+    };
+    dispatch(SetcurrentNote(noteObj));
     dispatch(UpdateNote());
   }
   return (
