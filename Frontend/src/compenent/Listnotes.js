@@ -20,6 +20,7 @@ export default function Example() {
       seta(true);
     }, 1000);
   }, [dispatch, a]);
+  
   function setcurrentNote(txt, index) {
     dispatch(SetcurrentNote(txt, index));
     navigate("/viewnote");

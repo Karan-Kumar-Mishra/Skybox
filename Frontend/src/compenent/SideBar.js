@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 export default function SideBar() {
   const navigate=useNavigate();
+  const { logout } = useAuth0();
   return (
     <div className="h-screen bg-slate-800 p-5  ">
       <ul className="flex flex-col gap-6">
@@ -47,7 +49,9 @@ export default function SideBar() {
         </li>
         <li className="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap">
           <button
-           onClick={navigate('/settings')} 
+           onClick={()=>{
+            navigate('/settings')
+           }} 
           className="p-16-semibold flex  gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner hover:text-black focus:bg-gradient-to-r from-black to-indigo-900 focus:text-white text-white transition-all ease-linear">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +79,8 @@ export default function SideBar() {
           </button>
         </li>
         <li className="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap">
-          <button className="p-16-semibold flex  gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner hover:text-black focus:bg-gradient-to-r from-black to-indigo-900 focus:text-white text-white transition-all ease-linear">
+          <button  onClick={() => logout()} 
+          className="p-16-semibold flex  gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner hover:text-black focus:bg-gradient-to-r from-black to-indigo-900 focus:text-white text-white transition-all ease-linear">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
