@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector, useDispatch } from "react-redux";
+import { setshowNotificationList } from "../Redux/actions/SetshowNotificationList";
+import { setshowNotesList } from "../Redux/actions/setshowNotesList";
 export default function SideBar() {
+  const dispatch= useDispatch();
   const navigate=useNavigate();
   const { logout } = useAuth0();
+  
+  function showNotes()
+  {
+    dispatch(setshowNotificationList(false));
+    dispatch(setshowNotesList(true));
+  }
+  function showNotificatios()
+  {
+    dispatch(setshowNotificationList(true));
+    dispatch(setshowNotesList(false));
+  }
+
   return (
     <div className="h-screen bg-slate-800 p-5  ">
       <ul className="flex flex-col gap-6">
         <li className="flex-center cursor-pointer p-16-semibold  whitespace-nowrap">
-          <button className="p-16-semibold flex  gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner hover:text-black focus:bg-gradient-to-r from-black to-indigo-900 focus:text-white text-white transition-all ease-linear">
+          <button
+           onClick={showNotes}
+          className="p-16-semibold flex  gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner hover:text-black focus:bg-gradient-to-r from-black to-indigo-900 focus:text-white text-white transition-all ease-linear">
             <svg
               stroke="#000000"
               className="icon glyph size-6 group-focus:fill-white group-focus:stroke-white"
@@ -33,7 +51,9 @@ export default function SideBar() {
           </button>
         </li>
         <li className="flex-center cursor-pointer p-16-semibold  whitespace-nowrap focus:decoration-white">
-          <button className="p-16-semibold flex  gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner hover:text-black focus:bg-gradient-to-r from-black to-indigo-900 focus:text-white text-white transition-all ease-linear">
+          <button
+          onClick={showNotificatios}
+           className="p-16-semibold flex  gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner hover:text-black focus:bg-gradient-to-r from-black to-indigo-900 focus:text-white text-white transition-all ease-linear">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon glyph size-6 group-focus:fill-white group-focus:stroke-white"

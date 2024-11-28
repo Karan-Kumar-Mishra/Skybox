@@ -18,7 +18,7 @@ export default function Notes() {
     <div className="h-screen w-screen">
       <ul
         role="list"
-        className="divide-y divide-gray-100  overflow-x-hidden hide-scrollbar bg-slate-900"
+        className="divide-y divide-gray-100  overflow-x-hidden hide-scrollbar"
       >
         {store_data.UserData.notes.length &&
           store_data.UserData.notes.map((note, index) => (

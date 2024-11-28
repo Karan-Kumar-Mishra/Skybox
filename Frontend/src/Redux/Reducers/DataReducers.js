@@ -2,7 +2,9 @@ const initialState = {
   ComponentData: {
     currentNote:"",
     currentTitle:"",
-    currentIndex:0
+    currentIndex:0,
+    showNotesList:true,
+    showNotificationList:true
   },
   UserData: {
     name: "Username",
@@ -38,7 +40,11 @@ const dataReducer = (state = initialState, action) => {
       return state;
     case "UPDATE_NOTE":
       console.log(action.payload);
-      return state
+      return state;
+    case "SET_SHOWNOTESLIST":
+      return state;
+    case "SET_SHOWNOTIFICATIONLIST":
+      return state;
     default:
       return state;
   }
