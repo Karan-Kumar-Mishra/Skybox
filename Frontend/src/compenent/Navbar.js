@@ -1,5 +1,5 @@
 import { Disclosure, Menu } from "@headlessui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
@@ -21,6 +21,7 @@ function classNames(...classes) {
 export default function Example() {
   const { logout } = useAuth0();
   const store_data = useSelector((state)=>state.Data);
+
   return (
     <Disclosure as="nav" className="bg-gray-800 w-full">
       {({ open }) => (

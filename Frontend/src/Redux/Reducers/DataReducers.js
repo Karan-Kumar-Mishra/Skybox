@@ -42,8 +42,10 @@ const dataReducer = (state = initialState, action) => {
       console.log(action.payload);
       return state;
     case "SET_SHOWNOTESLIST":
+      console.log("show the notes.",state);
       return state;
     case "SET_SHOWNOTIFICATIONLIST":
+      console.log("show the notification",state);
       return state;
     default:
       return state;

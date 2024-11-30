@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getAllnotes } from "../Redux/actions/GetAllnotes";
 import { SetcurrentNote } from "../Redux/actions/SetcurrentNote";
 import EditButton from "./EditButton";
+import Loading from "./Loading";
 
 export default function Example() {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ export default function Example() {
           role="list"
           className="divide-y divide-gray-100  h-screen  overflow-x-hidden hide-scrollbar bg-slate-900"
         >
-          {store_data.UserData.notes.length &&
+          {store_data.UserData.notes.length ?
             store_data.UserData.notes.map((note, index) => (
               <li
                 key={nanoid()}
@@ -65,7 +66,7 @@ export default function Example() {
                   <EditButton note={note} index={index} />
                 </div>
               </li>
-            ))}
+            )) :<Loading/>}
         </ul>
       </div>
     </>

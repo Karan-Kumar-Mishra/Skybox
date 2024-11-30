@@ -2,8 +2,12 @@ import React from "react";
 
 export default function Loading() {
   return (
-    <div>
-      <div className="loader"></div>
+    <div className="mt-40">
+      <div className="loader">
+        <div className="ball"></div>
+        <div className="ball"></div>
+        <div className="ball"></div>
+      </div>
     </div>
   );
 }
