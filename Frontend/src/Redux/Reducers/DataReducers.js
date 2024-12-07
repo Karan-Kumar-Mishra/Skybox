@@ -27,25 +27,18 @@ const dataReducer = (state = initialState, action) => {
     case "ADD_NOTE":
       return state;
     case "DELETE_USER":
-      console.log(action.payload);
       return state;
     case "FEEDBACK":
-      console.log(action.payload);
       return state;
     case "GET_ONE_NOTE":
-      console.log(action.payload);
       return state;
     case "SET_CURRENT_NOTE":
-      console.log("check in reducer",state);
       return state;
     case "UPDATE_NOTE":
-      console.log(action.payload);
       return state;
     case "SET_SHOWNOTESLIST":
-      console.log("show the notes.",state);
       return state;
     case "SET_SHOWNOTIFICATIONLIST":
-      console.log("show the notification",state);
       return state;
     default:
       return state;

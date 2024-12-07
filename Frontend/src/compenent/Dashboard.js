@@ -12,14 +12,14 @@ export default function Dashbord() {
   useEffect(()=>{
     setshownote(store_data.showNotesList);
     setshownotification(store_data.showNotificationList);
-  },[store_data.showNotesList,store_data.showNotificationList])
-
+    console.log(store_data)
+  },[store_data])
+  
   return (
     <div className="h-screen bg-gradient-to-r from-black to-indigo-900">
       <div className="main flex flex-row font-semibold content-center text-white">
         <SideBar/>
-   
-     
+        {shownote ? <Notes/> :<NotificationList/>}
       </div>
     </div>
   );
