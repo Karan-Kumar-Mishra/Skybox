@@ -17,6 +17,7 @@ export default function TextEditor() {
       firstRender.current = false;
       return;
     }
+
     dispatch(addNote(newNote));
   }, [newNote.note]);
 
