@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { addNote } from "../Redux/actions/AddNote";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
+import { useLocation } from "react-router-dom";
 export default function TextEditor() {
   const [newNote, setnewNote] = useState({ title: "", note: "" });
   const [dilogButton, setdilogButton] = useState(true);
@@ -11,6 +12,10 @@ export default function TextEditor() {
   const TitleRef = useRef(null);
   const editorRef = useRef(null);
   const firstRender = useRef(true);
+  const location = useLocation();
+  useEffect(() => {
+    console.log("Current URL changed to:", location);
+  }, [location]);
 
   useEffect(() => {
     if (firstRender.current) {

@@ -8,7 +8,7 @@ export default function SideBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { logout } = useAuth0();
-  const store_data = useSelector((state)=>state.Data.ComponentData);
+  const store_data = useSelector((state) => state.Data.ComponentData);
   function showNotes() {
     dispatch(setshowNotificationList(false));
     dispatch(setshowNotesList(true));
@@ -17,10 +17,8 @@ export default function SideBar() {
     dispatch(setshowNotificationList(true));
     dispatch(setshowNotesList(false));
   }
-
-
   return (
-    <div className="h-screen bg-slate-800 p-5  ">
+    <div className="h-screen bg-slate-800 p-5">
       <ul className="flex flex-col gap-6">
         <li className="flex-center cursor-pointer p-16-semibold  whitespace-nowrap">
           <button

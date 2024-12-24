@@ -23,7 +23,7 @@ export default function Example() {
                   <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <span className="flex select-none items-center pl-3 text-white sm:text-sm"></span>
                     <input
-                      id="username"
+                      id="Username"
                       name="username"
                       type="text"
                       placeholder="Username"

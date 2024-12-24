@@ -3,5 +3,6 @@ export const setshowNotesList = (value) => {
       const state =  getState();
       state.Data.ComponentData.showNotesList=value;
       dispatch({ type: "SET_SHOWNOTESLIST"});
+      console.log("setshowNoteslist",state);
     };
 }

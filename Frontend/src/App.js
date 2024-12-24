@@ -11,10 +11,14 @@ export default function App() {
   const { isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
   const store_data = useSelector((state) => state.Data);
+
+
+  
   setInterval(() => {
     let div = document.querySelector(".tox-notifications-container");
     if (div != null) div.remove();
-  }, 4000);
+  }, 2000);
+
 
   useEffect(() => {
     if (isAuthenticated) {

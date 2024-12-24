@@ -13,7 +13,8 @@ export default function Dashbord() {
     setshownote(store_data.showNotesList);
     setshownotification(store_data.showNotificationList);
     console.log(store_data)
-  },[store_data])
+  },[store_data.showNotificationList,store_data.showNotesList])
+
   
   return (
     <div className="h-screen bg-gradient-to-r from-black to-indigo-900">
