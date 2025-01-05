@@ -8,6 +8,7 @@ export default function Feedback() {
   function SendFeedback()
   {
    dispatch(feedback(FeedbackTextRef.current.value))
+   FeedbackTextRef.current.value="";
   }
   function addEmoji(emoji)
   {
