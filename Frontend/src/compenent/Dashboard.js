@@ -15,6 +15,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../compenent/Images/Logo.png";
+import Badge from "@mui/material/Badge";
 
 const NAVIGATION = [
   {
@@ -25,7 +26,11 @@ const NAVIGATION = [
   {
     segment: "notification",
     title: "Notification",
-    icon: <CircleNotificationsIcon />,
+    icon: (
+      <Badge badgeContent={1} color="primary">
+        <CircleNotificationsIcon />
+      </Badge>
+    ),
   },
   {
     segment: "files",
@@ -102,7 +107,11 @@ function Dashboard(props) {
   const demoWindow = window !== undefined ? window() : undefined;
   React.useEffect(() => {
     let ele = document.querySelector(".css-t3xolk");
-    ele.style.width = "95vw";
+    let ele2 = document.querySelector(".css-197urd");
+    ele.style.height = "80vh";
+    ele.style.width = "98vw";
+
+    //ele2.style.className=".hide-scrollbar";
   }, []);
   return (
     <AppProvider
