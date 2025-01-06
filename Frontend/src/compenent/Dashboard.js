@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { createTheme } from "@mui/material/styles";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { useDemoRouter } from "@toolpad/core/internal";
@@ -13,27 +11,36 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
+
 const NAVIGATION = [
   
   {
     segment: "notes",
-    title: "Notes", // Custom title
-    icon: <EditNoteIcon />, // Replace with an actual icon
+    title: "Notes", 
+    icon: <EditNoteIcon />, 
   },
   {
     segment: "notification",
-    title: "Notification", // Custom title
-    icon: <CircleNotificationsIcon />, // Replace with an actual icon
+    title: "Notification", 
+    icon: <CircleNotificationsIcon />, 
   },
   {
     segment: "files",
-    title: "Files", // Custom title
-    icon: <InsertDriveFileIcon />, // Replace with an actual icon
+    title: "Files", 
+    icon: <InsertDriveFileIcon />, 
   },
   {
-    segment: "Settings",
-    title: "Settings", // Custom title
-    icon: <SettingsIcon />, // Replace with an actual icon
+    segment: "settings",
+    title: "Settings", 
+    icon: <SettingsIcon />, 
+  },
+  {
+    segment: "logout",
+    title: "Logout", 
+    icon: <LogoutIcon />, 
   },
 ];
 
@@ -54,6 +61,8 @@ const demoTheme = createTheme({
 });
 
 function DemoPageContent({ pathname }) {
+  const navigate = useNavigate();
+  const { logout } = useAuth0();
   return (
     <Box
       sx={{
@@ -67,6 +76,10 @@ function DemoPageContent({ pathname }) {
       {pathname === "/notes" && <div className="w-[50rem] flex justify-center "> <Notes/> </div> }
       {pathname !== "/custom" && (   <Typography>Dashboard content for {pathname}</Typography> )}
       {pathname === "/notification" && <div className="w-[50rem] flex justify-center "> <h1>Notification</h1> </div> }
+      {pathname === "/settings" && navigate("/settings") }
+      {pathname === "/logout" && logout() }
+
+
 
     </Box>
   );
@@ -78,6 +91,7 @@ function Dashboard(props) {
   const { window } = props;
   const router = useDemoRouter("/dashboard");
   const demoWindow = window !== undefined ? window() : undefined;
+
   return (
     <AppProvider
       navigation={NAVIGATION}
