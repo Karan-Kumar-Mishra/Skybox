@@ -7,40 +7,40 @@ import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { useDemoRouter } from "@toolpad/core/internal";
 import Notes from "./Notes";
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
-import SettingsIcon from '@mui/icons-material/Settings';
-import LogoutIcon from '@mui/icons-material/Logout';
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
+import Logo from "../compenent/Images/Logo.png";
 
 const NAVIGATION = [
-  
   {
     segment: "notes",
-    title: "Notes", 
-    icon: <EditNoteIcon />, 
+    title: "Notes",
+    icon: <EditNoteIcon />,
   },
   {
     segment: "notification",
-    title: "Notification", 
-    icon: <CircleNotificationsIcon />, 
+    title: "Notification",
+    icon: <CircleNotificationsIcon />,
   },
   {
     segment: "files",
-    title: "Files", 
-    icon: <InsertDriveFileIcon />, 
+    title: "Files",
+    icon: <InsertDriveFileIcon />,
   },
   {
     segment: "settings",
-    title: "Settings", 
-    icon: <SettingsIcon />, 
+    title: "Settings",
+    icon: <SettingsIcon />,
   },
   {
     segment: "logout",
-    title: "Logout", 
-    icon: <LogoutIcon />, 
+    title: "Logout",
+    icon: <LogoutIcon />,
   },
 ];
 
@@ -73,14 +73,23 @@ function DemoPageContent({ pathname }) {
         textAlign: "center",
       }}
     >
-      {pathname === "/notes" && <div className="w-[50rem] flex justify-center "> <Notes/> </div> }
-      {pathname !== "/custom" && (   <Typography>Dashboard content for {pathname}</Typography> )}
-      {pathname === "/notification" && <div className="w-[50rem] flex justify-center "> <h1>Notification</h1> </div> }
-      {pathname === "/settings" && navigate("/settings") }
-      {pathname === "/logout" && logout() }
-
-
-
+      {pathname === "/notes" && (
+        <div className="w-[50rem] flex justify-center ">
+          {" "}
+          <Notes />{" "}
+        </div>
+      )}
+      {pathname !== "/custom" && (
+        <Typography>Dashboard content for {pathname}</Typography>
+      )}
+      {pathname === "/notification" && (
+        <div className="w-[50rem] flex justify-center ">
+          {" "}
+          <h1>Notification</h1>{" "}
+        </div>
+      )}
+      {pathname === "/settings" && navigate("/settings")}
+      {pathname === "/logout" && logout()}
     </Box>
   );
 }
@@ -91,13 +100,22 @@ function Dashboard(props) {
   const { window } = props;
   const router = useDemoRouter("/dashboard");
   const demoWindow = window !== undefined ? window() : undefined;
-
+  React.useEffect(() => {
+    let ele = document.querySelector(".css-t3xolk");
+    ele.style.width = "95vw";
+  }, []);
   return (
     <AppProvider
       navigation={NAVIGATION}
       branding={{
-        logo: <img src="https://mui.com/static/logo.png" alt="MUI logo" />,
-        title: "MUI",
+        logo: (
+          <img
+            className="rounded-full"
+            src="https://raw.githubusercontent.com/Karan-Kumar-Mishra/Skybox/refs/heads/main/Frontend/src/compenent/Images/Logo.png"
+            alt="MUI logo"
+          />
+        ),
+        title: "Skybox",
         homeUrl: "/toolpad/core/introduction",
       }}
       router={router}
