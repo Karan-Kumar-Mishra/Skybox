@@ -36,6 +36,8 @@ const dataReducer = (state = initialState, action) => {
       return state;
     case "UPDATE_NOTE":
       return state;
+    case "DELETE_NOTE":
+      return state;
     default:
       return state;
   }

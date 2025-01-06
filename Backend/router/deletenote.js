@@ -2,6 +2,7 @@ const express = require("express");
 const deletenote = express.Router();
 const db = require("../database/main");
 deletenote.put("/", (req, res) => {
+  console.log("we get reqest for delete note ",req.body)
   if (req.body.email) {
     db.getid("email", req.body.email).then((id) => {
       db.deletenote(id, req.body.index).then((ans) => {

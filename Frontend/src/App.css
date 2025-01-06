@@ -190,15 +190,6 @@
               0 0 30px #323232,
               0 0 40px hsl(176.61, 42.28%, 40.7%) 19.6%;
 }
-.hide-scrollbar {
-  overflow: scroll; /* Allow scrolling */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar in IE */
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Chrome, Safari, and Edge */
-}
 
 
 

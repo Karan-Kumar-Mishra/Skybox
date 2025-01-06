@@ -1,12 +1,11 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import { createTheme } from "@mui/material/styles";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { useDemoRouter } from "@toolpad/core/internal";
-import Notes from "./Notes";
+import NotesDashboard from "./NotesDashboard";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
@@ -80,17 +79,12 @@ function DemoPageContent({ pathname }) {
     >
       {pathname === "/notes" && (
         <div className="w-[50rem] flex justify-center ">
-          {" "}
-          <Notes />{" "}
+          <NotesDashboard />
         </div>
-      )}
-      {pathname !== "/custom" && (
-        <Typography>Dashboard content for {pathname}</Typography>
       )}
       {pathname === "/notification" && (
         <div className="w-[50rem] flex justify-center ">
-          {" "}
-          <h1>Notification</h1>{" "}
+          <h1>Notification</h1>
         </div>
       )}
       {pathname === "/settings" && navigate("/settings")}
@@ -107,11 +101,10 @@ function Dashboard(props) {
   const demoWindow = window !== undefined ? window() : undefined;
   React.useEffect(() => {
     let ele = document.querySelector(".css-t3xolk");
-    let ele2 = document.querySelector(".css-197urd");
+    let ele2 = document.querySelector(".css-23htwk");
+    ele2.className = "hide-scrollbar";
     ele.style.height = "80vh";
     ele.style.width = "98vw";
-
-    //ele2.style.className=".hide-scrollbar";
   }, []);
   return (
     <AppProvider
