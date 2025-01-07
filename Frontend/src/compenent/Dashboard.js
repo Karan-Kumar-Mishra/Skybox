@@ -15,7 +15,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../compenent/Images/Logo.png";
 import Badge from "@mui/material/Badge";
-
+import Profile from "./Profile";
+import Typography from "@mui/material/Typography";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import NotificationListDashboard from "./NotificationListDashboard";
 const NAVIGATION = [
   {
     segment: "notes",
@@ -40,6 +43,11 @@ const NAVIGATION = [
     segment: "settings",
     title: "Settings",
     icon: <SettingsIcon />,
+  },
+  {
+    segment: "profile",
+    title: "Profile",
+    icon: <AccountCircleIcon />,
   },
   {
     segment: "logout",
@@ -84,10 +92,11 @@ function DemoPageContent({ pathname }) {
       )}
       {pathname === "/notification" && (
         <div className="w-[50rem] flex justify-center ">
-          <h1>Notification</h1>
+          <NotificationListDashboard />
         </div>
       )}
       {pathname === "/settings" && navigate("/settings")}
+      {pathname === "/profile" && navigate("/profile")}
       {pathname === "/logout" && logout()}
     </Box>
   );
@@ -97,12 +106,14 @@ DemoPageContent.propTypes = {
 };
 function Dashboard(props) {
   const { window } = props;
-  const router = useDemoRouter("/dashboard");
+  const router = useDemoRouter("/notes");
   const demoWindow = window !== undefined ? window() : undefined;
   React.useEffect(() => {
     let ele = document.querySelector(".css-t3xolk");
     let ele2 = document.querySelector(".css-23htwk");
-    ele2.className = "hide-scrollbar";
+    if (ele2) {
+      ele2.className = "hide-scrollbar";
+    }
     ele.style.height = "80vh";
     ele.style.width = "98vw";
   }, []);
