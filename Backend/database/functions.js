@@ -86,15 +86,13 @@ async function addnote(key, note) {
     return error;
   }
 }
-async function deletenote(key, index) {
+async function deleteSingelnote(key, index_title) {
   let arr = await getnotes(key);
-  let update1 = arr.slice(0, index);
-  let update2 = arr.slice(index + 1, arr.length);
-
-  for (let i = 0; i < update2.length; i++) {
-    update1.push(update2[i]);
-  }
-  return await usermodel.updateOne({ id: key }, { $set: { notes: update1 } });
+// console.log(index_title);
+  let newUpdatenotes = arr.filter((note) => note.title != index_title);
+  console.log("update notes=> ", newUpdatenotes);
+  return await usermodel.updateOne({ id: key }, { $set: { notes: newUpdatenotes } });
+  
 }
 async function deleteallnotes(key) {
   return await usermodel.updateOne({ id: key }, { $set: { notes: [] } });
@@ -156,7 +154,7 @@ module.exports = {
   editnote,
   updatenote,
   disconnectdb,
-  deletenote,
+  deleteSingelnote,
   deleteallnotes,
   saveFeedback,
 };

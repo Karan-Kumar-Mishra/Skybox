@@ -1,6 +1,5 @@
 import toast from "react-hot-toast";
 export const deletenote = (userdata) => {
-    console.log("data for delete note",userdata)
   return async (dispatch, getState) => {
     const state = await getState();
     let option = {
@@ -10,6 +9,7 @@ export const deletenote = (userdata) => {
       },
       body: JSON.stringify({
         email: state.Data.UserData.email,
+        note_title: userdata,
       }),
     };
     let a = await fetch("http://127.0.0.1/deletenote", option);

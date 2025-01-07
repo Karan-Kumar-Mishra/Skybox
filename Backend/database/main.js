@@ -12,6 +12,7 @@ const mainobj={
  disconnect: functions.disconnectdb,
  editnote: functions.editnote,
  deleteallnotes: functions.deleteallnotes,
- saveFeedback: functions.saveFeedback
+ saveFeedback: functions.saveFeedback,
+ deleteSingelnote:functions.deleteSingelnote
 }
 module.exports= mainobj;
