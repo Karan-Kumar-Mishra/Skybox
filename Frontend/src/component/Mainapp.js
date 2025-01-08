@@ -14,6 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Feedback from "./Feedback";
 import Viewnotes from "./Viewnotes";
 import EditeNote from "./EditeNote";
+import FileApp from './Filesystem/FileApp'
 export default function Mainapp() {
   return (
     <>
@@ -40,6 +41,8 @@ export default function Mainapp() {
             <Route path="/feedback" element={<Feedback/>} />
             <Route path="/viewnote" element={<Viewnotes/>} />
             <Route path="/Editenote" element={<EditeNote/>} />
+            <Route path="/Filesystem" element={<FileApp/>} />
+
 
             <Route path="*" element={<Notfound />} />
           </Routes>

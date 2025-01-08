@@ -13,7 +13,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../compenent/Images/Logo.png";
+import Logo from "../component/Images/Logo.png";
 import Badge from "@mui/material/Badge";
 import Profile from "./Profile";
 import Typography from "@mui/material/Typography";
@@ -95,6 +95,7 @@ function DemoPageContent({ pathname }) {
           <NotificationListDashboard />
         </div>
       )}
+      {pathname === "/files" && navigate("/Filesystem")}
       {pathname === "/settings" && navigate("/settings")}
       {pathname === "/profile" && navigate("/profile")}
       {pathname === "/logout" && logout()}

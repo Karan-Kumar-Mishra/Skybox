@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import Mainapp from "./compenent/Mainapp";
-import Start from "./compenent/Start";
+import Mainapp from "./component/Mainapp";
+import Start from "./component/Start";
 import { useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";

@@ -2,21 +2,17 @@ const express = require("express");
 const deletenote = express.Router();
 const db = require("../database/main");
 deletenote.put("/", (req, res) => {
-  //console.log("we get reqest for delete note ", req.body);
   if (req.body.email) {
     db.getid("email", req.body.email).then((id) => {
       db.deleteSingelnote(id, req.body.note_title).then((ans) => {
-        console.log(ans)
-        if(ans.acknowledged==true && ans.modifiedCount==1)
-        {
+        console.log(ans);
+        if (ans.acknowledged == true && ans.modifiedCount == 1) {
           res.send({
-            status:"ok",
+            status: "ok",
           });
-        }
-        else
-        {
+        } else {
           res.send({
-            error:"note is not found!",
+            error: "note is not found!",
           });
         }
       });

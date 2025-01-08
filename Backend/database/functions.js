@@ -88,11 +88,9 @@ async function addnote(key, note) {
 }
 async function deleteSingelnote(key, index_title) {
   let arr = await getnotes(key);
-// console.log(index_title);
   let newUpdatenotes = arr.filter((note) => note.title != index_title);
   console.log("update notes=> ", newUpdatenotes);
   return await usermodel.updateOne({ id: key }, { $set: { notes: newUpdatenotes } });
-  
 }
 async function deleteallnotes(key) {
   return await usermodel.updateOne({ id: key }, { $set: { notes: [] } });

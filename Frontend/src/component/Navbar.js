@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import Logo from "../compenent/Images/Logo.png";
+import Logo from "../component/Images/Logo.png";
 import { useSelector, useDispatch } from "react-redux";
 
 const navigation = [
