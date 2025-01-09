@@ -125,7 +125,7 @@ function Dashboard(props) {
         logo: (
           <img
             className="rounded-full"
-            src="https://raw.githubusercontent.com/Karan-Kumar-Mishra/Skybox/refs/heads/main/Frontend/src/compenent/Images/Logo.png"
+            src="https://raw.githubusercontent.com/Karan-Kumar-Mishra/Skybox/refs/heads/main/Frontend/src/component/Images/Logo.png"
             alt="MUI logo"
           />
         ),

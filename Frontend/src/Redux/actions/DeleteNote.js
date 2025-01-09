@@ -18,5 +18,6 @@ export const deletenote = (userdata) => {
       toast.success("New note is delete successfully !");
     }
     dispatch({ type: "DELETE_NOTE", payload: res });
+   
   };
 };

@@ -13,7 +13,7 @@ export const addNote = (userdata) => {
             notedata: userdata
         })
       }
-      let a= await fetch('http://127.0.0.1/addnote',option);
+      let a= await fetch(process.env.REACT_APP_BACKEND_URL+'/addnote',option);
       let res= await a.json()
       if(res.status==="ok")
       {
