@@ -12,7 +12,7 @@ export const deletenote = (userdata) => {
         note_title: userdata,
       }),
     };
-    let a = await fetch("http://127.0.0.1/deletenote", option);
+    let a = await fetch(process.env.REACT_APP_BACKEND_URL+"/deletenote", option);
     let res = await a.json();
     if (res.status === "ok") {
       toast.success("New note is delete successfully !");

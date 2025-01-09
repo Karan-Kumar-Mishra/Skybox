@@ -13,7 +13,7 @@ export const signup = () => {
             more_info:state.Data.UserData.more_info
         })
       }
-      let a= await fetch('http://127.0.0.1/signup',option);
+      let a= await fetch(process.env.REACT_APP_BACKEND_URL+'/signup',option);
       let res= await a.json()
       console.log("SignUp=>",res)
   };

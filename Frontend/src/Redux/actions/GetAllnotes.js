@@ -10,7 +10,7 @@ export const getAllnotes = () => {
         email: state.Data.UserData.email,
       }),
     };
-    let response = await fetch("http://127.0.0.1/getnotes", option);
+    let response = await fetch(process.env.REACT_APP_BACKEND_URL+"/getnotes", option);
     let res = await response.json();
     dispatch({ type: "GET_ALL_NOTES", payload: res });
   };

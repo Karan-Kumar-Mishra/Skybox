@@ -13,7 +13,7 @@ export const feedback = (UserFeedBack) => {
             feedback:UserFeedBack
         })
       }
-      let a= await fetch('http://127.0.0.1/feedback',option);
+      let a= await fetch(process.env.REACT_APP_BACKEND_URL+'/feedback',option);
       let res= await a.json()
       console.log(res)
       if(res.status==="ok")

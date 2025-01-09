@@ -14,12 +14,11 @@ export const UpdateNote = () => {
         index: state.Data.ComponentData.currentIndex,
       }),
     };
-    let a = await fetch("http://127.0.0.1/updatanote", option);
+    let a = await fetch(process.env.REACT_APP_BACKEND_URL+"/updatanote", option);
     let res = await a.json();
     if (res.status === 'ok') {
       toast.success("note is update successfully !");
     }
-    // console.log("response=> ",res);
     dispatch({ type: "UPDATE_NOTE", payload: res });
   };
 };

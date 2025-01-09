@@ -11,7 +11,7 @@ export const deleteUser = () => {
         email: state.Data.UserData.email,
       }),
     };
-    let response = await fetch("http://127.0.0.1/deleteuser", option);
+    let response = await fetch(process.env.REACT_APP_BACKEND_URL+"/deleteuser", option);
     let res = await response.json();
     if (res.status === "ok") {
       toast.success("Your account is delete successfully !");

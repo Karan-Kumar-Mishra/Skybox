@@ -10,7 +10,7 @@ export const getNote = () => {
         email: state.Data.UserData.email,
       }),
     };
-    let response = await fetch("http://127.0.0.1/getnote", option);
+    let response = await fetch(process.env.REACT_APP_BACKEND_URL+"/getnote", option);
     let res = await response.json();
     dispatch({ type: "GET_ONE_NOTE", payload: res });
   };
