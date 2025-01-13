@@ -5,9 +5,15 @@ const middleware= require('./middleware/main')
 const status=require('express-status-monitor')
 const service=require('./services/main')
 const cors = require('cors')
+const fileSystemRoutes = require("./FileSystem/app/routes/fileSystem.routes");
+const errorHandler = require("./FileSystem/app/middlewares/errorHandler.middleware");
+const dotenv = require("dotenv");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger-output.json");
 
 require('dotenv').config();
-// console.log(process.env.API_KEY)
+dotenv.config();
+
 
 // app.use(middleware.authentication)
 app.use(middleware.bodyParserJson);
@@ -15,9 +21,7 @@ app.use(middleware.bodyParserUrlencoded);
 app.use(express.json());
 app.use(status())
 app.use(cors())
-
 service.AllServices(app);
-
 app.use('/', route.home);  
 app.use('/signup', route.signup);  
 app.use('/login', route.login);  
@@ -32,6 +36,11 @@ app.use('/deletenote', route.deletenote);
 app.use('/deleteallnote', route.deleteallnote);  
 app.use('/feedback',route.feedback);
 
+app.use(express.static("public/uploads"));
+app.use(express.json());
+app.use("/api/file-system", fileSystemRoutes);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(errorHandler);
 // app.listen(80, () => {
 //   console.log('Server is running on port 3000');
 // });

@@ -8,7 +8,11 @@ import { getAllFilesAPI } from "./api/getAllFilesAPI";
 import { downloadFile } from "./api/downloadFileAPI";
 import "./App.scss";
 
+
 function App() {
+  useEffect(()=>{
+    console.log(process.env);
+  },[])
   const fileUploadConfig = {
     url: process.env.REACT_APP_API_FILES_BASE_URL + "/upload",
   };
