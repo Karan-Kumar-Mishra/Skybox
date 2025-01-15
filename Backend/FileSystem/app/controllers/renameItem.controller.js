@@ -1,6 +1,7 @@
 const FileSystem = require("../models/FileSystem.model");
 const fs = require("fs");
 const path = require("path");
+const { nameOfFolder} =require('../controllers/generateFolder.controller')
 
 const updateChildernPathRecursive = async (item) => {
   const children = await FileSystem.find({ parentId: item._id });
@@ -34,8 +35,8 @@ const renameItem = async (req, res) => {
     const parentDir = `${path.dirname(item.path)}`;
     const newPath = `${parentDir}${parentDir === "/" ? "" : "/"}${newName}`;
 
-    const oldFullPath = path.join(__dirname, "../../public/uploads", item.path);
-    const newFullPath = path.join(__dirname, "../../public/uploads", newPath);
+    const oldFullPath = path.join(__dirname,  `../../public/uploads/${nameOfFolder}`, item.path);
+    const newFullPath = path.join(__dirname,  `../../public/uploads/${nameOfFolder}`, newPath);
 
     if (fs.existsSync(newFullPath)) {
       return res.status(400).json({ error: "A file or folder with that name already exists!" });

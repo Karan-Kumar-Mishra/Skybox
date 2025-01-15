@@ -1,5 +1,6 @@
 const express = require("express");
 const getuser = express.Router();
+const generateFolder =require('../FileSystem/app/controllers/generateFolder.controller')
 const db = require("../database/main");
 getuser.post('/',(req,res)=>{
     if(req.body.email)
@@ -8,6 +9,7 @@ getuser.post('/',(req,res)=>{
             db.getuser(id).then((user)=>{
                 if(user)
                 {
+                    
                     res.send(user)
                 }
                 else{

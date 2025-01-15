@@ -1,15 +1,9 @@
 const FileSystem = require("../models/FileSystem.model");
 const fs = require("fs");
 const path = require("path");
-
+const { nameOfFolder} =require('../controllers/generateFolder.controller')
 const createFolder = async (req, res) => {
-  // #swagger.summary = 'Creates a new folder.'
-  /*  #swagger.parameters['body'] = {
-          in: 'body',
-          required: true,
-          schema: {$ref: '#/definitions/CreateFolder'}
-      }
-  */
+
   try {
     const { name, parentId } = req.body;
 
@@ -27,7 +21,7 @@ const createFolder = async (req, res) => {
     //
 
     // Physical folder creation using fs
-    const fullFolderPath = path.join(__dirname, "../../public/uploads", folderPath);
+    const fullFolderPath = path.join(__dirname, `../../public/uploads/${nameOfFolder}`, folderPath);
     if (!fs.existsSync(fullFolderPath)) {
       await fs.promises.mkdir(fullFolderPath, { recursive: true });
     } else {
@@ -44,9 +38,7 @@ const createFolder = async (req, res) => {
 
     await newFolder.save();
 
-    /* #swagger.responses[201] = {
-      schema: { $ref: '#/definitions/Folder' },
-      } */
+    
     res.status(201).json(newFolder);
   } catch (error) {
     res.status(500).json({ error: error.message });
