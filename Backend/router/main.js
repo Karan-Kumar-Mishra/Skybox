@@ -12,6 +12,7 @@ const getnotes= require('./getnotes')
 const getnote= require('./getnote')
 const getuser= require('./getuser')
 const feedback = require('./feedback')
+const addnotifiaction=require('./addnotification')
 
 const mainobj={
     authentication,
@@ -27,6 +28,7 @@ const mainobj={
     getnotes,
     getnote,
     getuser,
-    feedback
+    feedback,
+    addnotifiaction
 }
 module.exports= mainobj;

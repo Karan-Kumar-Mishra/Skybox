@@ -13,6 +13,9 @@ const mainobj={
  editnote: functions.editnote,
  deleteallnotes: functions.deleteallnotes,
  saveFeedback: functions.saveFeedback,
- deleteSingelnote:functions.deleteSingelnote
+ deleteSingelnote:functions.deleteSingelnote,
+ addNotification:functions.addNotification,
+ deleteNotification:functions.deleteNotification,
+ deleteAllNotification:functions.deleteAllNotification
 }
 module.exports= mainobj;

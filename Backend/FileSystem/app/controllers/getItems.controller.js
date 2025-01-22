@@ -2,6 +2,7 @@ const FileSystem = require("../models/FileSystem.model");
 
 const getItems = async (req, res) => {
   // #swagger.summary = 'Get all items (files & folders)'
+  console.log("body=>",req.body);
   try {
     const files = await FileSystem.find();
     /* 

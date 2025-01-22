@@ -116,7 +116,6 @@ async function getID(key, value) {
     return error;
   }
 }
-
 async function disconnectdb() {
   try {
     await mongoose.disconnect();
@@ -140,6 +139,16 @@ async function saveFeedback(feedbackObj) {
   }
   return res;
 }
+async function addNotification(msg) {
+  return await usermodel.updateOne( {$push: {  Notifications: {id:generateRandomId(20) ,data:Date(),text:msg}} } );
+}
+async function deleteNotification(key) {
+  
+}
+async function deleteAllNotification() {
+ 
+}
+
 module.exports = {
   connectdb,
   getID,
@@ -155,4 +164,7 @@ module.exports = {
   deleteSingelnote,
   deleteallnotes,
   saveFeedback,
+  addNotification,
+  deleteNotification,
+  deleteAllNotification
 };

@@ -193,7 +193,7 @@ async function getuser()
   let res= await a.json()
   console.log(res)
 }
-getuser()
+//getuser()
 async function feedback()
 {
   let option={
@@ -210,4 +210,20 @@ async function feedback()
   let res= await a.json()
   console.log(res)
 }
-feedback()
+//feedback()
+async function addnotifiaction()
+{
+  let option={
+    method :"POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        msg:"first message"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/addnotification',option);
+  let res= await a.json()
+  console.log(res)
+}
+addnotifiaction()

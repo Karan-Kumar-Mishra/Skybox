@@ -4,6 +4,7 @@ usrschema= mongoose.Schema({
     name:String,
     email:String,
     notes :[],
+    Notifications:[],
     more_info :{}
 });
 

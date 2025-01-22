@@ -35,6 +35,9 @@ app.use('/addnote',route.addnote);
 app.use('/deletenote', route.deletenote);  
 app.use('/deleteallnote', route.deleteallnote);  
 app.use('/feedback',route.feedback);
+app.use('/addnotification',route.addnotifiaction);
+
+
 
 app.use(express.static("public/uploads"));
 app.use(express.json());

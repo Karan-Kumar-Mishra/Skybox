@@ -3,7 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const { nameOfFolder} =require('../controllers/generateFolder.controller')
 const createFolder = async (req, res) => {
-
+    console.log("body=>",req.body);
+    
   try {
     const { name, parentId } = req.body;
 
