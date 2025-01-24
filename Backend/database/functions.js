@@ -142,6 +142,9 @@ async function saveFeedback(feedbackObj) {
 async function addNotification(msg) {
   return await usermodel.updateOne( {$push: {  Notifications: {id:generateRandomId(20) ,data:Date(),text:msg}} } );
 }
+async function getNotifications(key) {
+ return await usermodel.findOne({name:key});
+}
 async function deleteNotification(key) {
   
 }
@@ -165,6 +168,7 @@ module.exports = {
   deleteallnotes,
   saveFeedback,
   addNotification,
+  getNotifications,
   deleteNotification,
   deleteAllNotification
 };

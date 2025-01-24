@@ -226,4 +226,20 @@ async function addnotifiaction()
   let res= await a.json()
   console.log(res)
 }
-addnotifiaction()
+//addnotifiaction()
+async function getnotifiactions()
+{
+  let option={
+    method :"POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        name:"Karan Mishra"
+    })
+  }
+  let a= await fetch('http://127.0.0.1/getnotification',option);
+  let res= await a.json()
+  console.log(res)
+}
+getnotifiactions()

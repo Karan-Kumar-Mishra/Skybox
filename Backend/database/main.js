@@ -16,6 +16,7 @@ const mainobj={
  deleteSingelnote:functions.deleteSingelnote,
  addNotification:functions.addNotification,
  deleteNotification:functions.deleteNotification,
- deleteAllNotification:functions.deleteAllNotification
+ deleteAllNotification:functions.deleteAllNotification,
+ getNotifications:functions.getNotifications
 }
 module.exports= mainobj;
