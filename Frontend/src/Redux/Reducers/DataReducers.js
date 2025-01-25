@@ -10,6 +10,7 @@ const initialState = {
     name: "Username",
     email: "Email",
     notes: [],
+    notifications:[],
     more_info: {},
   },
 };
@@ -38,6 +39,14 @@ const dataReducer = (state = initialState, action) => {
       return state;
     case "DELETE_NOTE":
       return state;
+    case "GET_USERS_NOTIFICATION":
+      return {
+        ...state,
+        UserData: {
+          ...state.UserData,
+          notifications: action.payload
+        }
+      };
     default:
       return state;
   }

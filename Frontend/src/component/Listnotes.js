@@ -12,9 +12,12 @@ export default function Example() {
   const dispatch = useDispatch();
   const store_data = useSelector((state) => state.Data);
   const [a, seta] = useState(false);
-
+  
   const [showNote, setshowNote] = useState(false);
   const navigate = useNavigate();
+  useEffect(()=>{
+    console.log("change the store data",store_data);
+  },[store_data])
   useEffect(() => {
     dispatch(getAllnotes());
     setTimeout(() => {

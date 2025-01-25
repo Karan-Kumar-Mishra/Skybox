@@ -19,6 +19,8 @@ import Profile from "./Profile";
 import Typography from "@mui/material/Typography";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationListDashboard from "./NotificationListDashboard";
+import { useDispatch, useSelector } from "react-redux";
+
 const NAVIGATION = [
   {
     segment: "notes",
@@ -29,7 +31,7 @@ const NAVIGATION = [
     segment: "notification",
     title: "Notification",
     icon: (
-      <Badge badgeContent={1} color="primary">
+      <Badge badgeContent={50} color="primary">
         <CircleNotificationsIcon />
       </Badge>
     ),
@@ -118,6 +120,10 @@ function Dashboard(props) {
     ele.style.height = "80vh";
     ele.style.width = "98vw";
   }, []);
+  const store_data = useSelector((state) => state.Data);
+  React.useEffect(() => {
+    console.log("re render the dashboard when redux is update");
+  }, [store_data])
   return (
     <AppProvider
       navigation={NAVIGATION}
