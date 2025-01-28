@@ -117,13 +117,10 @@ function Dashboard(props) {
     if (ele2) {
       ele2.className = "hide-scrollbar";
     }
-    ele.style.height = "80vh";
-    ele.style.width = "98vw";
+    // ele.style.height = "80vh";
+    // ele.style.width = "98vw";
   }, []);
   const store_data = useSelector((state) => state.Data);
-  React.useEffect(() => {
-    console.log("re render the dashboard when redux is update");
-  }, [store_data])
   return (
     <AppProvider
       navigation={NAVIGATION}

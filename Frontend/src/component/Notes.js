@@ -7,13 +7,10 @@ export default function Notes() {
   const [showNote, setshowNote] = useState(false);
   const dispatch = useDispatch();
   const store_data = useSelector((state) => state.Data);
-  const [a, seta] = useState(false);
+
   useEffect(() => {
     dispatch(getAllnotes());
-    setTimeout(() => {
-      seta(true);
-    }, 1000);
-  }, [dispatch, a]);
+  }, [dispatch]);
   return (
     <div className="h-screen w-screen">
       <ul

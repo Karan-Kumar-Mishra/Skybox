@@ -15,9 +15,6 @@ export default function Example() {
   
   const [showNote, setshowNote] = useState(false);
   const navigate = useNavigate();
-  useEffect(()=>{
-    console.log("change the store data",store_data);
-  },[store_data])
   useEffect(() => {
     dispatch(getAllnotes());
     setTimeout(() => {

@@ -9,20 +9,16 @@ export default function NotesDashboard() {
   const [showNote, setshowNote] = useState(false);
   const dispatch = useDispatch();
   const store_data = useSelector((state) => state.Data);
-  const [a, seta] = useState(false);
   useEffect(() => {
     dispatch(getAllnotes());
-    setTimeout(() => {
-      seta(true);
-    }, 1000);
-  }, [dispatch, a]);
+  }, [dispatch]);
   return (
     <div className="h-screen w-screen">
       <ul
         role="list"
         className="divide-y bg-transparent  overflow-x-hidden hide-scrollbar"
       >
-        {store_data.UserData.notes.length ? (
+        {store_data.UserData.notes ? (
           store_data.UserData.notes.map((note, index) => (
             <li
               key={nanoid()}

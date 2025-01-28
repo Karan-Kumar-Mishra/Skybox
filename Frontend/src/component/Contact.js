@@ -112,7 +112,7 @@ export default function Example() {
             <button
               type="submit"
               value="send"
-              className="block w-full rounded-full h-16  bg-gradient-to-r from-indigo-900 to-black  px-3.5 py-2.5 text-center text-xl font-extrabold  text-white shadow-2xl hover:bg-slate-900"
+              className="block w-full rounded-full h-16  bg-gradient-to-r from-indigo-900 to-black  px-3.5 py-2.5 text-center text-xl font-extrabold shadow-black  text-white shadow-2xl hover:bg-slate-900"
             >
               Send
             </button>

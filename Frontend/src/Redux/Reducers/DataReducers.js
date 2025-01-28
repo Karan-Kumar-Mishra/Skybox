@@ -23,8 +23,13 @@ const dataReducer = (state = initialState, action) => {
       state.UserData.email = action.payload.email;
       return state;
     case "GET_ALL_NOTES":
-      state.UserData.notes = action.payload;
-      return state;
+      return {
+        ...state,
+        UserData: {
+          ...state.UserData,
+          notes: action.payload
+        }
+      };
     case "ADD_NOTE":
       return state;
     case "DELETE_USER":
