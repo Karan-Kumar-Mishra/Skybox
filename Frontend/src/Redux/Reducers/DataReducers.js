@@ -52,7 +52,14 @@ const dataReducer = (state = initialState, action) => {
           notifications: action.payload
         }
       };
+    case "DELETE_USER_NOTIFICATION":
+    return {...state };
+    case "DELETE_USER_ALL_NOTIFICATION":
+    return {...state };
+    
     default:
+
+    
       return state;
   }
 };

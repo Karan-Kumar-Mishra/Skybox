@@ -6,11 +6,11 @@ async function feedback()
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-        Date:Date(),
-        feedback:"This is the amezing application"
+        
+       name:"Karan Mishra"
     })
   }
-  let a= await fetch('http://127.0.0.1/feedback',option);
+  let a= await fetch('http://127.0.0.1/deleteAllnotification',option);
   let res= await a.json()
   console.log(res)
 }

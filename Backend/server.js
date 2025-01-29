@@ -37,12 +37,14 @@ app.use('/deleteallnote', route.deleteallnote);
 app.use('/feedback',route.feedback);
 app.use('/addnotification',route.addnotifiaction);
 app.use('/getnotification',route.getnotification);
+app.use('/deletenotification',route.deletenotifiaction);
+app.use('/deleteAllnotification',route.deleteAllnotifiaction);
+
+
 
 app.use(express.static("public/uploads"));
 app.use(express.json());
 app.use("/api/file-system", fileSystemRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(errorHandler);
-// app.listen(80, () => {
-//   console.log('Server is running on port 3000');
-// });
+

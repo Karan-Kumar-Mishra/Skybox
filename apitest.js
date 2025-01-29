@@ -226,7 +226,7 @@ async function addnotifiaction()
   let res= await a.json()
   console.log(res)
 }
-//addnotifiaction()
+addnotifiaction()
 async function getnotifiactions()
 {
   let option={
@@ -242,4 +242,22 @@ async function getnotifiactions()
   let res= await a.json()
   console.log(res)
 }
-getnotifiactions()
+//getnotifiactions()
+async function deletenotifiaction()
+{
+  let option={
+    method :"POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        name:"Karan Mishra",
+        notification_id:"443541b6dfc140b2a1f4"
+    })
+  }
+  
+  let a= await fetch('http://127.0.0.1/deletenotification',option);
+  let res= await a.json()
+  console.log(res)
+}
+//deletenotifiaction()

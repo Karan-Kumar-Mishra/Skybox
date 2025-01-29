@@ -89,7 +89,6 @@ async function addnote(key, note) {
 async function deleteSingelnote(key, index_title) {
   let arr = await getnotes(key);
   let newUpdatenotes = arr.filter((note) => note.title != index_title);
-  console.log("update notes=> ", newUpdatenotes);
   return await usermodel.updateOne({ id: key }, { $set: { notes: newUpdatenotes } });
 }
 async function deleteallnotes(key) {
@@ -140,16 +139,22 @@ async function saveFeedback(feedbackObj) {
   return res;
 }
 async function addNotification(msg) {
-  return await usermodel.updateOne( {$push: {  Notifications: {id:generateRandomId(20) ,data:Date(),text:msg}} } );
+  return await usermodel.updateOne({ $push: { Notifications: { id: generateRandomId(20), data: Date(), text: msg } } });
 }
 async function getNotifications(key) {
- return await usermodel.findOne({name:key});
+  return await usermodel.findOne({ name: key });
 }
-async function deleteNotification(key) {
-  
+async function deleteNotification(username, notification_id) {
+  let usernotes = (await getNotifications(username)).Notifications;
+  let newnotifications = usernotes.filter((notification) => notification.id != notification_id);
+  return await usermodel.updateOne({ name: username }, { $set: { Notifications: newnotifications } });
+
 }
-async function deleteAllNotification() {
- 
+async function deleteAllNotification(username) {
+  let usernotes = (await getNotifications(username)).Notifications;
+  usernotes = []; //delete all notifications
+  return await usermodel.updateOne({ name: username }, { $set: { Notifications: usernotes } });
+
 }
 
 module.exports = {

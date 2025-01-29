@@ -14,6 +14,8 @@ const getuser= require('./getuser')
 const feedback = require('./feedback')
 const addnotifiaction=require('./addnotification')
 const getnotification=require('./getnotification')
+const deletenotifiaction=require('./deletenotification')
+const deleteAllnotifiaction=require('./deleteAllnotifiaction')
 const mainobj={
     authentication,
     home,
@@ -30,6 +32,8 @@ const mainobj={
     getuser,
     feedback,
     addnotifiaction,
-    getnotification
+    getnotification,
+    deletenotifiaction,
+    deleteAllnotifiaction
 }
 module.exports= mainobj;

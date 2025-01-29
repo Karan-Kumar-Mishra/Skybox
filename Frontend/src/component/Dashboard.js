@@ -31,7 +31,7 @@ const NAVIGATION = [
     segment: "notification",
     title: "Notification",
     icon: (
-      <Badge badgeContent={50} color="primary">
+      <Badge badgeContent={1} color="primary">
         <CircleNotificationsIcon />
       </Badge>
     ),
@@ -112,6 +112,7 @@ function Dashboard(props) {
   const router = useDemoRouter("/notes");
   const demoWindow = window !== undefined ? window() : undefined;
   React.useEffect(() => {
+  
     let ele = document.querySelector(".css-t3xolk");
     let ele2 = document.querySelector(".css-23htwk");
     if (ele2) {
