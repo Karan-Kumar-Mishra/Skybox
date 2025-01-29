@@ -11,9 +11,7 @@ deleteAllnotifiaction.post('/', (req, res) => {
             status:"error"
         })
     })
-    res.send({
-        status:"User is not found !"
-    })
+  
 
 })
 module.exports =deleteAllnotifiaction;

@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsersNotification } from '../Redux/actions/getUsersNotification';
 import { deleteNotification } from '../Redux/actions/deleteNotification';
 import { deleteAllNotification } from '../Redux/actions/deleteAllNotification';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+
 export default function NotificationListDashboard() {
   const store_data = useSelector((state) => state.Data);
   const dispatch = useDispatch();
@@ -50,15 +49,13 @@ export default function NotificationListDashboard() {
             </div>
           </div>
         </div>
-     )) : <Box sx={{ display: 'flex' }}>
-        <CircularProgress />
-      </Box>
+     )) : <h1>No notifications</h1>
       }
       {
         store_data.UserData.notifications.length > 0 && (<button className='m-2 text-1xl font-extrabold z-50 shadow-2xl'
           onClick={removeAllnotification} >
           Clear all
-        </button>)
+        </button> )
       }
     </div>
   );

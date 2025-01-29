@@ -14,6 +14,8 @@ export const deleteAllNotification = () => {
     
     let a= await fetch(process.env.REACT_APP_BACKEND_URL+'/deleteAllnotification',option);
     let res= await a.json()
+    console.log("response =>",res);
+    
     if (res.status === "ok") {
       toast.success("Notification is clear successfully !");
     }

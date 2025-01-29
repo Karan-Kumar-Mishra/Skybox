@@ -15,8 +15,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../component/Images/Logo.png";
 import Badge from "@mui/material/Badge";
-import Profile from "./Profile";
-import Typography from "@mui/material/Typography";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationListDashboard from "./NotificationListDashboard";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,9 +29,7 @@ const NAVIGATION = [
     segment: "notification",
     title: "Notification",
     icon: (
-      <Badge badgeContent={1} color="primary">
         <CircleNotificationsIcon />
-      </Badge>
     ),
   },
   {

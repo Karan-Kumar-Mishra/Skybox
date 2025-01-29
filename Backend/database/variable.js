@@ -1,7 +1,7 @@
 const { MongoClient,ServerApiVersion} =require("./package.js")
 const dbName = process.env.DB;
 const collectionName= "cloud";
-const URL= "mongodb+srv://karan:1234@cluster0.fyj7aks.mongodb.net/Skybox?retryWrites=true&w=majority";
+const URL= "mongodb://127.0.0.1:27017/Skybox?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0";
 const client = new MongoClient(URL, {
     serverApi: {
       version: ServerApiVersion.v1,
