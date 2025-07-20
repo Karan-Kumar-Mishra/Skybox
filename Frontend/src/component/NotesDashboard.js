@@ -18,7 +18,7 @@ export default function NotesDashboard() {
         role="list"
         className="divide-y bg-transparent  overflow-x-hidden hide-scrollbar"
       >
-        {store_data.UserData.notes ? (
+        {(store_data.UserData.notes && store_data.UserData.notes.length>0)  ? (
           store_data.UserData.notes.map((note, index) => (
             <li
               key={nanoid()}

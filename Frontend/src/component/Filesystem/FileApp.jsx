@@ -6,13 +6,21 @@ import { deleteAPI } from "./api/deleteAPI";
 import { copyItemAPI, moveItemAPI } from "./api/fileTransferAPI";
 import { getAllFilesAPI } from "./api/getAllFilesAPI";
 import { downloadFile } from "./api/downloadFileAPI";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import "./App.scss";
 
 
 function App() {
-  useEffect(()=>{
-    console.log(process.env);
-  },[])
+
+  const store_data = useSelector((state) => state.Data);
+  const navigate = useNavigate();
+  useEffect(() => {
+    // console.log("files compoenets=> ",store_data.UserData.isPrime);
+    if (!store_data.UserData.isPrime) {
+      navigate("/payment");
+    }
+  }, [store_data])
   const fileUploadConfig = {
     url: process.env.REACT_APP_API_FILES_BASE_URL + "/upload",
   };
@@ -24,7 +32,8 @@ function App() {
   const getFiles = async () => {
     setIsLoading(true);
     const response = await getAllFilesAPI();
-    setFiles(response.data);
+    console.log("check => " + response.data !== undefined ? response.data : [1, 2, 3]);
+    setFiles(response.data ? response.data : []);
     setIsLoading(false);
   };
 
@@ -122,31 +131,31 @@ function App() {
   };
 
   return (
-  
-        <FileManager
-          files={files}
-          fileUploadConfig={fileUploadConfig}
-          isLoading={isLoading}
-          onCreateFolder={handleCreateFolder}
-          onFileUploading={handleFileUploading}
-          onFileUploaded={handleFileUploaded}
-          onPaste={handlePaste}
-          onRename={handleRename}
-          onDownload={handleDownload}
-          onDelete={handleDelete}
-          onLayoutChange={handleLayoutChange}
-          onRefresh={handleRefresh}
-          onFileOpen={handleFileOpen}
-          onError={handleError}
-          layout="grid"
-          enableFilePreview
-          maxFileSize={10485760}
-          filePreviewPath={process.env.REACT_APP_API_FILES_BASE_URL}
-          acceptedFileTypes=".txt, .png, .jpg, .jpeg, .pdf, .doc, .docx, .exe"
-          height="98vh"
-          width="98vw"
-          initialPath=""
-        />
+
+    <FileManager
+      files={files}
+      fileUploadConfig={fileUploadConfig}
+      isLoading={isLoading}
+      onCreateFolder={handleCreateFolder}
+      onFileUploading={handleFileUploading}
+      onFileUploaded={handleFileUploaded}
+      onPaste={handlePaste}
+      onRename={handleRename}
+      onDownload={handleDownload}
+      onDelete={handleDelete}
+      onLayoutChange={handleLayoutChange}
+      onRefresh={handleRefresh}
+      onFileOpen={handleFileOpen}
+      onError={handleError}
+      layout="grid"
+      enableFilePreview
+      maxFileSize={10485760}
+      filePreviewPath={process.env.REACT_APP_API_FILES_BASE_URL}
+      acceptedFileTypes=".txt, .png, .jpg, .jpeg, .pdf, .doc, .docx, .exe"
+      height="98vh"
+      width="98vw"
+      initialPath=""
+    />
   );
 }
 

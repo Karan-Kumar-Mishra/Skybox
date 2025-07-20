@@ -18,7 +18,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Navbar() {
   const { logout } = useAuth0();
   const store_data = useSelector((state)=>state.Data);
 
@@ -83,9 +83,10 @@ export default function Example() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         alt=""
-                        src={store_data.UserData.more_info.picture}
+                        src={store_data.UserData.more_info.picture ? store_data.UserData.more_info.picture : "../Images/DefaultUser.png" }
                         className="h-8 w-8 rounded-full"
                       />
+                      {console.log("check the user picture=> ",store_data.UserData.more_info.picture)}
                     </Menu.Button>
                   </div>
                  

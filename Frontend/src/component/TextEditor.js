@@ -5,6 +5,7 @@ import { addNote } from "../Redux/actions/AddNote";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
+import Navbar from "./Navbar"
 export default function TextEditor() {
   const [newNote, setnewNote] = useState({ title: "", note: "" });
   const [dilogButton, setdilogButton] = useState(true);
@@ -49,6 +50,8 @@ export default function TextEditor() {
   }
 
   return (
+    <>
+    <Navbar/>
     <div>
       <Toaster
         toastOptions={{
@@ -149,9 +152,10 @@ export default function TextEditor() {
             respondWith.string(() =>
               Promise.reject("See docs to implement AI Assistant")
             ),
-        }}
+          }}
         initialValue="Welcome to SkyBox App !"
       />
     </div>
+          </>
   );
 }

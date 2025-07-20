@@ -28,8 +28,8 @@ export default function NotificationListDashboard() {
   }
   return (
     <div>
+      {console.log("while check the notification => ",store_data)}
       {store_data.UserData.notifications.length > 0 ? store_data.UserData.notifications.map((item) => (
-
         <div key={nanoid()} className="messages">
           <div className="message bg-slate-800  text-white">
             <div className="message-icon"></div>
@@ -38,7 +38,7 @@ export default function NotificationListDashboard() {
                 <div className="message-title">Skybox</div>
                 <div className="message-time">{(item.data).substring(0, 25)}</div>
               </div>
-              <div className="message-content">{item.text}
+              <div className="message-content">{item.text.text}
 
               </div>
               <div onClick={() => {

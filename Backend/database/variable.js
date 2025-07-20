@@ -1,7 +1,10 @@
 const { MongoClient,ServerApiVersion} =require("./package.js")
+const dotenv = require("dotenv");
+require('dotenv').config();
+dotenv.config();
 const dbName = process.env.DB;
 const collectionName= "cloud";
-const URL= "mongodb://127.0.0.1:27017/Skybox?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0";
+const URL= process.env.MONGO_URI;
 const client = new MongoClient(URL, {
     serverApi: {
       version: ServerApiVersion.v1,

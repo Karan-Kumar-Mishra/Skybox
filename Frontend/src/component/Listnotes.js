@@ -7,7 +7,7 @@ import { getAllnotes } from "../Redux/actions/GetAllnotes";
 import { SetcurrentNote } from "../Redux/actions/SetcurrentNote";
 import EditButton from "./EditButton";
 import Loading from "./Loading";
-
+import Navbar from "./Navbar"
 export default function Example() {
   const dispatch = useDispatch();
   const store_data = useSelector((state) => state.Data);
@@ -28,6 +28,7 @@ export default function Example() {
   }
   return (
     <>
+    <Navbar/>
       <div className="main">
         <div className="addbtn flex justify-center bg-gradient-to-r from-black to-indigo-900">
           <button

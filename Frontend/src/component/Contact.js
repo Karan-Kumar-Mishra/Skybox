@@ -1,6 +1,9 @@
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Navbar from "./Navbar";
 export default function Example() {
   return (
+    <>
+    <Navbar/>
     <div className="h-screen bg-gradient-to-r from-black to-indigo-900">
       <div className=" isolate bg-gradient-to-r from-black to-indigo-900 px-6 py-24 sm:py-32 lg:px-8">
         <div
@@ -104,7 +107,7 @@ export default function Example() {
                   rows={4}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   defaultValue={""}
-                />
+                  />
               </div>
             </div>
           </div>
@@ -113,12 +116,13 @@ export default function Example() {
               type="submit"
               value="send"
               className="block w-full rounded-full h-16  bg-gradient-to-r from-indigo-900 to-black  px-3.5 py-2.5 text-center text-xl font-extrabold shadow-black  text-white shadow-2xl hover:bg-slate-900"
-            >
+              >
               Send
             </button>
           </div>
         </form>
       </div>
     </div>
+              </>
   );
 }

@@ -28,6 +28,7 @@ async function adduser(user) {
       id: generateRandomId(20),
       name: user.name,
       email: user.email,
+      isprime: false,
       more_info: user.more_info,
     });
     return await newUser.save();
@@ -89,6 +90,7 @@ async function addnote(key, note) {
 async function deleteSingelnote(key, index_title) {
   let arr = await getnotes(key);
   let newUpdatenotes = arr.filter((note) => note.title != index_title);
+  await addNotification({ text: `note ${key} is delete sucessfully !` })
   return await usermodel.updateOne({ id: key }, { $set: { notes: newUpdatenotes } });
 }
 async function deleteallnotes(key) {
@@ -156,6 +158,15 @@ async function deleteAllNotification(username) {
   return await usermodel.updateOne({ name: username }, { $set: { Notifications: usernotes } });
 
 }
+async function isPrime(emailid) {
+  return (await getuser("email", emailid)).isPrime;
+}
+async function makePrime(emailid) {
+  return (await getuser("email", emailid)).isPrime = true;
+}
+async function removePrime(emailid) {
+  return (await getuser("email", emailid)).isPrime = false;
+}
 
 module.exports = {
   connectdb,
@@ -167,6 +178,9 @@ module.exports = {
   deleteuser,
   addnote,
   editnote,
+  isPrime,
+  makePrime,
+  removePrime,
   updatenote,
   disconnectdb,
   deleteSingelnote,

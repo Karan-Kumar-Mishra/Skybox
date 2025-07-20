@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import Navbar from "./Navbar";
 import { useDispatch, useSelector } from 'react-redux';
 import { feedback } from "../Redux/actions/Feedback";
 export default function Feedback() {
@@ -15,6 +16,8 @@ export default function Feedback() {
     FeedbackTextRef.current.value=FeedbackTextRef.current.value+emoji;
   }
   return (
+    <>
+    <Navbar/>
     <div className="h-screen z-50 flex items-center justify-center bg-gradient-to-r from-black to-indigo-900">
       <div className="bg-slate-800 border border-slate-700 grid grid-cols-6 gap-2 rounded-xl p-2 text-sm">
         <h1 className="text-center text-slate-600 text-xl font-bold col-span-6">
@@ -77,5 +80,6 @@ export default function Feedback() {
         </button>
       </div>
     </div>
+              </>
   );
 }

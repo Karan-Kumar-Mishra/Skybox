@@ -37,8 +37,9 @@ export default function Start() {
             Start using our Skybox app today.
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
-            Malesuada adipiscing sagittis vel nulla.
+            At Skybox, we believe that your notes are more than just
+            text—they're the building blocks of your ideas, projects, and
+            dreams.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
             <button

@@ -3,6 +3,7 @@ usrschema= mongoose.Schema({
     id:String,
     name:String,
     email:String,
+    isprime:Boolean,
     notes :[],
     Notifications:[],
     more_info :{}

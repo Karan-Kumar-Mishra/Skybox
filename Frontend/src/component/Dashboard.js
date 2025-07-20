@@ -18,6 +18,7 @@ import Badge from "@mui/material/Badge";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationListDashboard from "./NotificationListDashboard";
 import { useDispatch, useSelector } from "react-redux";
+import Navbar from "./Navbar"
 
 const NAVIGATION = [
   {
@@ -37,11 +38,11 @@ const NAVIGATION = [
     title: "Files",
     icon: <InsertDriveFileIcon />,
   },
-  {
-    segment: "settings",
-    title: "Settings",
-    icon: <SettingsIcon />,
-  },
+  // {
+  //   segment: "settings",
+  //   title: "Settings",
+  //   icon: <SettingsIcon />,
+  // },
   {
     segment: "profile",
     title: "Profile",
@@ -115,10 +116,12 @@ function Dashboard(props) {
       ele2.className = "hide-scrollbar";
     }
     // ele.style.height = "80vh";
-    // ele.style.width = "98vw";
+     ele.style.width = "98vw";
   }, []);
   const store_data = useSelector((state) => state.Data);
   return (
+    <>
+    <Navbar/>
     <AppProvider
       navigation={NAVIGATION}
       branding={{
@@ -127,7 +130,7 @@ function Dashboard(props) {
             className="rounded-full"
             src="https://raw.githubusercontent.com/Karan-Kumar-Mishra/Skybox/refs/heads/main/Frontend/src/component/Images/Logo.png"
             alt="MUI logo"
-          />
+            />
         ),
         title: "Skybox",
         homeUrl: "/toolpad/core/introduction",
@@ -135,11 +138,12 @@ function Dashboard(props) {
       router={router}
       theme={demoTheme}
       window={demoWindow}
-    >
+      >
       <DashboardLayout>
         <DemoPageContent pathname={router.pathname} />
       </DashboardLayout>
     </AppProvider>
+      </>
   );
 }
 export default Dashboard;

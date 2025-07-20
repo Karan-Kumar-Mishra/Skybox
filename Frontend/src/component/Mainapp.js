@@ -15,6 +15,7 @@ import Feedback from "./Feedback";
 import Viewnotes from "./Viewnotes";
 import EditeNote from "./EditeNote";
 import FileApp from './Filesystem/FileApp'
+import Payment from "./Payment";
 export default function Mainapp() {
   return (
     <>
@@ -28,20 +29,21 @@ export default function Mainapp() {
       />
       <Router>
         <Suspense fallback={<Loading />}>
-          <Navbar />
+    
           <Routes>
-            <Route path="/" element={<Listnotes/>} />
-            <Route path="/setting" element={<Setting/>} />
-            <Route path="/profile" element={<Profile/>} />
-            <Route path="/about" element={<About/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
-            <Route path="/contact" element={<Contact/>} />
-            <Route path="/settings" element={<Setting/>} />
-            <Route path="/Editor" element={<TextEditor/>} />
-            <Route path="/feedback" element={<Feedback/>} />
-            <Route path="/viewnote" element={<Viewnotes/>} />
-            <Route path="/Editenote" element={<EditeNote/>} />
-            <Route path="/Filesystem" element={<FileApp/>} />
+            <Route path="/" element={<Listnotes />} />
+            <Route path="/setting" element={<Setting />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/settings" element={<Setting />} />
+            <Route path="/Editor" element={<TextEditor />} />
+            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/viewnote" element={<Viewnotes />} />
+            <Route path="/Editenote" element={<EditeNote />} />
+            <Route path="/Filesystem" element={<FileApp />} />
 
 
             <Route path="*" element={<Notfound />} />

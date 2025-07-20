@@ -39,6 +39,8 @@ app.use('/addnotification',route.addnotifiaction);
 app.use('/getnotification',route.getnotification);
 app.use('/deletenotification',route.deletenotifiaction);
 app.use('/deleteAllnotification',route.deleteAllnotifiaction);
+app.use('/checkprime',route.checkprime);
+app.use('/markprime',route.markprime);
 
 
 

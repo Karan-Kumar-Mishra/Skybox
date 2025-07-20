@@ -9,8 +9,9 @@ const initialState = {
   UserData: {
     name: "Username",
     email: "Email",
+    isPrime: false,
     notes: [],
-    notifications:[],
+    notifications:[{data:"this is the message ",text:"alert"}],
     more_info: {},
   },
 };
@@ -21,6 +22,7 @@ const dataReducer = (state = initialState, action) => {
       state.UserData.more_info = action.payload;
       state.UserData.name = action.payload.name;
       state.UserData.email = action.payload.email;
+      state.UserData.isPrime=false;
       return state;
     case "GET_ALL_NOTES":
       return {

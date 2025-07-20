@@ -1,11 +1,13 @@
 import React from "react";
 import Box2 from "./Box2";
+import Navbar from "./Navbar";
 export default function About() {
   return (
     <>
+      <Navbar />
       <div className="h-screen w-full bg-gradient-to-r from-black to-indigo-900 flex items-center justify-center content-center">
         <div className="content text-white font-semibold flex items-center justify-center flex-col">
-        
+
           <div className="heading text-white font-semibold text-3xl ">
             About Skybox.com
           </div>
