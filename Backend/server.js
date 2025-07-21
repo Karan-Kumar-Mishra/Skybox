@@ -41,6 +41,9 @@ app.use('/deletenotification',route.deletenotifiaction);
 app.use('/deleteAllnotification',route.deleteAllnotifiaction);
 app.use('/checkprime',route.checkprime);
 app.use('/markprime',route.markprime);
+app.use('/create_order',route.create_order);
+app.use('/verify_payment',route.verify_payment);
+
 
 
 

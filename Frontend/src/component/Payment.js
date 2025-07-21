@@ -10,16 +10,17 @@ export default function Payment() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const store_data = useSelector((state) => state.Data);
-  const user = store_data.UserData;
+
+  const [user,setuser]=useState(useSelector((state) => state.Data.UserData));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(store_data)
+    console.log("check emain=> ",user)
     if (store_data.UserData.isPrime) {
       navigate("/");
     }
-  },[])
+  },[store_data,user])
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement('script');
@@ -40,7 +41,7 @@ export default function Payment() {
 
     try {
 
-      const { data } = await axios.post(import.meta.env.VITE_BACKEND_URL + '/create_order', {
+      const { data } = await axios.post(process.env.REACT_APP_BACKEND_URL + '/create_order', {
         amount: parseFloat(amount),
         currency: 'INR',
       });
@@ -55,18 +56,18 @@ export default function Payment() {
         key: data.key,
         amount: data.amount,
         currency: data.currency,
-        name: 'Hoststream',
+        name: 'Skybox',
         description: 'Test Transaction',
         order_id: data.orderId,
         handler: async (response) => {
           try {
             // Verify payment with backend
             console.log("while the sending => ", user.id)
-            const verifyResponse = await axios.post(import.meta.env.VITE_BACKEND_URL + '/verify_payment', {
+            const verifyResponse = await axios.post(process.env.REACT_APP_BACKEND_URL + '/verify_payment', {
               orderId: response.razorpay_order_id,
               razorpayPaymentId: response.razorpay_payment_id,
               razorpaySignature: response.razorpay_signature,
-              user_id: user.id
+              user_email: user.email
             });
 
             if (verifyResponse.data.success) {
@@ -88,9 +89,8 @@ export default function Payment() {
           setLoading(false);
         },
         prefill: {
-          name: 'John Doe',
-          email: 'john.doe@example.com',
-          contact: '9999999999',
+          name: user.name,
+          email: user.email,
         },
         theme: {
           color: '#000000',

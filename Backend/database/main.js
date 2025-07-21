@@ -17,6 +17,7 @@ const mainobj={
  addNotification:functions.addNotification,
  deleteNotification:functions.deleteNotification,
  deleteAllNotification:functions.deleteAllNotification,
- getNotifications:functions.getNotifications
+ getNotifications:functions.getNotifications,
+ makePrime:functions.makePrime
 }
 module.exports= mainobj;

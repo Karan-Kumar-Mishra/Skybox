@@ -18,6 +18,8 @@ const deletenotifiaction = require('./deletenotification')
 const deleteAllnotifiaction = require('./deleteAllnotifiaction')
 const checkprime = require('./checkprime')
 const markprime = require('./markprime')
+const create_order =require('./createorder')
+const verify_payment =require('./verify_payment')
 const mainobj = {
     authentication,
     home,
@@ -33,6 +35,8 @@ const mainobj = {
     getnote,
     getuser,
     feedback,
+    create_order,
+    verify_payment,
     checkprime,
     markprime,
     addnotifiaction,
