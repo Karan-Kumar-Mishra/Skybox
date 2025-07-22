@@ -10,6 +10,7 @@ const initialState = {
     name: "Username",
     email: "Email",
     isPrime: false,
+    fils_system_url:null,
     notes: [],
     notifications: [{ data: "this is the message ", text: "alert" }],
     more_info: {},
@@ -72,6 +73,14 @@ const dataReducer = (state = initialState, action) => {
         UserData: {
           ...state.UserData,
           isPrime: action.payload
+        }
+      };
+    case "GET_FILES_URL":
+      return {
+        ...state,
+        UserData: {
+          ...state.UserData,
+          fils_system_url: action.payload
         }
       };
 

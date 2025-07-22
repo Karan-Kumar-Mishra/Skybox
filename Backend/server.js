@@ -5,11 +5,8 @@ const middleware= require('./middleware/main')
 const status=require('express-status-monitor')
 const service=require('./services/main')
 const cors = require('cors')
-const fileSystemRoutes = require("./FileSystem/app/routes/fileSystem.routes");
-const errorHandler = require("./FileSystem/app/middlewares/errorHandler.middleware");
 const dotenv = require("dotenv");
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger-output.json");
+
 
 require('dotenv').config();
 dotenv.config();
@@ -43,10 +40,6 @@ app.use('/checkprime',route.checkprime);
 app.use('/markprime',route.markprime);
 app.use('/create_order',route.create_order);
 app.use('/verify_payment',route.verify_payment);
+app.use('/get_file_url',route.getFilesystemURL);
 
-app.use(express.static("public/uploads"));
-app.use(express.json());
-app.use("/api/file-system", fileSystemRoutes);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use(errorHandler);
 

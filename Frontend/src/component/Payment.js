@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { markprime } from '../Redux/actions/makeprime';
 import { checkprime } from '../Redux/actions/checkprime';
+import { getfilesystemurl } from '../Redux/actions/GetFilesystemURL';
 import axios from 'axios';
 
 export default function Payment() {
@@ -19,7 +20,7 @@ export default function Payment() {
   useEffect(() => {
     console.log("check emain=> ", user)
     dispatch(checkprime())
-    if (store_data.UserData.isPrime) {
+    if (store_data.UserData.isPrime && store_data.UserData.fils_system_url) {
       navigate("/Filesystem");
     }
   }, [store_data, user])
@@ -74,8 +75,8 @@ export default function Payment() {
 
             if (verifyResponse.data.success) {
               // alert('Payment verified successfully!');
+              dispatch(getfilesystemurl());
               dispatch(markprime());
-
               navigate('/Filesystem');
             } else {
               alert('Payment verification failed: ' + verifyResponse.data.message);

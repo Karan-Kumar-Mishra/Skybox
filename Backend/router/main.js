@@ -18,8 +18,9 @@ const deletenotifiaction = require('./deletenotification')
 const deleteAllnotifiaction = require('./deleteAllnotifiaction')
 const checkprime = require('./checkprime')
 const markprime = require('./markprime')
-const create_order =require('./createorder')
-const verify_payment =require('./verify_payment')
+const create_order = require('./createorder')
+const verify_payment = require('./verify_payment')
+const getFilesystemURL = require('./getFilesystemURL')
 
 const mainobj = {
     authentication,
@@ -43,6 +44,7 @@ const mainobj = {
     addnotifiaction,
     getnotification,
     deletenotifiaction,
-    deleteAllnotifiaction
+    deleteAllnotifiaction,
+    getFilesystemURL
 }
 module.exports = mainobj;
