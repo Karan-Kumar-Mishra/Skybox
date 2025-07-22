@@ -8,6 +8,7 @@ import { getAllFilesAPI } from "./api/getAllFilesAPI";
 import { downloadFile } from "./api/downloadFileAPI";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar";
 import "./App.scss";
 
 
@@ -131,31 +132,33 @@ function App() {
   };
 
   return (
-
-    <FileManager
-      files={files}
-      fileUploadConfig={fileUploadConfig}
-      isLoading={isLoading}
-      onCreateFolder={handleCreateFolder}
-      onFileUploading={handleFileUploading}
-      onFileUploaded={handleFileUploaded}
-      onPaste={handlePaste}
-      onRename={handleRename}
-      onDownload={handleDownload}
-      onDelete={handleDelete}
-      onLayoutChange={handleLayoutChange}
-      onRefresh={handleRefresh}
-      onFileOpen={handleFileOpen}
-      onError={handleError}
-      layout="grid"
-      enableFilePreview
-      maxFileSize={10485760}
-      filePreviewPath={process.env.REACT_APP_API_FILES_BASE_URL}
-      acceptedFileTypes=".txt, .png, .jpg, .jpeg, .pdf, .doc, .docx, .exe"
-      height="98vh"
-      width="98vw"
-      initialPath=""
-    />
+    <>
+    <Navbar/>
+      <FileManager
+        files={files}
+        fileUploadConfig={fileUploadConfig}
+        isLoading={isLoading}
+        onCreateFolder={handleCreateFolder}
+        onFileUploading={handleFileUploading}
+        onFileUploaded={handleFileUploaded}
+        onPaste={handlePaste}
+        onRename={handleRename}
+        onDownload={handleDownload}
+        onDelete={handleDelete}
+        onLayoutChange={handleLayoutChange}
+        onRefresh={handleRefresh}
+        onFileOpen={handleFileOpen}
+        onError={handleError}
+        layout="grid"
+        enableFilePreview
+        maxFileSize={10485760}
+        filePreviewPath={process.env.REACT_APP_API_FILES_BASE_URL}
+        acceptedFileTypes=".txt, .png, .jpg, .jpeg, .pdf, .doc, .docx, .exe"
+        height="98vh"
+        width="98vw"
+        initialPath=""
+      />
+    </>
   );
 }
 

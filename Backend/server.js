@@ -44,9 +44,6 @@ app.use('/markprime',route.markprime);
 app.use('/create_order',route.create_order);
 app.use('/verify_payment',route.verify_payment);
 
-
-
-
 app.use(express.static("public/uploads"));
 app.use(express.json());
 app.use("/api/file-system", fileSystemRoutes);

@@ -4,11 +4,12 @@ const db = require('../database/main')
 
 checkprime.post('/', (req, res) => {
     if (req.body.email) {
-        db.checkprime(req.body.email).then((result) => {
+        
+        db.isPrime(req.body.email).then((result) => {
             if (result) {
                 res.send({
                     status: "ok",
-                    ans:result
+                    ans: result
                 });
             }
             else {

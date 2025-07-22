@@ -1,26 +1,28 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { markprime } from '../Redux/actions/makeprime';
+import { checkprime } from '../Redux/actions/checkprime';
 import axios from 'axios';
 
 export default function Payment() {
- 
+
 
   const [amount, setAmount] = useState(290);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const store_data = useSelector((state) => state.Data);
-
-  const [user,setuser]=useState(useSelector((state) => state.Data.UserData));
+  const [user, setuser] = useState(useSelector((state) => state.Data.UserData));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("check emain=> ",user)
+    console.log("check emain=> ", user)
+    dispatch(checkprime())
     if (store_data.UserData.isPrime) {
-      navigate("/");
+      navigate("/Filesystem");
     }
-  },[store_data,user])
+  }, [store_data, user])
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement('script');
@@ -72,7 +74,9 @@ export default function Payment() {
 
             if (verifyResponse.data.success) {
               // alert('Payment verified successfully!');
-              navigate('/dashboard');
+              dispatch(markprime());
+
+              navigate('/Filesystem');
             } else {
               alert('Payment verification failed: ' + verifyResponse.data.message);
               dispatch({
@@ -114,7 +118,7 @@ export default function Payment() {
 
         {/* Price */}
         <div className="mt-4 text-center">
-          <span className="text-4xl font-bold text-white">$29</span>
+          <span className="text-4xl font-bold text-white">$9</span>
 
         </div>
 
@@ -149,7 +153,7 @@ export default function Payment() {
         {/* Call to Action */}
         <div className="mt-6">
           <button onClick={handlePayment}
-           className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
+            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
             Choose Plan
           </button>
         </div>

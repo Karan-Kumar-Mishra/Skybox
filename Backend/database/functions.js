@@ -159,13 +159,20 @@ async function deleteAllNotification(username) {
 
 }
 async function isPrime(emailid) {
-  return (await getuser("email", emailid)).isPrime;
+  return (await getuser("email", emailid)).isprime;
 }
 async function makePrime(emailid) {
-  return (await getuser("email", emailid)).isPrime = true;
+    const user = await getuser("email", emailid);
+    if (user) {
+        user.isprime = true;  // Note: It's 'isprime' in your document, not 'isPrime'
+        await user.save();    // This assumes your user model has a save method
+        return user;
+    } else {
+        throw new Error("User not found");
+    }
 }
 async function removePrime(emailid) {
-  return (await getuser("email", emailid)).isPrime = false;
+  return (await getuser("email", emailid)).isprime = false;
 }
 
 module.exports = {
