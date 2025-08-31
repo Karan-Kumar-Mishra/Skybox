@@ -162,17 +162,29 @@ async function isPrime(emailid) {
   return (await getuser("email", emailid)).isprime;
 }
 async function makePrime(emailid) {
-    const user = await getuser("email", emailid);
-    if (user) {
-        user.isprime = true;  // Note: It's 'isprime' in your document, not 'isPrime'
-        await user.save();    // This assumes your user model has a save method
-        return user;
-    } else {
-        throw new Error("User not found");
-    }
+  const user = await getuser("email", emailid);
+  if (user) {
+    user.isprime = true;  // Note: It's 'isprime' in your document, not 'isPrime'
+    await user.save();    // This assumes your user model has a save method
+    return user;
+  } else {
+    throw new Error("User not found");
+  }
 }
 async function removePrime(emailid) {
   return (await getuser("email", emailid)).isprime = false;
+}
+async function add_fs_url(emailid,new_fs_info) {
+  const user = await getuser("email", emailid);
+  if (user) {
+    user.fs_info.fs_id=new_fs_info.id
+    user.fs_info.fs_name=new_fs_info.name
+    user.fs_info.fs_url=new_fs_info.url
+    await user.save();
+    return user;
+  } else {
+    throw new Error("User not found");
+  }
 }
 
 module.exports = {
@@ -186,6 +198,7 @@ module.exports = {
   addnote,
   editnote,
   isPrime,
+  add_fs_url,
   makePrime,
   removePrime,
   updatenote,

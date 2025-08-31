@@ -22,6 +22,7 @@ const create_order = require('./createorder')
 const verify_payment = require('./verify_payment')
 const getFilesystemURL = require('./getFilesystemURL')
 
+
 const mainobj = {
     authentication,
     home,
@@ -45,6 +46,7 @@ const mainobj = {
     getnotification,
     deletenotifiaction,
     deleteAllnotifiaction,
-    getFilesystemURL
+    getFilesystemURL,
+
 }
 module.exports = mainobj;

@@ -1,6 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
-  body:{name:"karan kumar mishra"}
+  baseURL: "http://mishrazack69.Skybox.localhost",
 });

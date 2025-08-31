@@ -23,7 +23,7 @@ export default function Payment() {
     if (store_data.UserData.isPrime && store_data.UserData.fils_system_url) {
       navigate("/Filesystem");
     }
-  }, [store_data, user])
+  }, [store_data.UserData.isPrime])
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement('script');

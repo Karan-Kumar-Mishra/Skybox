@@ -19,6 +19,7 @@ const mainobj={
  deleteAllNotification:functions.deleteAllNotification,
  getNotifications:functions.getNotifications,
  makePrime:functions.makePrime,
- isPrime:functions.isPrime
+ isPrime:functions.isPrime,
+ add_fs_url:functions.add_fs_url
 }
 module.exports= mainobj;

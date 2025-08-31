@@ -12,6 +12,7 @@ export const getfilesystemurl = () => {
     };
     let response = await fetch(process.env.REACT_APP_BACKEND_URL+"/get_file_url", option);
     let res = await response.json();
+    console.log("file system res=> ",res)
     dispatch({ type: "GET_FILES_URL", payload: res });
   };
 };
