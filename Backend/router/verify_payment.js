@@ -19,6 +19,7 @@ verify_payment.post('/', (req, res) => {
         if (generatedSignature === razorpaySignature) {
 
             Database.makePrime(user_email).then(() => {
+                console.log("try to make cluster...")
                 service.create_file_backend(user_email).then(()=>{
                     res.status(200).json({ success: true, message: 'Payment verified successfully' });
                 })

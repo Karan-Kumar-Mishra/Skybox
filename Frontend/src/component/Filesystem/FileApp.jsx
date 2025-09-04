@@ -23,7 +23,7 @@ function App() {
     }
   }, [store_data])
   const fileUploadConfig = {
-    url: process.env.REACT_APP_API_FILES_BASE_URL + "/upload",
+    url: "http://mishrazack69.skybox.localhost" + "/upload",
   };
   const [isLoading, setIsLoading] = useState(false);
   const [files, setFiles] = useState([]);
@@ -152,7 +152,7 @@ function App() {
         layout="grid"
         enableFilePreview
         maxFileSize={10485760}
-        filePreviewPath={process.env.REACT_APP_API_FILES_BASE_URL}
+        filePreviewPath={"http://mishrazack69.skybox.localhost"}
         acceptedFileTypes=".txt, .png, .jpg, .jpeg, .pdf, .doc, .docx, .exe"
         height="98vh"
         width="98vw"
