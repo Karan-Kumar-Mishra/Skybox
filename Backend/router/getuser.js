@@ -9,7 +9,6 @@ getuser.post('/',(req,res)=>{
             db.getuser(id).then((user)=>{
                 if(user)
                 {
-                    
                     res.send(user)
                 }
                 else{

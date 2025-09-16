@@ -8,6 +8,8 @@ import { SetcurrentNote } from "../Redux/actions/SetcurrentNote";
 import EditButton from "./EditButton";
 import Loading from "./Loading";
 import Navbar from "./Navbar"
+import { getUser } from "../Redux/actions/getUser";
+
 export default function Example() {
   const dispatch = useDispatch();
   const store_data = useSelector((state) => state.Data);
@@ -17,6 +19,7 @@ export default function Example() {
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(getAllnotes());
+    dispatch(getUser());
     setTimeout(() => {
       seta(true);
     }, 1000);

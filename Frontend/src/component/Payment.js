@@ -5,6 +5,7 @@ import { markprime } from '../Redux/actions/makeprime';
 import { checkprime } from '../Redux/actions/checkprime';
 import { getfilesystemurl } from '../Redux/actions/GetFilesystemURL';
 import axios from 'axios';
+import { getUser } from '../Redux/actions/getUser';
 
 export default function Payment() {
 
@@ -18,9 +19,10 @@ export default function Payment() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getUser());
     console.log("check emain=> ", user)
-    dispatch(checkprime())
-    if (store_data.UserData.isPrime && store_data.UserData.fils_system_url) {
+    dispatch(checkprime());
+    if (store_data.UserData.isPrime) {
       navigate("/Filesystem");
     }
   }, [store_data.UserData.isPrime])
@@ -87,6 +89,8 @@ export default function Payment() {
                   show: true
                 }
               })
+              dispatch(getUser());
+
             }
           } catch (error) {
             alert('Error verifying payment: ' + error.message);

@@ -6,6 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserinfo } from "./Redux/actions/SetUserInfo";
 import { signup } from "./Redux/actions/SignUp";
+import { getUser } from "./Redux/actions/getUser";
 
 export default function App() {
   const { isAuthenticated, user } = useAuth0();
@@ -20,6 +21,7 @@ export default function App() {
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(setUserinfo(user));
+      dispatch(getUser());
       console.log("state data=> ", store_data);
       dispatch(signup());
       toast.success("Login successfully");

@@ -10,20 +10,22 @@ const initialState = {
     name: "Username",
     email: "Email",
     isPrime: false,
-    fils_system_url:null,
     notes: [],
     notifications: [{ data: "this is the message ", text: "alert" }],
     more_info: {},
+    fs_info: {}
   },
 };
 
 const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_USER_INFORMATION":
+      console.log("new data=> ", action.payload)
       state.UserData.more_info = action.payload;
       state.UserData.name = action.payload.name;
       state.UserData.email = action.payload.email;
-      state.UserData.isPrime = false;
+      state.UserData.isPrime = action.payload.isprime;
+      state.UserData.fs_info = action.payload.fs_info;
       return state;
     case "GET_ALL_NOTES":
       return {
@@ -67,7 +69,7 @@ const dataReducer = (state = initialState, action) => {
           isPrime: true
         }
       };
-     case "CHECK_PRIME":
+    case "CHECK_PRIME":
       return {
         ...state,
         UserData: {
