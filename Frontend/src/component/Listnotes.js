@@ -19,7 +19,7 @@ export default function Example() {
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(getAllnotes());
-    dispatch(getUser());
+   // dispatch(getUser());
     setTimeout(() => {
       seta(true);
     }, 1000);

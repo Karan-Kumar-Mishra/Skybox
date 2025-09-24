@@ -21,6 +21,7 @@ export default function Payment() {
   useEffect(() => {
     dispatch(getUser());
     console.log("check emain=> ", user)
+    console.log("state data=>",store_data)
     dispatch(checkprime());
     if (store_data.UserData.isPrime) {
       navigate("/Filesystem");
@@ -82,6 +83,7 @@ export default function Payment() {
               navigate('/Filesystem');
             } else {
               alert('Payment verification failed: ' + verifyResponse.data.message);
+              console.log("payment response=>",verifyResponse)
               dispatch({
                 type: 'SET_ERROR',
                 payload: {

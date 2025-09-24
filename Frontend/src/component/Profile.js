@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import toast,{Toaster} from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteUser } from "../Redux/actions/DeleteUser";
+import userimage from '../component/Images/DefaultUser.png'
 export default function Profile() {
   const { isAuthenticated, user } = useAuth0();
   const { logout } = useAuth0();
@@ -14,6 +15,9 @@ export default function Profile() {
     toast.success("Your account is delete successfully !");
     logout()
   }
+  useEffect(()=>{
+     console.log("state in profile =>",store_data)
+  },[user,isAuthenticated,store_data])
   return (
     <>
     <Toaster
@@ -28,7 +32,7 @@ export default function Profile() {
         <div className=" bg-gradient-to-r from-black to-indigo-900 rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
           <div className="text-gray-500 group-hover:scale-105 transition-all">
             <img
-              src={store_data.UserData.more_info.picture}
+              src={store_data?.UserData?.more_info?.picture || userimage}
               alt="User image"
               className="rounded-full h-40 m-2"
             />

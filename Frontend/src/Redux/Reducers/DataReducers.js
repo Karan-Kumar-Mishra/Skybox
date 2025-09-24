@@ -7,11 +7,11 @@ const initialState = {
     showNotificationList: true
   },
   UserData: {
-    name: "Username",
-    email: "Email",
+    name: null,
+    email: null,
     isPrime: false,
     notes: [],
-    notifications: [{ data: "this is the message ", text: "alert" }],
+    notifications: [],
     more_info: {},
     fs_info: {}
   },
@@ -20,12 +20,14 @@ const initialState = {
 const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_USER_INFORMATION":
-      console.log("new data=> ", action.payload)
-      state.UserData.more_info = action.payload;
+      console.log("payload =>",action.payload)
       state.UserData.name = action.payload.name;
       state.UserData.email = action.payload.email;
-      state.UserData.isPrime = action.payload.isprime;
-      state.UserData.fs_info = action.payload.fs_info;
+      state.UserData.isPrime = action?.payload?.isprime || false;
+      state.UserData.fs_info = action?.payload?.fs_info || null;
+      state.UserData.more_info = action?.payload?.more_info || null;
+      state.UserData.more_info = action?.payload;
+      console.log("new data=> ", state)
       return state;
     case "GET_ALL_NOTES":
       return {
@@ -88,7 +90,6 @@ const dataReducer = (state = initialState, action) => {
 
 
     default:
-
 
       return state;
   }

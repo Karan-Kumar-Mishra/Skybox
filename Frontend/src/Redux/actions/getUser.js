@@ -1,4 +1,5 @@
-export const getUser = () => {
+
+export const getUser = (userEmail) => {
   return async (dispatch, getState) => {
     const state = await getState();
     let option = {
@@ -7,7 +8,7 @@ export const getUser = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: state.Data.UserData.email,
+        email: userEmail,
       }),
     };
     let response = await fetch(process.env.REACT_APP_BACKEND_URL+"/getuser", option);

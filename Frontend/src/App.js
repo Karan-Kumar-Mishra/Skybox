@@ -21,14 +21,22 @@ export default function App() {
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(setUserinfo(user));
-      dispatch(getUser());
-      console.log("state data=> ", store_data);
-      dispatch(signup());
+      console.log("after set state data=> ", store_data);
+
+      dispatch(signup()).then(() => {
+
+        dispatch(getUser(user.email)).then(() => {
+          console.log("after login state data=> ", store_data);
+        })
+      })
+
+
+
       toast.success("Login successfully");
     } else {
       console.log("user is not authenticated");
     }
-  }, [user]);
+  }, [user, isAuthenticated]);
 
   return (
     <>

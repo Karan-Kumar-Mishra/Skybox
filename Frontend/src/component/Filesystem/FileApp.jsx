@@ -10,20 +10,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import "./App.scss";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 
 function App() {
 
-  const store_data = useSelector((state) => state.Data);
+  const { isAuthenticated, user } = useAuth0();
+  const store_data = useSelector((state) => state?.Data);
   const navigate = useNavigate();
   useEffect(() => {
-    // console.log("files compoenets=> ",store_data.UserData.isPrime);
+     console.log("files compoenets=> ",store_data.UserData);
     if (!store_data.UserData.isPrime) {
       navigate("/payment");
     }
   }, [store_data])
   const fileUploadConfig = {
-    url: "http://mishrazack69.skybox.localhost" + "/upload",
+    url: store_data?.UserData?.fs_info?.fs_url + "/upload",
   };
   const [isLoading, setIsLoading] = useState(false);
   const [files, setFiles] = useState([]);
@@ -133,7 +136,7 @@ function App() {
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <FileManager
         files={files}
         fileUploadConfig={fileUploadConfig}
@@ -152,7 +155,7 @@ function App() {
         layout="grid"
         enableFilePreview
         maxFileSize={10485760}
-        filePreviewPath={"http://mishrazack69.skybox.localhost"}
+        filePreviewPath={store_data?.UserData?.fs_info?.fs_url}
         acceptedFileTypes=".txt, .png, .jpg, .jpeg, .pdf, .doc, .docx, .exe"
         height="98vh"
         width="98vw"
