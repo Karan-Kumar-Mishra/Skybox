@@ -13,9 +13,9 @@ export const signup = () => {
             more_info:state.Data.UserData.more_info
         })
       }
-      console.log("check data while signup => ",state)
+    //  console.log("check data while signup => ",state)
       let a= await fetch(process.env.REACT_APP_BACKEND_URL+'/signup',option);
       let res= await a.json()
-      console.log("SignUp=>",res)
+    //  console.log("SignUp=>",res)
   };
 };

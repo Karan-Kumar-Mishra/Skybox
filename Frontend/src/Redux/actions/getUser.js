@@ -1,4 +1,4 @@
-
+import { signup } from "./SignUp";
 export const getUser = (userEmail) => {
   return async (dispatch, getState) => {
     const state = await getState();
@@ -11,9 +11,16 @@ export const getUser = (userEmail) => {
         email: userEmail,
       }),
     };
-    let response = await fetch(process.env.REACT_APP_BACKEND_URL+"/getuser", option);
+    let response = await fetch(process.env.REACT_APP_BACKEND_URL + "/getuser", option);
     let res = await response.json();
-
-    dispatch({ type: "SET_USER_INFORMATION", payload: res });
+    console.log("after get the user =>", res)
+    if (res['error']) {
+      console.log("error found ?")
+      dispatch(signup());
+    }
+    else
+    {
+      dispatch({ type: "GET_USER_INFORMATION", payload: res });
+    }
   };
 };

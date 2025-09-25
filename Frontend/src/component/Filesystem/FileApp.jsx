@@ -19,12 +19,13 @@ function App() {
   const { isAuthenticated, user } = useAuth0();
   const store_data = useSelector((state) => state?.Data);
   const navigate = useNavigate();
+  
   useEffect(() => {
-     console.log("files compoenets=> ",store_data.UserData);
+    console.log("state in files compoenets=> ", store_data.UserData);
     if (!store_data.UserData.isPrime) {
       navigate("/payment");
     }
-  }, [store_data])
+  }, [store_data,isAuthenticated,user])
   const fileUploadConfig = {
     url: store_data?.UserData?.fs_info?.fs_url + "/upload",
   };
@@ -36,7 +37,7 @@ function App() {
   const getFiles = async () => {
     setIsLoading(true);
     const response = await getAllFilesAPI();
-    console.log("check => " + response.data !== undefined ? response.data : [1, 2, 3]);
+
     setFiles(response.data ? response.data : []);
     setIsLoading(false);
   };
@@ -45,7 +46,7 @@ function App() {
     if (isMountRef.current) return;
     isMountRef.current = true;
     getFiles();
-  }, []);
+  }, [store_data?.UserData?.fs_info,isAuthenticated]);
   //
 
   // Create Folder

@@ -19,7 +19,7 @@ export default function Payment() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUser());
+   // dispatch(getUser());
     console.log("check emain=> ", user)
     console.log("state data=>",store_data)
     dispatch(checkprime());

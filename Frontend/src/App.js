@@ -21,17 +21,8 @@ export default function App() {
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(setUserinfo(user));
-      console.log("after set state data=> ", store_data);
-
-      dispatch(signup()).then(() => {
-
-        dispatch(getUser(user.email)).then(() => {
-          console.log("after login state data=> ", store_data);
-        })
-      })
-
-
-
+  //    console.log("after set state data=> ", store_data);
+      dispatch(getUser(user.email))
       toast.success("Login successfully");
     } else {
       console.log("user is not authenticated");

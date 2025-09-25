@@ -20,14 +20,21 @@ const initialState = {
 const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_USER_INFORMATION":
-      console.log("payload =>",action.payload)
+    //  console.log("payload =>",action.payload)
       state.UserData.name = action.payload.name;
       state.UserData.email = action.payload.email;
       state.UserData.isPrime = action?.payload?.isprime || false;
       state.UserData.fs_info = action?.payload?.fs_info || null;
       state.UserData.more_info = action?.payload?.more_info || null;
       state.UserData.more_info = action?.payload;
-      console.log("new data=> ", state)
+  //    console.log("new data=> ", state)
+      return state;
+    case "GET_USER_INFORMATION":
+      state.UserData.name = action.payload.name;
+      state.UserData.email = action.payload.email;
+      state.UserData.isPrime = action?.payload?.isprime || false;
+      state.UserData.fs_info = action?.payload?.fs_info || null;
+      state.UserData.more_info = action?.payload?.more_info || null;
       return state;
     case "GET_ALL_NOTES":
       return {
