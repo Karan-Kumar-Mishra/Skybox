@@ -1,6 +1,20 @@
+
 const db = require('../database/main')
-export default async function delete_file_backend(email_id) {
-   let data= await fetch(process.env.DOCKER_NODE+"/create")
-   let res= await data.json();
-   await db.add_fs_url(email_id,res.url);
+
+async function delete_file_backend(email_id) {
+   const user = await db.getuser("email", email_id)
+   console.log("user while deleting the fs =>",user)
+   let option = {
+      method: "DELETE",
+      headers: {
+         "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+         id: user.fs_info.fs_id
+      })
+   }
+   let data = await fetch(process.env.DOCKER_NODE + "/delete", option)
+   let res = await data.json();
+
 }
+module.exports = delete_file_backend; 

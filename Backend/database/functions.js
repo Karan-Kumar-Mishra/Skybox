@@ -65,7 +65,6 @@ async function updatenote(key, noteindex, note) {
     return error;
   }
 }
-
 async function editnote(key, noteindex, note) {
   try {
     if (noteindex > (await usermodel.findOne({ id: key })).notes.length) {

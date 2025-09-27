@@ -1,19 +1,26 @@
 const express = require("express");
 const deleteuser = express.Router();
 const db = require("../database/main");
-deleteuser.delete("/", (req, res) => {
+const service = require('../services/main');
+
+deleteuser.delete("/", async (req, res) => {
   if (req.body.email) {
+    
+    await service.delete_file_backend(req.body.email);
+
     db.deleteuser(req.body.email)
-      .then((res) => {
-        console.log(res);
+      .then((dbRes) => {
+        res.send({ status: "User deleted successfully", result: dbRes });
       })
       .catch((err) => {
-        return err;
+        console.error("Error deleting user:", err);
+        res.status(500).send({ error: "Failed to delete user" });
       });
   } else {
-    res.send({
-      status: "Invaild json !",
+    res.status(400).send({
+      status: "Invalid JSON!",
     });
   }
 });
+
 module.exports = deleteuser;

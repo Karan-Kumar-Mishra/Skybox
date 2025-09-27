@@ -11,7 +11,5 @@ deleteAllnotifiaction.post('/', (req, res) => {
             status:"error"
         })
     })
-  
-
 })
 module.exports =deleteAllnotifiaction;

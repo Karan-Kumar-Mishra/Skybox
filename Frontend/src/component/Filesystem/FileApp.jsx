@@ -12,14 +12,14 @@ import Navbar from "../Navbar";
 import "./App.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import { setBaseApiUrl, getBaseApiUrl } from "./api/api";
-
-
+import { getUser } from "../../Redux/actions/getUser";
 
 function App() {
 
   const { isAuthenticated, user } = useAuth0();
   const store_data = useSelector((state) => state?.Data);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const getFiles = async () => {
     setIsLoading(true);
     const response = await getAllFilesAPI();
@@ -27,6 +27,7 @@ function App() {
     setIsLoading(false);
   };
   useEffect(() => {
+    dispatch(getUser(user.email))
     if (!store_data.UserData.isPrime) {
       navigate("/payment");
     }

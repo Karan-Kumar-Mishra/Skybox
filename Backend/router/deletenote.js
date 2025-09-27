@@ -5,7 +5,6 @@ deletenote.put("/", (req, res) => {
   if (req.body.email) {
     db.getid("email", req.body.email).then((id) => {
       db.deleteSingelnote(id, req.body.note_title).then((ans) => {
-        console.log(ans);
         if (ans.acknowledged == true && ans.modifiedCount == 1) {
           res.send({
             status: "ok",
