@@ -21,7 +21,7 @@ export default function App() {
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(setUserinfo(user));
-  //    console.log("after set state data=> ", store_data);
+      console.log("after set state data=> ", store_data);
       dispatch(getUser(user.email))
       toast.success("Login successfully");
     } else {

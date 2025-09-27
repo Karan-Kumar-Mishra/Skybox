@@ -20,8 +20,7 @@ export default function Payment() {
 
   useEffect(() => {
    // dispatch(getUser());
-    console.log("check emain=> ", user)
-    console.log("state data=>",store_data)
+ 
     dispatch(checkprime());
     if (store_data.UserData.isPrime) {
       navigate("/Filesystem");

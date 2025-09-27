@@ -13,7 +13,7 @@ export const getUser = (userEmail) => {
     };
     let response = await fetch(process.env.REACT_APP_BACKEND_URL + "/getuser", option);
     let res = await response.json();
-    console.log("after get the user =>", res)
+
     if (res['error']) {
       console.log("error found ?")
       dispatch(signup());

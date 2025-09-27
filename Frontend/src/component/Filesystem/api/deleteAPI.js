@@ -1,6 +1,6 @@
-import { api } from "./api";
+import { api, getBaseApiUrl } from "./api";
 
 export const deleteAPI = async (ids) => {
-  const response = await api.delete("", { data: { ids: ids } });
+  const response = await api.delete(getBaseApiUrl(), { data: { ids: ids } });
   return response;
 };

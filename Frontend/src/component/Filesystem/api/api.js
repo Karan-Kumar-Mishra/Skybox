@@ -1,12 +1,13 @@
 import axios from "axios";
-import store from "../../../Redux/store";// import your Redux store
 
-function getUrl() {
-  const state = store.getState();
-  console.log("while get the url in files")
-  return state?.Data?.UserData?.fs_info?.fs_url;
+
+let URL = null;
+export function setBaseApiUrl(value) {
+  URL = value;
 }
-
+export function getBaseApiUrl(value) {
+  return URL;
+}
 export const api = axios.create({
-  baseURL: getUrl()
+  baseURL: URL
 });

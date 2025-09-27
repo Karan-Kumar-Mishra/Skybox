@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import "./App.scss";
 import { useAuth0 } from "@auth0/auth0-react";
+import { setBaseApiUrl, getBaseApiUrl } from "./api/api";
 
 
 
@@ -19,34 +20,38 @@ function App() {
   const { isAuthenticated, user } = useAuth0();
   const store_data = useSelector((state) => state?.Data);
   const navigate = useNavigate();
-  
+  const getFiles = async () => {
+    setIsLoading(true);
+    const response = await getAllFilesAPI();
+    setFiles(response.data ? response.data : []);
+    setIsLoading(false);
+  };
   useEffect(() => {
-    console.log("state in files compoenets=> ", store_data.UserData);
     if (!store_data.UserData.isPrime) {
       navigate("/payment");
     }
-  }, [store_data,isAuthenticated,user])
+    setBaseApiUrl(store_data?.UserData?.fs_info?.fs_url)
+    console.log("After set the URL  =>", getBaseApiUrl())
+    getFiles();
+  }, [store_data, isAuthenticated, user])
   const fileUploadConfig = {
     url: store_data?.UserData?.fs_info?.fs_url + "/upload",
   };
+
   const [isLoading, setIsLoading] = useState(false);
   const [files, setFiles] = useState([]);
   const isMountRef = useRef(false);
 
   // Get Files
-  const getFiles = async () => {
-    setIsLoading(true);
-    const response = await getAllFilesAPI();
 
-    setFiles(response.data ? response.data : []);
-    setIsLoading(false);
-  };
 
   useEffect(() => {
     if (isMountRef.current) return;
     isMountRef.current = true;
+    setBaseApiUrl(store_data?.UserData?.fs_info?.fs_url)
+    setBaseApiUrl(store_data?.UserData?.fs_info?.fs_url)
     getFiles();
-  }, [store_data?.UserData?.fs_info,isAuthenticated]);
+  }, [store_data?.UserData?.fs_info, isAuthenticated, user]);
   //
 
   // Create Folder
@@ -119,6 +124,7 @@ function App() {
 
   // Refresh Files
   const handleRefresh = () => {
+    setBaseApiUrl(store_data?.UserData?.fs_info?.fs_url)
     getFiles();
   };
   //
