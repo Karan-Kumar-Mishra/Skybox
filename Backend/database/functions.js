@@ -54,7 +54,7 @@ async function updatenote(key, noteindex, note) {
   try {
     getnotes(key).then((res) => {
       let updatenotes = res[noteindex] + ` ${note}`;
-      console.log("update note=>", updatenotes);
+   
       return usermodel
         .updateOne({ id: key }, { $set: { [`notes.${noteindex}.note`]: note } })
         .then((result) => {

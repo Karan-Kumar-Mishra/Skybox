@@ -12,8 +12,8 @@ export default function Profile() {
   function removeUser()
   {
     dispatch(deleteUser());
-    toast.success("Your account is delete successfully !");
     logout()
+    toast.success("Your account is delete successfully !");
   }
   useEffect(()=>{
      console.log("state in profile =>",store_data)

@@ -12,7 +12,7 @@ export default function About() {
             About Skybox.com
           </div>
           <div className="para text-center m-5">
-            At Skybox, we believe that your notes are more than just
+            At Skybox, we believe that your Data are more than just
             text—they're the building blocks of your ideas, projects, and
             dreams. That's why we've created a platform that combines simplicity
             with powerful features to make note-taking, organizing, and

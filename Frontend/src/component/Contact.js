@@ -20,7 +20,7 @@ export default function Example() {
         <form
           action="https://formsubmit.co/2e725f6230466d3c0b246217003191d6"
           method="POST"
-          className="mx-auto mt-16 max-w-xl sm:mt-20"
+          className="mx-auto  max-w-xl sm:mt-20"
         >
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div className="sm:col-span-2">

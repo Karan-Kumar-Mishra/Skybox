@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import Logo from "../component/Images/Logo.png";
 import { useSelector, useDispatch } from "react-redux";
-
+import { getUser } from "../Redux/actions/getUser";
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Dashboard", href: "/dashboard", current: false },
@@ -19,9 +19,13 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const { logout } = useAuth0();
-  const store_data = useSelector((state)=>state.Data);
 
+  const { isAuthenticated, user } = useAuth0();
+  const store_data = useSelector((state) => state.Data);
+    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUser(user.email))
+  }, [store_data, store_data?.UserData?.more_info?.picture, isAuthenticated, user])
   return (
     <Disclosure as="nav" className="bg-gray-800 w-full ">
       {({ open }) => (
@@ -83,13 +87,13 @@ export default function Navbar() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         alt=""
-                        src={store_data?.UserData?.more_info?.picture ? store_data?.UserData?.more_info?.picture : "../Images/DefaultUser.png" }
+                        src={store_data?.UserData?.more_info?.picture ? store_data?.UserData?.more_info?.picture : "../Images/DefaultUser.png"}
                         className="h-8 w-8 rounded-full"
                       />
-                   
+
                     </Menu.Button>
                   </div>
-                 
+
                 </Menu>
               </div>
             </div>
