@@ -15,8 +15,7 @@ export const getUser = (userEmail) => {
     let res = await response.json();
 
     if (res['error']) {
-      console.log("error found ?")
-      dispatch(signup());
+      console.log("error found ?=> ",res)
     }
     else
     {

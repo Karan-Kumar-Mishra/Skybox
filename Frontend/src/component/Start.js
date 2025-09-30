@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Box from "./Box";
 import toast, { Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 export default function Start() {
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const { isAuthenticated, user, isLoading, loginWithPopup } = useAuth0();
+
+  const dispatch = useDispatch();
+  const handellogin = async () => {
+    loginWithPopup()
+    dispatch({ type: 'SET_LOGIN_BTN', payload: true })
+  }
+  useEffect(() => {
+    if (isAuthenticated) {
+      loginWithPopup()
+    }
+  }, [isLoading, isAuthenticated])
 
   return (
     <div>
@@ -45,7 +57,7 @@ export default function Start() {
             <button
               href="/home"
               className="border-solid p-4 rounded-3xl text-white  bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
-              onClick={() => loginWithRedirect()}
+              onClick={handellogin}
             >
               Get started
             </button>

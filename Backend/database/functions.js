@@ -19,21 +19,26 @@ async function connectdb() {
 }
 
 async function adduser(user) {
-  let res = await getuser("name", user.name);
+  let res = await getuser("email", user.email);
   if (res != null) {
+    console.log("user already found ?")
     return;
   }
-  try {
-    const newUser = new usermodel({
-      id: generateRandomId(20),
-      name: user.name,
-      email: user.email,
-      isprime: false,
-      more_info: user.more_info,
-    });
-    return await newUser.save();
-  } catch (error) {
-    return error;
+  else
+  {
+
+    try {
+      const newUser = new usermodel({
+        id: generateRandomId(20),
+        name: user.name,
+        email: user.email,
+        isprime: false,
+        more_info: user.more_info,
+      });
+      return await newUser.save();
+    } catch (error) {
+      return error;
+    }
   }
 }
 async function getuser(key, value) {

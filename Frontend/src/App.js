@@ -9,7 +9,7 @@ import { signup } from "./Redux/actions/SignUp";
 import { getUser } from "./Redux/actions/getUser";
 
 export default function App() {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, isLoading } = useAuth0();
   const dispatch = useDispatch();
 
   const store_data = useSelector((state) => state.Data);
@@ -20,15 +20,16 @@ export default function App() {
 
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && store_data.ComponentData.loginbtn) {
       dispatch(setUserinfo(user));
       console.log("after set state data=> ", store_data);
+      dispatch(signup())
       dispatch(getUser(user.email))
       toast.success("Login successfully");
     } else {
       console.log("user is not authenticated");
     }
-  }, [user, isAuthenticated]);
+  }, [isLoading]);
 
   return (
     <>
