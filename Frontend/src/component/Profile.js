@@ -4,6 +4,7 @@ import toast,{Toaster} from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteUser } from "../Redux/actions/DeleteUser";
 import userimage from '../component/Images/DefaultUser.png'
+
 export default function Profile() {
   const { isAuthenticated, user } = useAuth0();
   const { logout } = useAuth0();
@@ -17,6 +18,10 @@ export default function Profile() {
   }
   useEffect(()=>{
      console.log("state in profile =>",store_data)
+     if(store_data.UserData.email==null)
+     {
+         window.location.href="/";
+     }
   },[user,isAuthenticated,store_data])
   return (
     <>

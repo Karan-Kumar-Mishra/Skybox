@@ -18,9 +18,15 @@ export default function Payment() {
 
   const dispatch = useDispatch();
 
+
   useEffect(() => {
-   // dispatch(getUser());
- 
+    if (store_data.UserData.email == null) {
+      window.location.href = "/";
+    }
+  }, [store_data.UserData.email, store_data])
+  useEffect(() => {
+    // dispatch(getUser());
+
     dispatch(checkprime());
     if (store_data.UserData.isPrime) {
       navigate("/Filesystem");
@@ -82,7 +88,7 @@ export default function Payment() {
               navigate('/Filesystem');
             } else {
               alert('Payment verification failed: ' + verifyResponse.data.message);
-              console.log("payment response=>",verifyResponse)
+              console.log("payment response=>", verifyResponse)
               dispatch({
                 type: 'SET_ERROR',
                 payload: {

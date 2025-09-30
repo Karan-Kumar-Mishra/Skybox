@@ -1,7 +1,14 @@
-import React from "react";
+import React ,{useEffect}from "react";
 import Box2 from "./Box2";
 import Navbar from "./Navbar";
+import { useDispatch, useSelector } from 'react-redux';
 export default function About() {
+    const store_data = useSelector((state) => state.Data);
+  useEffect(() => {
+    if (store_data.UserData.email == null) {
+      window.location.href = "/";
+    }
+  }, [store_data.UserData.email, store_data])
   return (
     <>
       <Navbar />
