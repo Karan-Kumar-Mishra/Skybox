@@ -22,10 +22,10 @@ export default function About() {
             At Skybox, we believe that your Data are more than just
             text—they're the building blocks of your ideas, projects, and
             dreams. That's why we've created a platform that combines simplicity
-            with powerful features to make note-taking, organizing, and
+            with powerful features to make data-taking, organizing, and
             accessing your ideas a breeze. Our mission is to provide a secure,
             accessible, and intuitive space where you can capture, store, and
-            manage your notes effortlessly. Whether you're a student,
+            manage your data effortlessly. Whether you're a student,
             professional, or just someone with a lot of thoughts to organize,
             Skybox is designed to adapt to your needs and keep you productive.
           </div>

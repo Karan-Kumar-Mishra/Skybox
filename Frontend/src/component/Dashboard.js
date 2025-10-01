@@ -98,7 +98,7 @@ function DemoPageContent({ pathname }) {
       {pathname === "/files" && navigate("/Filesystem")}
       {pathname === "/settings" && navigate("/settings")}
       {pathname === "/profile" && navigate("/profile")}
-      {pathname === "/logout" && logout()}
+      {pathname === "/logout" && logout() }
     </Box>
   );
 }
@@ -112,7 +112,7 @@ function Dashboard(props) {
   const demoWindow = window !== undefined ? window() : undefined;
 
   React.useEffect(() => {
-
+  
     let ele = document.querySelector(".css-t3xolk");
     let ele2 = document.querySelector(".css-23htwk");
     if (ele2) {

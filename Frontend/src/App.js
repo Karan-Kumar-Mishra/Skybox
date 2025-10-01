@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserinfo } from "./Redux/actions/SetUserInfo";
 import { signup } from "./Redux/actions/SignUp";
 import { getUser } from "./Redux/actions/getUser";
-
+import block from "./lib/BlockDevTools";
 export default function App() {
+  block();
   const { isAuthenticated, user, isLoading } = useAuth0();
   const dispatch = useDispatch();
 
@@ -17,6 +18,7 @@ export default function App() {
     let div = document.querySelector(".tox-notifications-container");
     if (div != null) div.remove();
   }, 2000);
+
 
 
   useEffect(() => {

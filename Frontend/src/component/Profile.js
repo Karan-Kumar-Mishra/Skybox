@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import toast,{Toaster} from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteUser } from "../Redux/actions/DeleteUser";
 import userimage from '../component/Images/DefaultUser.png'
-
+import { useNavigate } from "react-router-dom";
 export default function Profile() {
   const { isAuthenticated, user } = useAuth0();
+  const navigate = useNavigate();
   const { logout } = useAuth0();
-  const dispatch=useDispatch();
-  const store_data = useSelector((state)=>state.Data);
-  function removeUser()
-  {
+  const dispatch = useDispatch();
+  const store_data = useSelector((state) => state.Data);
+  function removeUser() {
     dispatch(deleteUser());
     logout()
     toast.success("Your account is delete successfully !");
   }
-  useEffect(()=>{
-     console.log("state in profile =>",store_data)
-     if(store_data.UserData.email==null)
-     {
-         window.location.href="/";
-     }
-  },[user,isAuthenticated,store_data])
+  useEffect(() => {
+    console.log("state in profile =>", store_data)
+    if (store_data.UserData.email == null) {
+       setTimeout(() => navigate("/"), 2000);
+    }
+  }, [user, isAuthenticated, store_data,navigate])
   return (
     <>
-    <Toaster
+      <Toaster
         toastOptions={{
           style: {
             background: "black",
@@ -37,6 +36,7 @@ export default function Profile() {
         <div className=" bg-gradient-to-r from-black to-indigo-900 rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
           <div className="text-gray-500 group-hover:scale-105 transition-all">
             <img
+              onError={(e) => (e.currentTarget.src = userimage)}
               src={store_data?.UserData?.more_info?.picture || userimage}
               alt="User image"
               className="rounded-full h-40 m-2"
@@ -50,7 +50,7 @@ export default function Profile() {
             <div className="flex gap-3 text-2xl  bg-gradient-to-r from-black to-indigo-900 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
               <a className="hover:scale-110 transition-all duration-500 delay-200">
                 <button className="p-2"
-                onClick={removeUser}
+                  onClick={removeUser}
                 >Delete</button>
               </a>
             </div>
