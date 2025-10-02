@@ -1,6 +1,7 @@
 /Frontend/node_modules
 /Backend/node_modules
 /Frontend/.env
+/Frontend/build
 /Backend/.env
 
 

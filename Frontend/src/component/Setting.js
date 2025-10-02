@@ -1,7 +1,13 @@
 import { PhotoIcon } from "@heroicons/react/24/solid";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 export default function Example() {
-  const store_data = useSelector((state)=>state.Data);
+  const store_data = useSelector((state) => state.Data);
+  useEffect(() => {
+    if (store_data.UserData.email == null) {
+      window.location.href = "/";
+    }
+  }, [store_data.UserData.email, store_data])
   return (
     <div className="main bg-gradient-to-r from-black to-indigo-900  min-h-screen p-8">
       <form className="m-5">
@@ -63,7 +69,7 @@ export default function Example() {
                 </label>
                 <div className="mt-2 flex items-center gap-x-3 text-white">
                   <img
-                     src={store_data.UserData.more_info.picture}
+                    src={store_data.UserData.more_info.picture}
                     alt="User image"
                     className="rounded-full h-20"
                   />

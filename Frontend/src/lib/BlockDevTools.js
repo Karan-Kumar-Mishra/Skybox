@@ -1,22 +1,10 @@
-export default function block() {
-    document.onkeydown = function (e) {
-        if (
-            e.keyCode == 123 || // F12
-            (e.ctrlKey && e.shiftKey && e.key === "I") || // Ctrl+Shift+I
-            (e.ctrlKey && e.shiftKey && e.key === "J") || // Ctrl+Shift+J
-            (e.ctrlKey && e.shiftKey && e.key === "C") || // Ctrl+Shift+C
-            (e.ctrlKey && e.key === "U") // Ctrl+U
-        ) {
-            return false;
-        }
-    };
-    setInterval(function () {
-        if (
-            window.outerWidth - window.innerWidth > 200 ||
-            window.outerHeight - window.innerHeight > 200
-        ) {
-            document.title="Access denied 🚫";
-            document.body.innerHTML = `
+const disableRightClick = (e) => {
+    e.preventDefault();
+    return false;
+}
+const showBlockmessage = (e) => {
+    document.title = "Access denied 🚫";
+    document.body.innerHTML = `
           <div class="fixed inset-0 bg-black text-white flex items-center justify-center z-[99999] p-6 text-center font-sans">
             <div class="max-w-xl">
              <h1 class="text-2xl font-bold mb-3">DevTools detected — Access denied 🚫</h1>
@@ -28,8 +16,20 @@ export default function block() {
           </div>
         </div>
 `;
+}
+export default function block() {
 
-
+    document.addEventListener('contextmenu', showBlockmessage)
+    document.onkeydown = function (e) {
+        if (
+            e.keyCode == 123 || // F12
+            (e.ctrlKey && e.shiftKey && e.key === "I") || // Ctrl+Shift+I
+            (e.ctrlKey && e.shiftKey && e.key === "J") || // Ctrl+Shift+J
+            (e.ctrlKey && e.shiftKey && e.key === "C") || // Ctrl+Shift+C
+            (e.ctrlKey && e.key === "U") // Ctrl+U
+        ) {
+            return false;
         }
-    }, 10);
+    };
+
 }

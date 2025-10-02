@@ -12,6 +12,11 @@ export default function Viewnotes() {
   const navigate = useNavigate();
   const store_data = useSelector((state) => state.Data);
   useEffect(() => {
+    if (store_data.UserData.email == null) {
+      window.location.href = "/";
+    }
+  }, [store_data.UserData.email, store_data])
+  useEffect(() => {
     // if(store_data.ComponentData.currentNote === "") {
     //   toast.error("Please select a note !");
     //   navigate("/");
