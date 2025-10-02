@@ -1,10 +1,9 @@
-# skybox
-<h1>Hoststream</h1>
+<h1>Skybox</h1>
 
-<img src="./frontend/src/assets/Skybox.png">
+<img src="./frontend/src/assets/Skybox.ico">
 <br>
 
-<h1>Hoststream's system design</h1>
+<h1>Skybox's system design</h1>
 <br>
 <img src="./frontend/src/assets/system_design.png">
 <br>

@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+
+
+  backend:
+    image: karankumarmishra/hoststream-backend:latest
+    ports:
+      - "88:88"
+    networks:
+      - app-network
+    depends_on:
+      - redis
+
+
+  frontend:
+    image: karankumarmishra/hoststream-frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+# volumes:
+#   redis_data:
+#   mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge
