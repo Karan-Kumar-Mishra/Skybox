@@ -1,11 +1,11 @@
 <h1>Skybox</h1>
 
-<img src="./frontend/src/assets/Skybox.ico">
+<img src="./Frontend/src/assets/Skybox.ico">
 <br>
 
 <h1>Skybox's system design</h1>
 <br>
-<img src="./frontend/src/assets/system_design.png">
+<img src="./Frontend/src/assets/system_design.png">
 <br>
 
 <h2>system design url :</h2>
