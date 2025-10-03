@@ -5,11 +5,11 @@
 
 <h1>Skybox's system design</h1>
 <br>
-<img src="./Frontend/src/assets/system_design.png">
+<img src="./Frontend/src/assets/SystemDesign.png">
 <br>
 
 <h2>system design url :</h2>
-<a href="https://app.eraser.io/workspace/31q7M7OHoxmqHpeXrCHO">https://app.eraser.io/workspace/31q7M7OHoxmqHpeXrCHO</a>
+<a href="https://excalidraw.com/#json=cpXwwLJsj7uytVZ77enNn,iddy2NkJLbeJKbhcYSA6Nw">https://excalidraw.com/#json=cpXwwLJsj7uytVZ77enNn,iddy2NkJLbeJKbhcYSA6Nw</a>
 <br>
 <br>
 <!-- <h1>Video</h1>

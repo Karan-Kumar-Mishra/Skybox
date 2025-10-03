@@ -1,8 +1,4 @@
-FROM ubuntu:20.04
+FROM node:18-alpine
 COPY . .
-RUN  apt-get update -y
-RUN  apt-get upgrade -y
-RUN  apt-get install nodejs -y
-RUN  apt-get install npm -y
-EXPOSE 80 
+EXPOSE 88 27017
 CMD ["node","server.js"]
