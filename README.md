@@ -62,12 +62,12 @@ npm i serve
 serve -S dist
 
 ```
-<!-- 
+
 <h4>Dokcer </h4>
 
 ```
-git clone https://github.com/Karan-Kumar-Mishra/Hoststream.git
-cd Hoststream
+git clone https://github.com/Karan-Kumar-Mishra/Skybox
+cd Skybox
 docker-compose up
 
-``` -->
+```

@@ -1,10 +1,6 @@
-version: '3.8'
-
 services:
   mongodb:
     image: mongo:latest
-    ports:
-      - "27017:27017"
     networks:
       - app-network
     healthcheck:
@@ -12,23 +8,30 @@ services:
 
 
   backend:
-    image: karankumarmishra/hoststream-backend:latest
+    image: karankumarmishra/skybox_backend:latest
     ports:
       - "88:88"
+      - "27017:27017"
+    depends_on:
+      - mongodb
     networks:
       - app-network
-    depends_on:
-      - redis
+    env_file:
+      - .env.backend
+     
+ 
 
 
   frontend:
-    image: karankumarmishra/hoststream-frontend:latest
+    image:  karankumarmishra/skybox_frontend:latest
     ports:
       - "3000:3000"
     depends_on:
       - backend
     networks:
       - app-network
+    env_file:
+      - .env.frontend
 
 # volumes:
 #   redis_data:

@@ -3,7 +3,7 @@
 /Frontend/.env
 /Frontend/build
 /Backend/.env
-/DockerClint/node_modules
-/DockerClint/.env
+/DockerClient/node_modules
+/DockerClient/.env
 .env.frontend
 .env.backend
