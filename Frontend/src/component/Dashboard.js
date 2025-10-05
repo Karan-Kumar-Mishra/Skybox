@@ -124,6 +124,7 @@ function Dashboard(props) {
   const store_data = useSelector((state) => state.Data);
   React.useEffect(() => {
     console.log("state in dashborad =>", store_data)
+    console.log("user=> ",user)
   }, [user, isAuthenticated, store_data])
   return (
     <>

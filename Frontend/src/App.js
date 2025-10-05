@@ -22,7 +22,9 @@ export default function App() {
 
 
   useEffect(() => {
-    if (isAuthenticated && store_data.ComponentData.loginbtn) {
+
+    if (isAuthenticated && store_data.ComponentData.loginbtn && user) {
+      console.log("user=> ",user)
       dispatch(setUserinfo(user));
       console.log("after set state data=> ", store_data);
       dispatch(signup())
@@ -30,6 +32,8 @@ export default function App() {
       toast.success("Login successfully");
     } else {
       console.log("user is not authenticated");
+        console.log("user=> ",user)
+        console.log("auth=>",isAuthenticated)
     }
   }, [isLoading]);
 
@@ -43,7 +47,7 @@ export default function App() {
           },
         }}
       />
-      {isAuthenticated ? <Mainapp /> : <Start />}
+      {(isAuthenticated  && user ) ? <Mainapp /> : <Start />}
     </>
   );
 }
