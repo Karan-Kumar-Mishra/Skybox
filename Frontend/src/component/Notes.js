@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 import { getAllnotes } from "../Redux/actions/GetAllnotes";
-import { SetcurrentNote } from "../Redux/actions/SetcurrentNote";
+
 export default function Notes() {
   const [showNote, setshowNote] = useState(false);
   const dispatch = useDispatch();
