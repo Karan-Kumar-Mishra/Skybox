@@ -27,25 +27,32 @@ export default function Example() {
     if (notes.length == 0 || notes.length == undefined) {
       setnotes(store_data.UserData.notes)
     }
-  }, [dispatch, a, notes,store_data.UserData.notes.length]);
+  }, [dispatch, a, notes, store_data.UserData.notes.length]);
 
   function setcurrentNote(txt, index) {
     dispatch(SetcurrentNote(txt, index));
     navigate("/viewnote");
   }
   function handelSearch(e) {
+    if (e.key == "Enter") {
+      let findnote = store_data.UserData.notes.find((ele) => ele.title == e.target.value)
+      if (findnote) {
+        setshowNote(true);
+        setcurrentNote(findnote, 1);
+      }
+    }
     setnotes(store_data.UserData.notes.filter((note) => note.title.startsWith(e.target.value)))
-    console.log("notes=>", notes)
   }
   return (
     <>
-      <Navbar />
-      <div className="main">
-        <div className="addbtn flex justify-center bg-gradient-to-r from-black to-indigo-900">
+      <div className="main h-full from-black relative to-indigo-900 ">
+        <Navbar />
+        <div className="addbtn  flex justify-center  bg-gradient-to-r from-black to-indigo-900">
           <input
             onChange={handelSearch}
+            onKeyDown={handelSearch}
             placeholder="Search notes here..."
-            className="border-solid  text-white  h-15  m-2 w-full font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
+            className="border-solid  text-white  h-10  m-2 w-full font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
             type="text"
           >
 
@@ -54,7 +61,7 @@ export default function Example() {
             onClick={() => {
               navigate("/Editor");
             }}
-            className="border-solid  text-white  m-2 h-15 w-60 font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
+            className="border-solid  text-white  m-2 h-10 w-60 font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
           >
             <i className="m-2  fas fa-plus"></i>
             Add new note
@@ -63,7 +70,7 @@ export default function Example() {
 
         <ul
           role="list"
-          className="divide-y divide-gray-100  h-screen  overflow-x-hidden hide-scrollbar bg-slate-900"
+          className="divide-y divide-gray-100 h-screen  overflow-x-scroll hide-scrollbar bg-slate-900"
         >
           {notes.length ?
             notes.map((note, index) => (

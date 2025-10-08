@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { getAllnotes } from "../Redux/actions/GetAllnotes";
 import { SetcurrentNote } from "../Redux/actions/SetcurrentNote";
 import NotesDeleteButton from "./NotesDeleteButton";
+
 import Loading from "./Loading";
 export default function NotesDashboard() {
   const [showNote, setshowNote] = useState(false);
@@ -11,7 +12,7 @@ export default function NotesDashboard() {
   const store_data = useSelector((state) => state.Data);
   useEffect(() => {
     dispatch(getAllnotes());
-  }, [dispatch]);
+  }, [dispatch,store_data.UserData.notes.length]);
   return (
     <div className="h-screen w-screen">
       <ul

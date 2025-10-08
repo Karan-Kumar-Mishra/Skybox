@@ -72,9 +72,18 @@ const demoTheme = createTheme({
   },
 });
 
+function logoutUser(params) {
+
+}
+
 function DemoPageContent({ pathname }) {
   const navigate = useNavigate();
   const { logout } = useAuth0();
+  function logoutUser(params) {
+   setTimeout(()=>{
+    logout()
+   },2000)
+  }
   return (
     <Box
       sx={{
@@ -98,7 +107,7 @@ function DemoPageContent({ pathname }) {
       {pathname === "/files" && navigate("/Filesystem")}
       {pathname === "/settings" && navigate("/settings")}
       {pathname === "/profile" && navigate("/profile")}
-      {pathname === "/logout" && logout() }
+      {pathname === "/logout" && logoutUser()}
     </Box>
   );
 }
@@ -112,7 +121,7 @@ function Dashboard(props) {
   const demoWindow = window !== undefined ? window() : undefined;
 
   React.useEffect(() => {
-  
+
     let ele = document.querySelector(".css-t3xolk");
     let ele2 = document.querySelector(".css-23htwk");
     if (ele2) {
@@ -124,8 +133,8 @@ function Dashboard(props) {
   const store_data = useSelector((state) => state.Data);
   React.useEffect(() => {
     console.log("state in dashborad =>", store_data)
-    console.log("user=> ",user)
-  }, [user, isAuthenticated, store_data])
+    console.log("user=> ", user)
+  }, [user, isAuthenticated, store_data, store_data.ComponentData.currentNote])
   return (
     <>
       <Navbar />
