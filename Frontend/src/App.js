@@ -8,6 +8,7 @@ import { setUserinfo } from "./Redux/actions/SetUserInfo";
 import { signup } from "./Redux/actions/SignUp";
 import { getUser } from "./Redux/actions/getUser";
 import block from "./lib/BlockDevTools";
+import PlayNoitification from "./lib/PlayNoitification";
 export default function App() {
   block();
   const { isAuthenticated, user, isLoading } = useAuth0();
@@ -24,16 +25,18 @@ export default function App() {
   useEffect(() => {
 
     if (isAuthenticated && store_data.ComponentData.loginbtn && user) {
-      console.log("user=> ",user)
+      console.log("user=> ", user)
       dispatch(setUserinfo(user));
       console.log("after set state data=> ", store_data);
       dispatch(signup())
       dispatch(getUser(user.email))
+      PlayNoitification()
       toast.success("Login successfully");
+
     } else {
       console.log("user is not authenticated");
-        console.log("user=> ",user)
-        console.log("auth=>",isAuthenticated)
+      console.log("user=> ", user)
+      console.log("auth=>", isAuthenticated)
     }
   }, [isLoading]);
 
@@ -47,7 +50,10 @@ export default function App() {
           },
         }}
       />
-      {(isAuthenticated  && user ) ? <Mainapp /> : <Start />}
+      <audio id="audio">
+        <source src='../assets/Skybox.mp3' type="audio/mp3" />
+      </audio>
+      {(isAuthenticated && user) ? <Mainapp /> : <Start />}
     </>
   );
 }

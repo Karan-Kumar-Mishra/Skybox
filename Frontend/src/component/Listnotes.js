@@ -9,6 +9,7 @@ import EditButton from "./EditButton";
 import Loading from "./Loading";
 import Navbar from "./Navbar"
 import { getUser } from "../Redux/actions/getUser";
+import Cookies from "./CookieSub";
 
 export default function Example() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ export default function Example() {
     <>
       <div className="main h-full from-black relative to-indigo-900 ">
         <Navbar />
+        {/* <Cookies/> */}
         <div className="addbtn  flex justify-center  bg-gradient-to-r from-black to-indigo-900">
           <input
             onChange={handelSearch}

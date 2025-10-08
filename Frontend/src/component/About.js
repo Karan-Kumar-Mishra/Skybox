@@ -1,9 +1,9 @@
-import React ,{useEffect}from "react";
+import React, { useEffect } from "react";
 import Box2 from "./Box2";
 import Navbar from "./Navbar";
 import { useDispatch, useSelector } from 'react-redux';
 export default function About() {
-    const store_data = useSelector((state) => state.Data);
+  const store_data = useSelector((state) => state.Data);
   useEffect(() => {
     if (store_data.UserData.email == null) {
       window.location.href = "/";
@@ -16,7 +16,7 @@ export default function About() {
         <div className="content text-white font-semibold flex items-center justify-center flex-col">
 
           <div className="heading text-white font-semibold text-3xl ">
-            About Skybox.com
+            About Skybox
           </div>
           <div className="para text-center m-5">
             At Skybox, we believe that your Data are more than just

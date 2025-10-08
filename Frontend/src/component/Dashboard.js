@@ -138,6 +138,7 @@ function Dashboard(props) {
   return (
     <>
       <Navbar />
+  
       <AppProvider
         navigation={NAVIGATION}
         branding={{

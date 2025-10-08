@@ -19,17 +19,17 @@ const showBlockmessage = (e) => {
 }
 export default function block() {
 
-    // document.addEventListener('contextmenu', showBlockmessage)
-    // document.onkeydown = function (e) {
-    //     if (
-    //         e.keyCode == 123 || // F12
-    //         (e.ctrlKey && e.shiftKey && e.key === "I") || // Ctrl+Shift+I
-    //         (e.ctrlKey && e.shiftKey && e.key === "J") || // Ctrl+Shift+J
-    //         (e.ctrlKey && e.shiftKey && e.key === "C") || // Ctrl+Shift+C
-    //         (e.ctrlKey && e.key === "U") // Ctrl+U
-    //     ) {
-    //         return false;
-    //     }
-    // };
+    document.addEventListener('contextmenu', showBlockmessage)
+    document.onkeydown = function (e) {
+        if (
+            e.keyCode == 123 || // F12
+            (e.ctrlKey && e.shiftKey && e.key === "I") || // Ctrl+Shift+I
+            (e.ctrlKey && e.shiftKey && e.key === "J") || // Ctrl+Shift+J
+            (e.ctrlKey && e.shiftKey && e.key === "C") || // Ctrl+Shift+C
+            (e.ctrlKey && e.key === "U") // Ctrl+U
+        ) {
+            return false;
+        }
+    };
 
 }

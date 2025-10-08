@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { deletenote } from "../Redux/actions/DeleteNote";
 import { useDispatch, useSelector } from "react-redux";
+import PlayNoitification from "../lib/PlayNoitification";
 export default function NotesDeleteButton(props) {
   const dispatch = useDispatch();
   function deletesinglenote(title) {
     dispatch(deletenote(title));
+    PlayNoitification();
   }
   return (
     <div>
