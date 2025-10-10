@@ -21,7 +21,7 @@ const markprime = require('./markprime')
 const create_order = require('./createorder')
 const verify_payment = require('./verify_payment')
 const getFilesystemURL = require('./getFilesystemURL')
-
+const checkDockerClient= require('./checkDockerClient')
 
 const mainobj = {
     authentication,
@@ -47,6 +47,7 @@ const mainobj = {
     deletenotifiaction,
     deleteAllnotifiaction,
     getFilesystemURL,
+    checkDockerClient
 
 }
 module.exports = mainobj;

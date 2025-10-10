@@ -13,6 +13,7 @@ import "./App.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import { setBaseApiUrl, getBaseApiUrl } from "./api/api";
 import { getUser } from "../../Redux/actions/getUser";
+import Alert from "../Notification";
 
 function App() {
 
@@ -20,19 +21,36 @@ function App() {
   const store_data = useSelector((state) => state?.Data);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const getFiles = async () => {
     setIsLoading(true);
     const response = await getAllFilesAPI();
     setFiles(response.data ? response.data : []);
     setIsLoading(false);
   };
+
   useEffect(() => {
     dispatch(getUser(user.email))
+    fetch(process.env.REACT_APP_BACKEND_URL + "/check_fs").then((res) => {
+      console.log("res=>", res.status)
+      if (res.status == 404) {
+        alert("The file service is not working right now due some resion")
+        navigate("/dashboard");
+      }
+      else {
+        if (!store_data.UserData.isPrime) {
+          navigate("/payment");
+        }
+      }
+    }).catch((err) => {
+      console.log(err)
+    })
+
     if (!store_data.UserData.isPrime) {
       navigate("/payment");
     }
     setBaseApiUrl(store_data?.UserData?.fs_info?.fs_url)
-    console.log("After set the URL  =>", getBaseApiUrl())
+
     getFiles();
   }, [store_data, isAuthenticated, user])
   const fileUploadConfig = {

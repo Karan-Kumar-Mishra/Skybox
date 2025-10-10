@@ -9,6 +9,7 @@ import { signup } from "./Redux/actions/SignUp";
 import { getUser } from "./Redux/actions/getUser";
 import block from "./lib/BlockDevTools";
 import PlayNoitification from "./lib/PlayNoitification";
+
 export default function App() {
   block();
   const { isAuthenticated, user, isLoading } = useAuth0();
@@ -42,6 +43,7 @@ export default function App() {
 
   return (
     <>
+
       <Toaster
         toastOptions={{
           style: {

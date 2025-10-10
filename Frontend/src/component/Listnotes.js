@@ -63,7 +63,7 @@ export default function Example() {
             onClick={() => {
               navigate("/Editor");
             }}
-            className="border-solid  text-white  m-2 h-10 w-60 font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
+            className="border-solid  text-white  m-2 text-[0.8rem] h-10 w-60 font-semibold rounded-3xl bg-gradient-to-r from-black to-indigo-900 shadow-lg shadow-black"
           >
             <i className="m-2  fas fa-plus"></i>
             Add new note
