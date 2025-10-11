@@ -19,6 +19,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationListDashboard from "./NotificationListDashboard";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar"
+import Alert from "./Notification";
 
 
 const NAVIGATION = [
@@ -72,19 +73,42 @@ const demoTheme = createTheme({
   },
 });
 
-function logoutUser(params) {
 
-}
 
 function DemoPageContent({ pathname }) {
-  const navigate = useNavigate();
+
   const { logout } = useAuth0();
-  function logoutUser(params) {
-   setTimeout(()=>{
-    logout()
-   },2000)
+  const store_data = useSelector((state) => state?.Data);
+  const navigate = useNavigate();
+  const [alert_message, setalert_message] = React.useState(false)
+  React.useEffect(() => {
+    console.log("msg=> ", alert_message)
+  }, [alert_message])
+  function navigate_to_fs() {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/check_fs").then((res) => {
+      console.log("res=>", res.status)
+      if (res.status == 404) {
+        setalert_message(true)
+      }
+      else {
+        if (!store_data.UserData.isPrime) {
+          navigate("/payment");
+        }
+        else {
+          navigate("/Filesystem")
+        }
+      }
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+  function logoutUser() {
+    setTimeout(() => {
+      logout()
+    }, 2000)
   }
   return (
+
     <Box
       sx={{
         py: 4,
@@ -94,6 +118,7 @@ function DemoPageContent({ pathname }) {
         textAlign: "center",
       }}
     >
+      {alert_message && <Alert state={alert_message} msg="file service is not running currently..." />}
       {pathname === "/notes" && (
         <div className="w-[50rem] flex justify-center ">
           <NotesDashboard />
@@ -104,7 +129,7 @@ function DemoPageContent({ pathname }) {
           <NotificationListDashboard />
         </div>
       )}
-      {pathname === "/files" && navigate("/Filesystem")}
+      {pathname === "/files" && navigate_to_fs()}
       {pathname === "/settings" && navigate("/settings")}
       {pathname === "/profile" && navigate("/profile")}
       {pathname === "/logout" && logoutUser()}
@@ -121,7 +146,6 @@ function Dashboard(props) {
   const demoWindow = window !== undefined ? window() : undefined;
 
   React.useEffect(() => {
-
     let ele = document.querySelector(".css-t3xolk");
     let ele2 = document.querySelector(".css-23htwk");
     if (ele2) {
@@ -132,13 +156,12 @@ function Dashboard(props) {
   }, []);
   const store_data = useSelector((state) => state.Data);
   React.useEffect(() => {
-    console.log("state in dashborad =>", store_data)
-    console.log("user=> ", user)
-  }, [user, isAuthenticated, store_data, store_data.ComponentData.currentNote])
+    //console.log("state in dashborad =>", store_data)
+    //console.log("user=> ", user)
+  }, [user, isAuthenticated, store_data.ComponentData.currentNote])
   return (
     <>
       <Navbar />
-  
       <AppProvider
         navigation={NAVIGATION}
         branding={{

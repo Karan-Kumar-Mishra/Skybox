@@ -13,7 +13,7 @@ import "./App.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import { setBaseApiUrl, getBaseApiUrl } from "./api/api";
 import { getUser } from "../../Redux/actions/getUser";
-import Alert from "../Notification";
+
 
 function App() {
 
@@ -31,21 +31,6 @@ function App() {
 
   useEffect(() => {
     dispatch(getUser(user.email))
-    fetch(process.env.REACT_APP_BACKEND_URL + "/check_fs").then((res) => {
-      console.log("res=>", res.status)
-      if (res.status == 404) {
-        alert("The file service is not working right now due some resion")
-        navigate("/dashboard");
-      }
-      else {
-        if (!store_data.UserData.isPrime) {
-          navigate("/payment");
-        }
-      }
-    }).catch((err) => {
-      console.log(err)
-    })
-
     if (!store_data.UserData.isPrime) {
       navigate("/payment");
     }
@@ -162,6 +147,7 @@ function App() {
 
   return (
     <>
+
       <Navbar />
       <FileManager
         files={files}

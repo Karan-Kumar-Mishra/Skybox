@@ -26,18 +26,18 @@ export default function App() {
   useEffect(() => {
 
     if (isAuthenticated && store_data.ComponentData.loginbtn && user) {
-      console.log("user=> ", user)
+    //  console.log("user=> ", user)
       dispatch(setUserinfo(user));
-      console.log("after set state data=> ", store_data);
+     // console.log("after set state data=> ", store_data);
       dispatch(signup())
       dispatch(getUser(user.email))
       PlayNoitification()
       toast.success("Login successfully");
 
     } else {
-      console.log("user is not authenticated");
-      console.log("user=> ", user)
-      console.log("auth=>", isAuthenticated)
+     // console.log("user is not authenticated");
+     // console.log("user=> ", user)
+     // console.log("auth=>", isAuthenticated)
     }
   }, [isLoading]);
 
