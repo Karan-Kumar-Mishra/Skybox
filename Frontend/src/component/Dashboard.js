@@ -85,12 +85,25 @@ function DemoPageContent({ pathname }) {
     console.log("msg=> ", alert_message)
   }, [alert_message])
   function navigate_to_fs() {
-    fetch(process.env.REACT_APP_BACKEND_URL + "/check_fs").then((res) => {
-      console.log("res=>", res.status)
-      if (res.status == 404) {
+
+    let option = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: store_data.UserData.email
+      })
+    }
+    fetch(process.env.REACT_APP_BACKEND_URL + "/check_fs", option).then((res) => {
+      return res.json();
+    }).then((res) => {
+      console.log("res=> ", res, "email=>", store_data.UserData.email)
+      if (res.status == 404 || res.error) {
         setalert_message(true)
       }
       else {
+        console.log("check prime=>",store_data.UserData.isPrime)
         if (!store_data.UserData.isPrime) {
           navigate("/payment");
         }
@@ -98,9 +111,10 @@ function DemoPageContent({ pathname }) {
           navigate("/Filesystem")
         }
       }
-    }).catch((err) => {
-      console.log(err)
     })
+      .catch((err) => {
+        console.log(err)
+      })
   }
   function logoutUser() {
     setTimeout(() => {
