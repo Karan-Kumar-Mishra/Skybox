@@ -1,18 +1,20 @@
-# Entry points configuration
+# traefik.yml
 entryPoints:
   hoststream-network:
     address: ":80"
   websecure:
     address: ":443"
 
-# Docker configuration backend
 providers:
   docker:
     exposedByDefault: false
-    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.Skybox.localhost`)"
-    network: hoststream-network  # Important for container communication
+    watch: true  # Ensure this is true
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.skybox.localhost`)"
+    network: hoststream-network
+    # Add this to discover existing containers:
+    endpoint: "unix:///var/run/docker.sock"
+    swarmMode: false
 
-# API and dashboard configuration
 api:
   insecure: true
   dashboard: true
